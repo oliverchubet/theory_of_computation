@@ -2,7 +2,7 @@
 
 There are many problems for which we do not have efficient algorithms.
 Furthermore, we do not know whether efficient solutions exist in general for these problems.
-In some of these cases, we can get approximate solutions.
+However, in some of these cases, we can efficiently compute approximate solutions.
 In this section we discuss some well-known optimization problems.
 We define what an approximate solution is and give some examples of approximation algorithms.
 
@@ -30,7 +30,7 @@ An optimization problem consists of the following:
 * a cost function $c: F \to \R$.
 
 A solution $x \in F$ is considered optimal if $c(x)$ has the minimum cost over all solutions in $F$.
-We denote the optimal solution for a given instance as $opt(I)$.
+We denote the optimal solution for a given instance as $\textsf{opt}(I)$.
 
 Let's look one more time at Traveline Sales Person:
 * An instance of Traveling Sales Person is a graph with weighted edges.
@@ -45,7 +45,7 @@ However, one may guess that an approximation algorithm to an optimization proble
 Now we only need to define precisely what we mean by "close".
 
 Let $\alpha \ge 1$.
-An $\alpha$-approximate algorithm to an optimization problem $P$ is an algorithm $A$ that on instance $I$ returns a solution $x$ such that $c(x) \le \alpha c(opt(I))$.
+An $\alpha$-approximate algorithm to an optimization problem $P$ is an algorithm $A$ that on instance $I$ returns a solution $x$ such that $c(x) \le \alpha c(\textsf{opt}(I))$.
 
 In otherwords, the cost of the solution given by the approximation algorithm is at most $\alpha$ times larger than the cost of the optimal solution.
 
@@ -54,7 +54,7 @@ Similarly, a $2$-approximation for Vertex Cover would be a vertex cover with car
 
 ## Vertex Cover
 
-Recall that a vertex cover for a graph $G = (V, E)$ is a subset of the vertices $S \subseteq V$ such that every edge $e \in E$ has at least one endpoint in $S$.
+A vertex cover for a graph $G = (V, E)$ is a subset of the vertices $S \subseteq V$ such that every edge $e \in E$ has at least one endpoint in $S$.
 We have already established that as a decision problem that Vertex Cover is NP-hard.
 Does that necessarily mean that Vertex Cover is NP-hard as an optimization problem?
 
@@ -66,10 +66,26 @@ In this section we look at a $2$-approximation algorithm for Vertex Cover.
 The algorithm is simple once we understand maximal matchings.
 
 Let $G = (V,E)$ be a graph.
-A matching $M$ in $G$ is a subgraph where no two edges share an endpoint.
+A matching $M$ in $G$ is a set of edges where no two edges share an endpoint.
 The matching $M$ is maximal if we cannot add any edges of $G$ and still have a matching.
 
-We can compute maximal matchings efficiently using a greedy algorithm.
-Then the maximal matching gives us a $2$-approximation for a minimum cardinality vertex cover.
+**TODO**: Hint: maximal vs maximum
+
+![maximum vs maximal fig](../figs/maximum_vs_maximal.pdf)
+
+![maximum vs maximal fig](../figs/maximum_vs_maximal_2.pdf)
+
+We can compute maximal matchings efficiently using a greedy algorithm: keep adding edges until there are none left that can be added and still give a matching.
+
+**Claim**: A maximal matching gives us a $2$-approximation for a minimum cardinality vertex cover.
+
+TODO: prove claim
+* If a vertex is in an optimal vertex cover then it is an endpoint of an edge in the maximal matching.
+* For every edge in the vertex cover, at least one vertex is in the optimal solution.
+* There are at most $2$-times as many vertices in the maximal matching as in the optimal solution.
+* Give things names
+* picture example
 
 ## Metric Traveling Sales Person
+
+**TODO**

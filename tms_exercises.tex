@@ -1,0 +1,47 @@
+\begin{exercises}
+
+\problem Let $\Sigma=\{a\}$.  Draw a transition diagram for a Turing
+machine that computes the function $f\colon\Sigma^*\to\Sigma^*$ where
+$f(a^n)=a^{3n}$, for $n\in\N$. Draw a transition diagram for a Turing
+machine that computes the function $f\colon\Sigma^*\to\Sigma^*$ where
+$f(a^n)=a^{3n+1}$, for $n\in\N$.
+
+\problem Let $\Sigma=\{a,b\}$.
+Draw a transition diagram for a Turing machine that
+computes the function $f\colon\Sigma^*\to\Sigma^*$ where
+$f(w)=w^R$.
+
+\problem Suppose that $\Sigma$, $\Gamma$, and $\Xi$ are alphabets and that
+$f\colon\Sigma^*\to\Gamma^*$ and $g\colon\Gamma^*\to\Xi^*$ are 
+Turing-computable functions.  Show that $g\circ f$ is Turing-computable.
+
+\problem We have defined computability for functions $f\colon\Sigma^*\to\Gamma^*$,
+where $\Sigma$ and $\Gamma$ are alphabets.  How could Turing machines
+be used to define computable functions from $\N$ to $\N\,$?
+(Hint: Consider the alphabet $\Sigma=\{a\}$.)
+
+\problem Let $\Sigma$ be an alphabet and let $L$ be a language over $\Sigma$.
+Show that $L$ is Turing-decidable if and only if its complement,
+$\overline{L}$, is Turing-decidable.
+
+\problem Draw a transition diagram for a Turing machine which
+decides the language $\{a^nb^n\st n\in\N\}$.  (Hint: Change the
+$a$'s and $b$'s to \$'s in pairs.)  Explain in general terms how to
+make a Turing machine that decides the language $\{a^nb^nc^n\st n\in\N\}$.
+
+\problem Draw a transition diagram for a Turing machine which
+decides the language $\{a^nb^m\st n>0$ and $m$ is a multiple of $n\}$.
+(Hint: Erase $n$ $b$'s at a time.)
+
+\problem Based on your answer to the previous problem and the copying
+machine presented in this section, describe in
+general terms how you would build a Turing machine to decide the
+language $\{a^p\st p$ is a prime number$\}$.
+
+\problem Let $g\colon \{a\}^*\to\{0,1\}^*$ be the function such that
+for each $n\in\N$, $g(a^n)$ is the representation of $n$ as a binary
+number.  Draw a transition diagram for a Turing machine that computes $g$.
+
+
+
+\end{exercises}

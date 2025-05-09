@@ -1,0 +1,260 @@
+\section{The Limits of Computation}\label{S-turing-3}
+
+Recursively enumerable languages are languages that can be defined by computation.
+We have seen that there are many different models of compu\-tation---Turing machines,
+two-tape Turing machines, grammars, computer programs---but they all lead
+to the same class of languages.  In fact, every computational method for
+specifying languages that has ever been developed produces only recursively
+enumerable languages.  There is something about these languages---some pattern
+or property---that makes them ``computable,''  and it is some intrinsic
+property of the languages themselves, not some peculiarity of any given
+model of computation.
+
+This is especially interesting since most languages are not recursively enumerable.
+Given an alphabet $\Sigma$, there are uncountably many languages over $\Sigma$, but
+only countably many of them are recursively enumerable.  The rest---the vast
+majority---are not recursively enumerable.  What can we say about
+all these non-recursively-enumerable languages?  If the language $L$ is not
+recursively enumerable, then there is no algorithm for listing the members of
+$L$.  It might be possible to define $L$ by specifying some property that
+all its members satisfy, but that property can't be computable.  That is, there
+can be no computer program or Turing machine that tests whether a given
+string $w$ has the property, since if there were, then we could write a
+program that lists the members of $L$.
+
+So, even though almost every language is non-recursively-enumerable, it's
+difficult to find a particular language that is not recursively enumerable.
+Nevertheless, in this section we will find one such language.  At that same
+time, we will find an example of a language that is recursively enumerable
+but not recursive.  And we will discover some interesting limitations to
+the power of computation.
+
+\medskip
+
+The examples that we will look at in this section involve Turing
+machines that work with other Turing machines as data.  For this to
+work, we need a symbolic representation of Turing machines---a
+representation that can be written on the tape of another Turing
+machine.  This will let us create two machines:  First,
+a Turing machine that can generate Turing machines
+on demand by writing their symbolic representations on its tape.
+We will design a Turing machine $G$ to do this.  And second,
+a Turing machine that can simulate the computation of other
+Turing machines whose descriptions are written on its tape.
+
+
+In order to do all this, we must put some limitations on
+the states and alphabetic symbols that can be used in the Turing machines
+that we consider.
+Clearly, given any Turing machine, we can change the names of the
+states without changing the behavior of the machine.  So, without any
+loss of generality, we can assume that all states have names chosen
+from the list: $h$, $q$, $q'$, $q''$, $q'''$, $q''''$,~\dots.
+We assume that $h$ is the halt state and $q$ is the start state.
+Note that there is an infinite number of possible states, but any
+given Turing machine will only use finitely many states from this
+list.  
+
+As for the alphabets of the Turing machines, I want to look at
+Turing machines whose alphabets include the symbols 0, 1, $a$, and of
+course~\b.
+These are the symbols that the machines will use for input and output.
+The alphabets can also include other symbols.  We will assume that
+these auxiliary symbols are chosen from the list: $a'$, $a''$, $a'''$,
+$a''''$,~\dots.  Given a Turing machine whose alphabet includes
+the symbols 0, 1, $a$, and \b, we can rename any other symbols in its
+alphabet using names from this list.  This renaming will not
+affect any of the behavior that we are interested in.
+
+Now suppose we have one of these standard Turing machines---one
+whose states are chosen from the list $h$, $q$, $q'$, $q''$, $q'''$,~\dots,
+whose start state is $q$, and whose symbols are chosen from the list
+\b, 0, 1, $a$, $a'$, $a''$, $a'''$,~\dots.  Such a machine can be
+completely encoded as a string of symbols over the alphabet
+$\{h,q,L,R,\b,0,1,a,{}',\text{\tt\$}\}$.  A transition rule
+such as $\delta(q'',0)=(a''',L,q)$ can be encoded as a
+string $q''0a'''Lq$.  To encode a complete machine, simply encode
+each of its transition rules in this way and join them together in a string,
+separated by {\tt\$}'s.  We now have the symbolic representation for
+Turing machines that we need.
+
+Note that a string over the alphabet $\{h,q,L,R,\b,0,1,a,{}',\text{\$}\}$
+might or might not encode a Turing machine.  However, it is a simple
+matter to check whether such a string is the code for a Turing machine.
+We can imagine the following process:  Generate all the strings over the
+alphabet $\{h,q,L,R,\b,0,1,a,{}',\text{\$}\}$.  Check each string
+to see whether it encodes a Turing machine.  If so, add the string
+to an output list. In this way, we can generate a list of
+all strings that encode standard Turing machines.  In effect,
+the standard Turing machines, or at least their symbolic representations,
+form a recursively enumerable set.  Let $T_0$ be the
+machine encoded by the first string in this list of
+standard Turing machines; let $T_1$ be
+the machine encoded by the second string; let $T_2$ be the
+machine encoded by the third string; and so on.  The list
+$T_0$, $T_1$, $T_2$,~\dots, includes every standard Turing machine.
+Furthermore, given $n\in\N$, we can find the symbolic representation
+for $T_n$ by generating strings in the list until we have $n+1$ strings.
+Furthermore---and this is the essential point---we can use a Turing
+machine to do all these calculations.  In fact, there is
+a Turing machine that, when run with input $a^n$, will halt with
+the string representation of $T_n$ written on its tape as output.
+The Turing machine that does this is $G$, the first of the
+two machines that we need.
+
+The second machine that we need will be called $U$.  It is a
+so-called \nw{Universal Turing Machine}.  The single Turing machine
+$U$ can simulate the computation of any standard Turing machine, $T$,
+on any input.  Both the symbolic representation of $T$ and that of
+the input string are written to $U$'s tape, separated by a
+space.  As $U$ simulates the computation of $T$, it will need
+some way to keep track of what state $T$ is in and of
+the position of $T$ on its (simulated) tape.  It does this
+by writing the current state of $T$ on its tape, following
+$T$'s input string, and by adding a special symbol, such as \at,
+to the input string to mark $T$'s position.  When $U$ is first
+started, it begins by adding the \at\ to the beginning of the
+input string and writing a $q$ after the string to represent
+the start state of $T$.  It is then relatively straightforward
+for $U$ to simulate the computation of $T$.  For each step
+in the computation of $T$, it can determine the current state
+of $T$ (which is recorded on $U$'s tape) and the symbol which
+$T$ is currently reading (which is on $U$'s tape, after the \at).
+$U$ searches the symbolic representation of $T$ for the
+rule that tells $T$ what to do in this situation.  Using
+this rule, $U$ can update its representation of $T$'s state,
+position, and tape to reflect the result of applying the rule.
+If the new state of $T$ is the halt state, then $U$ also halts.
+Otherwise, it goes on to simulate the next step in $T$'s computation.
+Note that when $U$ is given $T$ and an input string $w$ as
+input, $U$ will halt if and only if $T$ halts on input $w$.
+(Obviously, this is a very inefficient simulation, but we
+are not concerned with efficiency here.)
+
+So, we have our two machines, $G$ and $U$.
+After all this setup, we are finally in a position to look at
+the major theorem that we have been working towards.
+
+\begin{theorem}
+Let $T_0$, $T_1$, $T_2$, \dots, be the standard Turing machines,
+as described above.  Let $K$ be the language over the alphabet $\{a\}$
+defined by $$K=\{a^n\st\,T_n\text{ halts when run with input }a^n\}.$$
+Then $K$ is a recursively enumerable language, but $K$ is not
+recursive.  The complement $$\overline{K}=\{a^n\st\,T_n\text{ does
+not halt when run with input }a^n\}.$$
+is a language that is not recursively enumerable.
+\end{theorem}
+
+First note that if both $K$ and $\overline{K}$ were recursively
+enumerable, then $K$ would be recursive, by Theorem~\ref{T-re}.
+So, once we show that $K$ is recursively enumerable but not
+recursive, it follows immediately that $\overline{K}$ cannot
+be recursively enumerable.  That is, the second part of the
+theorem follows from the first.
+
+To show that $K$ is recursively enumerable, it suffices to find
+a Turing machine, $M$, that accepts $K$.  That is, when run
+with input $a^n$, for $n\in\N$, $M$ should halt if and only if
+$a^n\in K$.  We can build $M$ from the Turing machines $G$ and $U$
+which were introduced above.  When started with input $a^n$, 
+$M$ should proceed as follows:  
+First copy the input.  Run $G$ on the
+first copy of $a^n$.  This will produce a symbolic description
+of the Turing machine $T_n$.  Now run $U$ to simulate the 
+computation of $T_n$ on input $a^n$.  This simulation will end
+if and only if $T_n$ halts when run with input $a^n$, that is, if and only
+if $a^n\in K$.  The Turing machine $M$ that performs the computation
+we have described accepts the language $K$.
+This proves that $K$ is recursively enumerable.
+
+To show that $K$ is not recursive, we need to show that
+there is \textit{no} Turing machine that decides $K$.  
+Let $H$ be any Turing machine.  We must show that
+no matter what $H$ does, it
+does not decide the language $K$.  We must do this without
+knowing anything more about $H$ that the fact that is it
+a Turing machine.  To say that $H$ decides
+$K$ would mean that for any $n\in\N$, when $H$ is
+run with input $a^n$, $H$ will halt with output 1 if $a^n\in K$
+and will halt with output 0 if $a^n\not\in K$.  To show that
+$H$ does not decide $K$ we need to show that there is some
+$n\in\N$ such that when $H$ is run with input $a^n$, 
+$H$ either fails to halt or else halts but gives the wrong 
+output.  Note in particular that we only need to find \textit{one}
+$n$ for which $H$ does not give the correct result.
+As we try to find $n$, we have nothing much to work with
+but $H$ itself.\looseness=-1
+
+To find $n$, we construct a Turing machine $M$ that is a simple
+variation on $H$.  When $M$ is run on any input, it duplicates the behavior
+of $H$ on that input until $H$ halts (if it ever does).  At that point, $M$ should
+check $H$'s output.  If $H$ has halted with output $1$, then 
+$M$ should go into an infinite loop, so that $M$ never halts in this case.
+Otherwise, if the output of $H$ is not $1$, then $M$ should halt.
+Now, we can assume that $M$ is one
+of the standard Turing machines, say $M=T_n$.  (If $M$ is not
+already one of these machines, it is because it uses different names
+for its states and symbols.  Renaming the states and symbols will
+produce an equivalent machine with the same behavior as $M$,
+and we can replace $M$ with this standard machine.)  
+
+We now have a Turing machine $T_n = M$ which has the following behavior
+when it is run with input $a^n$ (note that the $n$ here is the same $n$ as
+in $T_n$):
+If $H$ halts with output 1 on input $a^n$, then $T_n$
+will fail to halt on input $a^n$.  If $H$ halts with output 0
+on input $a^n$, then $T_n$ fails to halt on input $a^n$.  (What $T_n$
+might do in other cases is not relevant here.)
+
+Remember that we are trying to show that $H$ does not decide the language
+$K$.  I claim that, in fact, $H$ does not give the correct answer for $a^n$.  When $H$
+is run with input $a^n$, it is supposed to halt with output 1 if $a^n\in K$,
+and it is supposed to halt with output 0 if $a^n\not\in K$.  Recall that
+$a^n\in K$ if and only if $T_n$ halts when run with input $a^n$.
+
+Suppose that we run $H$ with input $a^n$.
+If $H$ does not halt with output 0 or 1, then it has certainly not given the 
+correct answer for $a^n$.  Now, suppose that $H$ halts with output 1 on input $a^n$.
+In this case, by the properties of $T_n$ given above, we know that $T_n$ does not
+halt on input $a^n$.  But that means, by definition of $K$, 
+that $a^n\not\in K$.  By halting with output
+1 in this case, $H$ has given the wrong answer for $a^n$.  Finally, suppose that
+$H$ halts with output 0 on input $a^n$.  We then know that $T_n$ halts
+on input $a^n$.  But that means that $a^n\in K$.  Again, by halting with output
+0 in this case, $H$ has given the wrong answer for $a^n$.  So, in no case will
+$H$ give the correct answer for $a^n$.  
+This means that
+$H$ does not decide the language $K$, because $H$ gives
+an incorrect answer when it is run with the particular input $a^n$.
+$H$ does not decide $K$, and since
+$H$ was an arbitrary Turing machine, we see that there is
+no Turing machine at all that decides the language $K$.  Thus,
+$K$ is not a recursive language, as the theorem claims. 
+
+\medbreak
+
+To decide the language $K$ would be to solve the following
+problem:  Given a Turing machine $T_n$, decide whether or
+not $T_n$ will halt when it is run with input $a^n$.  This
+problem is called the \nw{Halting Problem}.  We have shown
+that there is no Turing machine that solves this problem.
+Given the equivalence of Turing machines and computer programs,
+we can also say that there is no computer program that
+solves the halting problem.  We say that the halting problem
+is \nw[computational unsolvability]{computationally unsolvable}.
+
+The halting problem is just one
+of many problems that cannot be solved by Turing machines or
+computer programs.  In fact, almost any interesting yes/no
+question that can be asked about Turing machines or programs
+is in this class:  Does this Turing machine halt for all possible
+inputs in $\Sigma^*$?  Given this input, will this program
+ever halt?  Do these two programs (or Turing machines) have
+the same output for each possible input?  Will this Turing
+machine ever halt if it is started on a blank tape?
+All these problems are computationally unsolvable in the
+sense that there is no Turing machine or computer program
+that will answer them correctly in all cases. The
+existence of such problems is a real limitation on the
+power of computation.
+
