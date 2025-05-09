@@ -1,0 +1,75 @@
+# Approximation Algorithms
+
+There are many problems for which we do not have efficient algorithms.
+Furthermore, we do not know whether efficient solutions exist in general for these problems.
+In some of these cases, we can get approximate solutions.
+In this section we discuss some well-known optimization problems.
+We define what an approximate solution is and give some examples of approximation algorithms.
+
+## Decision Problems vs. Optimization Problems
+
+Decision problems are problems that can be answered with a "yes" or "no".
+A solution to a decision problem is an algorithm that decides a language corresponding to the given problem.
+
+For example:
+* **Vertex Cover** asks whether a given graph $G$ has a vertex cover of cardinality $k$.
+The corresponding language is $VC = \{\langle G, k\rangle \mid G \text{ has a vertex cover of size }k\}$.
+* **Traveling Sales Person** asks whether a given graph $G$ (with weighted edges) has a tour of cost $c$.
+The corresponding language is $TSP = \{\langle G, c\rangle \mid G \text{ has a tour of cost }c\}$.
+
+Some decision problems can be reframed as optimization problems.
+Instead of asking for "yes" or "no", an optimization problem asks for a minimum or maximum value solution.
+
+For example:
+* **Vertex Cover**, given a graph $G$, asks for the minimum cardinality over all vertex covers for $G$.
+* **Traveling Sales Person**, given a graph $G$ with weighted edges, asks for the minimum cost $c$ over all tours of $G$.
+
+An optimization problem consists of the following:
+* instances $I$,
+* a set of feasible solutions $F$, and
+* a cost function $c: F \to \R$.
+
+A solution $x \in F$ is considered optimal if $c(x)$ has the minimum cost over all solutions in $F$.
+We denote the optimal solution for a given instance as $opt(I)$.
+
+Let's look one more time at Traveline Sales Person:
+* An instance of Traveling Sales Person is a graph with weighted edges.
+* The set of feasible solutions is the set of all possible tours over $G$.
+* The cost is a function that takes a tour and adds the sum of the weights of the edges in that tour.
+
+## Approximation Algorithms
+
+Approximation algorithms only make sense in the context of optimization problems.
+It isn't clear what an approximation to a decision procedure would be.
+However, one may guess that an approximation algorithm to an optimization problem would find a solution that was "close" to the optimal solution.
+Now we only need to define precisely what we mean by "close".
+
+Let $\alpha \ge 1$.
+An $\alpha$-approximate algorithm to an optimization problem $P$ is an algorithm $A$ that on instance $I$ returns a solution $x$ such that $c(x) \le \alpha c(opt(I))$.
+
+In otherwords, the cost of the solution given by the approximation algorithm is at most $\alpha$ times larger than the cost of the optimal solution.
+
+In the case of Traveling Sales Person, a $2$-approximation algorithm would find a tour with a cost no more than twice the cost of the optimal tour.
+Similarly, a $2$-approximation for Vertex Cover would be a vertex cover with cardinality at most twice of the optimal.
+
+## Vertex Cover
+
+Recall that a vertex cover for a graph $G = (V, E)$ is a subset of the vertices $S \subseteq V$ such that every edge $e \in E$ has at least one endpoint in $S$.
+We have already established that as a decision problem that Vertex Cover is NP-hard.
+Does that necessarily mean that Vertex Cover is NP-hard as an optimization problem?
+
+**Claim:** Vertex Cover as an optimization problem is NP-hard.
+
+The claim is easy to see by a reduction from the decision problem to the optimization problem.
+
+In this section we look at a $2$-approximation algorithm for Vertex Cover.
+The algorithm is simple once we understand maximal matchings.
+
+Let $G = (V,E)$ be a graph.
+A matching $M$ in $G$ is a subgraph where no two edges share an endpoint.
+The matching $M$ is maximal if we cannot add any edges of $G$ and still have a matching.
+
+We can compute maximal matchings efficiently using a greedy algorithm.
+Then the maximal matching gives us a $2$-approximation for a minimum cardinality vertex cover.
+
+## Metric Traveling Sales Person
