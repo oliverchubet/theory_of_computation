@@ -102,7 +102,7 @@
     - [ ] Problems
 
     - Topics:
-        1. TIME classes
+        1. TIME classes, Big-O
         1. The class P
         1. Verifiers
         1. The class NP
