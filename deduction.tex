@@ -1,0 +1,390 @@
+\section{Deduction}\label{S-logic-5}
+
+
+\newcommand{\argument}[2]{
+  \begin{tabular}[t]{@{\ }l@{\ }}
+   #1\\
+   \hline
+   $\therefore$\ \ #2\\
+  \end{tabular}
+}
+
+
+Logic can be applied to draw conclusions from a set of premises.
+A premise\index{premise} is just a proposition that is known to be true or that
+has been accepted to be true for the sake of argument, and a conclusion\index{conclusion}
+is a proposition that can be deduced\index{deduction} logically from the premises.
+The idea is that if you believe that the premises are true,
+then logic forces you to accept that the conclusion is true.
+An ``argument''\index{argument} is a claim that a certain conclusion follows from
+a given set of premises.  Here is an argument laid out in
+a traditional format:
+\begin{center}
+\argument{If today is Tuesday, then this is Belgium\\Today is Tuesday}{This is Belgium}
+\end{center}
+The premises of the argument are shown above the line, and the conclusion
+below.  The symbol $\therefore$ is read ``therefore.''  The claim is that
+the conclusion, ``This is Belgium,'' can be deduced logically from the two
+premises, ``If today is Tuesday, then this is Belgium'' and ``Today is Tuesday.''
+In fact, this claim is true.  Logic forces you to accept this argument.
+Why is that?
+
+Let $p$ stand for the proposition ``Today is Tuesday,'' and let $q$ stand for the
+proposition ``This is Belgium.''  Then the above argument has the form
+\begin{center}
+\argument{$p\IMP q$\\$p$}{$q$}
+\end{center}
+Now, for \emph{any} propositions $p$ and $q$---not just the ones in this particular
+argument---if $p\IMP q$ is true and $p$ is true, then $q$ must also be true.
+This is easy to check in a truth table:
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+     \hline
+     \strut $p$&    $q$&    $p\IMP q$\\
+     \hline
+     false&  false&  true\\
+     false&  true&   true\\
+     true&   false&  false\\
+     true&   true&   true\\
+     \hline
+  \end{tabular}
+\end{center}
+The only case where both $p\IMP q$ and $p$ are true is on
+the last line of the table, and in this case, $q$ is also true.
+If you believe
+$p\IMP q$ and $p$, you have no logical choice but to believe $q$.
+This applies no matter what $p$ and $q$ represent.  For example,
+if you believe ``If Jill is breathing, then Jill pays taxes,'' 
+and you believe that ``Jill is breathing,'' logic forces you to believe that
+``Jill pays taxes.''  Note that we can't say for sure that the
+conclusion is true, only that \emph{if} the premises are true,
+\emph{then} the conclusion must be true.
+
+This fact can be rephrased by saying that $\big((p\IMP q)\AND p\big)\IMP q$
+is a tautology.  More generally, for any compound propositions $\mathscr{P}$
+and $\mathscr{Q}$, saying ``$\mathscr{P}\IMP \mathscr{Q}$ is
+a tautology'' is the same as saying that ``in all cases where $\mathscr{P}$
+is true, $\mathscr{Q}$ is also true''.\footnote{Here, ``in all cases'' means
+for all combinations of truth values of the propositional variables
+in $\mathscr{P}$ and $\mathscr{Q}$.  Saying $\mathscr{P}\IMP \mathscr{Q}$ is
+a tautology means it is true in all cases.  But by definition of 
+$\IMP$, it is automatically true in cases where $\mathscr{P}$ is
+false.  In cases where $\mathscr{P}$ is true, $\mathscr{P}\IMP \mathscr{Q}$
+will be true if and only if $\mathscr{Q}$ is true.}
+We will use the notation $\mathscr{P}\LOGIMP\mathscr{Q}$ to
+mean that $\mathscr{P}\IMP \mathscr{Q}$ is a tautology.
+Think of $\mathscr{P}$ as being the premise of an argument or
+the conjunction of several premises.  To say $\mathscr{P}\LOGIMP\mathscr{Q}$
+is to say that $\mathscr{Q}$ follows logically from~$\mathscr{P}$.
+We will use the same notation in both propositional logic and
+predicate logic.  (Note that the relation of $\LOGIMP$ to $\IMP$ is
+the same as the relation of $\equiv$ to $\IFF$.)
+
+
+\begin{definition}
+Let $\mathscr{P}$ and $\mathscr{Q}$ be any formulas in either
+propositional logic or predicate logic.  The notation
+$\mathscr{P}\LOGIMP\mathscr{Q}$ is used to mean that
+$\mathscr{P}\IMP\mathscr{Q}$ is a tautology.  That is,
+in all cases where $\mathscr{P}$ is true, $\mathscr{Q}$ is
+also true.  We then say that $\mathscr{Q}$ can be
+\nw[deduction]{logically deduced} from $\mathscr{P}$ or that
+$\mathscr{P}$ \nw{logically implies} $\mathscr{Q}$.
+\end{definition}
+
+An argument in which the conclusion follows logically from the
+premises is said to be a \nw{valid argument}.  To test whether
+an argument is valid, you have to replace the particular propositions
+or predicates that it contains with variables, and then test
+whether the conjunction of the premises logically implies the
+conclusion.  We have seen that any argument of the form
+\begin{center}
+\argument{$p\IMP q$\\$p$}{$q$}
+\end{center}
+is valid, since $\big((p\IMP q)\AND p\big)\IMP q$ is a tautology.
+This rule of deduction is called \nw{modus ponens}.  It plays a central
+role in logic.  Another, closely related rule is \nw{modus tollens},
+which applies to arguments of the form
+\begin{center}
+\argument{$p\IMP q$\\$\NOT q$}{$\NOT p$}
+\end{center}
+To verify that this is a valid argument, just check that
+$\big((p\IMP q)\AND \NOT q\big)\LOGIMP \NOT p$, that is, that
+$\big((p\IMP q)\AND \NOT q\big)\IMP \NOT p$ is a tautology.
+As an example, the following argument has the form of \textit{modus tollens}
+and is therefore a valid argument:
+\begin{center}
+\argument{If Keanu Reeves is a good actor, then I'm the king of France\\
+I am not the king of France}{Keanu Reeves in not a good actor}
+\end{center}
+You should note carefully that the validity of this argument has nothing
+to do with whether or not Keanu Reeves\index{Reeves, Keanu} can act well.  The argument forces
+you to accept the conclusion \emph{only if} you accept the premises.
+You can logically believe that the conclusion is false, as long as
+you believe that at least one of the premises is false.
+
+Another named rule of deduction is the \nw[syllogism]{Law of Syllogism}, which has the form
+\begin{center}
+\argument{$p\IMP q$\\$q\IMP r$}{$p\IMP r$}
+\end{center}
+For example:
+\begin{center}
+\argument{If you study hard, you do well in school\\
+If you do well in school, you get a good job}{If you study hard,
+you get a good job}
+\end{center}
+
+There are many other rules.  Here are a few that might prove useful.
+Some of them might look trivial, but don't underestimate the power
+of a simple rule when it is combined with other rules.
+\begin{center}
+\mbox{
+\argument{$p\OR q$\\$\NOT p$}{$q$}\qquad
+\argument{$p$\\$q$}{$p\AND q$}\qquad
+\argument{$p\AND q$}{$p$}\qquad
+\argument{$p$}{$p\OR q$}
+}
+\end{center}
+
+
+Logical deduction is related to logical equivalence.\index{logical equivalence!and logical deduction}
+We defined $\mathscr{P}$ and $\mathscr{Q}$ to be
+logically equivalent if $\mathscr{P}\IFF\mathscr{Q}$ is
+a tautology.  Since $\mathscr{P}\IFF\mathscr{Q}$ is equivalent
+to $(\mathscr{P}\IMP\mathscr{Q})\AND(\mathscr{Q}\IMP\mathscr{P})$,
+we see that  $\mathscr{P}\equiv \mathscr{Q}$ if and only if both
+$\mathscr{Q}\LOGIMP\mathscr{P}$ and $\mathscr{P}\LOGIMP\mathscr{Q}$.
+Thus, we can show that two statements are logically equivalent if
+we can show that each of them can be logically deduced from the
+other.  Also, we get a lot of rules about logical deduction for 
+free---two rules of deduction for each logical equivalence we know.  For
+example, since $\NOT(p\AND q)\equiv (\NOT p\OR \NOT q)$,
+we get that $\NOT(p\AND q)\LOGIMP (\NOT p\OR \NOT q)$.
+For example, if we know  ``It is not both sunny and warm,'' 
+then we can logically deduce ``Either it's not sunny or it's not warm.''
+(And vice versa.)
+
+
+\medskip
+
+
+In general, arguments are more complicated that those we've considered
+so far.  Here, for example, is an argument that has five premises:
+\begin{center}
+\argument{
+  $(p\AND r)\IMP s$\\
+  $q\IMP p$\\
+  $t\IMP r$\\
+  $q$\\
+  $t$
+}{$s$}
+\end{center}
+Is this argument valid?  Of course, you could use a truth table
+to check whether the conjunction of the premises logically implies
+the conclusion.  But with five propositional variables, the table
+would have 32 lines, and the size of the table grows quickly when
+more propositional variables are used.  So, in general, truth
+tables are not practical.  
+
+Fortunately, there is another way to proceed, based on the fact that
+it is possible to chain several logical deductions together.
+That is, if $\mathscr{P}\LOGIMP\mathscr{Q}$ and
+$\mathscr{Q}\LOGIMP\mathscr{R}$, it follows that
+$\mathscr{P}\LOGIMP\mathscr{R}$.  This means we can demonstrate the
+validity of an argument by deducing the conclusion from the
+premises in a sequence of steps.  These steps can be presented
+in the form of a proof:
+
+\begin{definition}
+A \nw[proof]{formal proof} that an argument is valid consists of a
+sequence of propositions such that the last proposition in the
+sequence is the conclusion of the argument, and every proposition
+in the sequence is either a premise of the argument or follows
+by logical deduction from propositions that precede it in the list.
+\end{definition}
+
+The existence of such a proof shows that the conclusion follows
+logically from the premises, and therefore that the argument is 
+valid.\index{valid argument}  Here is a formal proof that the argument given above is valid.
+The propositions in the proof are numbered, and each proposition
+has a justification.
+\begin{center}
+  \begin{tabular}{r@{\ \ }l@{\qquad}l}
+     1.&$q\IMP p$&    premise\\
+     2.&$q$&          premise\\
+     3.&$p$&          from 1 and 2 (\textit{modus ponens})\\
+     4.&$t\IMP r$&    premise\\
+     5.&$t$&          premise\\
+     6.&$r$&          from 4 and 5 (\textit{modus ponens})\\
+     7.&$p\AND r$&    from 3 and 6\\
+     8.&$(p\AND r)\IMP s$& premise\\
+     9.&$s$&          from 7 and 8 (\textit{modus ponens})\\
+  \end{tabular}
+\end{center}
+Once a formal proof has been constructed, it is convincing.  Unfortunately,
+it's not necessarily easy to come up with the proof.  Usually, the best
+method is a combination of working forward (``Here's what I know, what
+can I deduce from that?'') and working backwards (``Here's what I
+need to prove, what other things would imply that?'').  For this proof,
+I might have thought:  I want to prove $s$.  I know that
+$p\AND r$ implies $s$, so if I can prove $p\AND r$, I'm OK.
+But to prove $p\AND r$, it'll be enough to prove $p$ and $r$ 
+separately\dots.
+
+Of course, not every argument is valid, so the question also
+arises, how can we show that an argument is invalid?\index{invalid argument}  Let's
+assume that the argument has been put into general form, with
+all the specific propositions replaced by propositional variables.
+The argument is valid if in all cases where all the premises are
+true, the conclusion is also true.  The argument is invalid if
+there is even one case where all the premises are true and the
+conclusion is false.  We can prove that an argument is invalid
+by finding an assignment of truth values to the propositional variables
+which makes all the premises true but makes the conclusion false.
+For example, consider an argument of the form:
+\begin{center}
+\argument{$p\IMP q$\\$q\IMP (p\AND r)$\\$r$}{$p$}
+\end{center}
+In the case where $p$ is false, $q$ is false, and $r$ is true,
+the three premises of this argument are all true, but the conclusion
+is false.  This shows that the argument is invalid.
+
+To apply all this to arguments stated in English, we have to
+introduce propositional variables to represent all the propositions
+in the argument.  For example, consider:
+\begin{quote}
+John will be at the party if Mary is there and Bill is not there.
+Mary will be at the party if it's on Friday or Saturday.
+If Bill is at the party, Tom will be there.  Tom won't be at
+the party if it's on Friday.  The party is on Friday.
+Therefore, John will be at the party.
+\end{quote}
+Let $j$ stand for ``John will be at the party,'' $m$ for
+``Mary will be there,'' $b$ for ``Bill will be there,''
+$t$ for ``Tom will be there,'' $f$ for ``The party is on Friday,''
+and $s$ for ``The party is on Saturday.''  Then this argument has
+the form
+\begin{center}
+\argument{$(m\AND \NOT b)\IMP j$\\
+  $(f\OR s)\IMP m$\\
+  $b\IMP t$\\
+  $f\IMP \NOT t$\\
+  $f$}{$j$}
+\end{center}
+This is a valid argument, as the following proof shows:
+\begin{center}
+  \begin{tabular}{r@{\ \ }l@{\qquad}l}
+     1.&$f\IMP\NOT t$&premise\\
+     2.&$f$&premise\\
+     3.&$\NOT t$&from 1 and 2 (\textit{modus ponens})\\
+     4.&$b\IMP t$&premise\\
+     5.&$\NOT b$&from 4 and 3 (\textit{modus tollens})\\
+     6.&$f\OR s$&from 2\\
+     7.&$(f\OR s)\IMP m$&premise\\
+     8.&$m$&from 6 and 7 (\textit{modus ponens})\\
+     9.&$m\AND\NOT b$&from 8 and 5\\
+     10.&$(m\AND\NOT b)\IMP j$&premise\\
+     11.&$j$&from 10 and 9 (\textit{modus ponens})\\
+  \end{tabular}
+\end{center}
+
+\medskip
+
+So far in this section, we have been working mostly with propositional
+logic.  But the definitions of valid argument and logical deduction
+apply to predicate logic as well.  One of the most basic rules of
+deduction in predicate logic says that $(\forall xP(x))\LOGIMP P(a)$
+for any entity $a$ in the domain of discourse of the predicate~$P$.
+That is, if a predicate is true of all entities, then it is true of
+any given particular entity.  This rule can be combined with 
+rules of deduction for propositional logic to give the following
+valid arguments
+\begin{center}
+\mbox{
+\argument{$\forall x(P(x)\IMP Q(x))$\\$P(a)$}{$Q(a)$}\qquad\qquad
+\argument{$\forall x(P(x)\IMP Q(x))$\\$\NOT Q(a)$}{$\NOT P(a)$}
+}
+\end{center}
+These valid arguments go by the names of \textit{modus ponens}\index{modus ponens} and
+\textit{modus tollens}\index{modus tollens} for predicate logic.
+Note that from the premise $\forall x(P(x)\IMP Q(x))$ we can deduce
+$P(a)\IMP Q(a)$.  From this and from the premise that $P(a)$, we
+can deduce $Q(a)$ by \textit{modus ponens}.  So the first argument
+above is valid.  The second argument is similar, using 
+\textit{modus tollens}.
+
+The most famous logical deduction of them all is an application
+of \textit{modus ponens} for predicate logic:
+\begin{center}
+\argument{All humans are mortal\\Socrates is human}{Socrates is mortal}
+\end{center}
+This has the form of \textit{modus ponens} with $P(x)$ standing
+for ``$x$~is human,'' $Q(x)$ standing for ``$x$~is mortal,'' and
+$a$ standing for the noted entity, Socrates.
+
+There is a lot more to say about logical deduction and
+proof in predicate logic, and we'll spend the rest of this chapter
+on the subject.
+
+\begin{exercises}
+
+\problem Verify the validity of \textit{modus tollens} and the Law of
+Syllogism.
+
+\problem Each of the following is a valid rule of deduction.
+For each one, give an example of a valid argument in English that
+uses that rule.
+\begin{center}
+\mbox{\qquad
+\argument{$p\OR q$\\$\NOT p$}{$q$}\qquad
+\argument{$p$\\$q$}{$p\AND q$}\qquad
+\argument{$p\AND q$}{$p$}\qquad
+\argument{$p$}{$p\OR q$}
+}
+\end{center}
+
+\problem There are two notorious invalid arguments that look
+deceptively like \textit{modus ponens} and \textit{modus tollens}:
+\begin{center}
+\mbox{\qquad
+\argument{$p\IMP q$\\$q$}{$p$}\qquad
+\argument{$p\IMP q$\\$\NOT p$}{$\NOT q$}\qquad
+}
+\end{center}
+Show that each of these arguments is invalid.  Give an English
+example that uses each of these arguments.
+
+\problem Decide whether each of the following arguments is valid.
+If it is valid, give a formal proof.  If it is invalid, show that
+it is invalid by finding an appropriate assignment of truth values
+to propositional variables.
+\smallskip
+\tparts{
+   \argument{$p\IMP q$\\$q\IMP s$\\$s$}{$p$}&
+   \argument{$p\AND q$\\$q\IMP (r\OR s)$\\$\NOT r$}{$s$}&
+   \argument{$p\OR q$\\$q\IMP (r\AND s)$\\$\NOT p$}{$s$}\cr\noalign{\smallskip}
+   \argument{$(\NOT p)\IMP t$\\$q\IMP s$\\$r\IMP q$\\$\NOT(q\OR t)$}{$p$}&
+   \argument{$p$\\$s\IMP r$\\$q\OR r$\\$q\IMP\NOT p$}{$\NOT s$}&
+   \argument{$q\IMP t$\\$p\IMP(t\IMP s)$\\$p$}{$q\IMP s$}
+}
+
+
+\problem For each of the following English arguments, express the
+argument in terms of propositional logic and determine whether the
+argument is valid or invalid.
+\ppart If it is Sunday, it rains or snows.  Today, it is Sunday
+and it's not raining.  Therefore, it must be snowing.
+\ppart If there are anchovies on the pizza, Jack won't eat it.
+If Jack doesn't eat pizza, he gets angry.  Jack is angry.
+Therefore, there were anchovies on the pizza.
+\ppart At 8:00, Jane studies in the library or works at home.
+It's 8:00 and Jane is not studying in the library.  So she must
+be working at home.
+
+
+
+\end{exercises}
+
+
+
+

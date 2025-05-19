@@ -1,0 +1,153 @@
+\section{Proof by Contradiction}
+
+Suppose that we start with some set of assumptions and apply rules
+of logic to derive a sequence of statements that can be proved from
+those assumptions, and suppose that we derive a statement that we
+know to be false.  When the laws of logic are applied to true
+statements, the statements that are derived will also be true.
+If we derive a false statement by applying rules of logic to a set
+of assumptions, then at least one of the assumptions must be false.
+This observation leads to a powerful proof technique, which
+is known as \nw{proof by contradiction}\index{contradiction}.
+
+Suppose that you want to prove some proposition, $p$.
+To apply proof by contradiction, assume that $\NOT p$ is true,
+and apply the rules of logic to derive conclusions based on this
+assumption.  If it is possible to derive a statement that is known
+to be false, it follows that the assumption, $\NOT p$, must be false.
+(Of course, if the derivation is based on several assumptions, then you only
+know that at least \emph{one} of the assumptions must be false.)
+The fact that $\NOT p$ is false proves that $p$ is true.
+Essentially, you are arguing that $p$ must be true, because if it 
+weren't, then some statement that is known to be false could be proved to be true.
+Generally, the false statement that is derived in a proof by
+contradiction is of the form $q\AND \NOT q$.  This statement
+is a contradiction in the sense that it is false no matter what
+the value of $q$.  Note that deriving the contradiction $q\AND \NOT q$
+is the same as showing that the two statements, $q$ and $\NOT q$, both
+follow from the assumption that $\NOT p$.
+
+As a first example of proof by contradiction, consider the
+following theorem:
+
+\begin{theorem}
+The number $\sqrt{3}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+Assume for the sake of contradiction that $\sqrt{3}$ is rational.
+Then $\sqrt{3}$ can be written as the ratio of two integers,
+$\sqrt{3} = \frac{m'}{n'}$ for some integers $m'$ and $n'$.
+Furthermore, the fraction $\frac{m'}{n'}$ can be reduced to lowest
+terms by canceling all common factors of $m'$ and $n'$.  So
+$\sqrt{3} = \frac{m}{n}$ for some integers $m$ and $n$ which have no
+common factors.  Squaring both sides of this equation gives
+$3 = \frac{m^2}{n^2}$ and re-arranging gives $3n^2 = m^2.$  From
+this equation we see that $m^2$ is divisible by~3; you proved in
+the previous section (Exercise~6) that $m^2$ is divisible by 3 iff $m$ is
+divisible by 3.  Therefore $m$ is divisible by 3 and we can write
+$m=3k$ for some integer $k$.  Substituting $m=3k$ into the last equation
+above gives $3n^2 = (3k)^2$ or $3n^2 = 9k^2$, which in turn becomes
+$n^2 = 3k^2.$  From this we see that $n^2$ is divisible by 3, and
+again we know that this implies that $n$ is divisible by 3.  But
+now we have (i) $m$ and $n$ have no common factors, and (ii) $m$ and
+$n$ have a common factor, namely 3.  It is impossible for both these
+things to be true, yet our argument has been logically correct.  
+Therefore our original assumption, namely that $\sqrt{3}$ is rational,
+must be incorrect.  Therefore $\sqrt{3}$ must be irrational.
+\end{proof}
+
+\medbreak
+
+One of the oldest mathematical proofs, which goes all the
+way back to Euclid\index{Euclid}, is a proof by contradiction.
+Recall that a prime number is an integer $n$, greater than 1, 
+such that the only positive integers that evenly divide $n$ are
+1 and $n$.  We will show that there are infinitely many primes.
+Before we get to the theorem, we need a lemma.
+(A \nw{lemma} is a theorem that is introduced only because it
+is needed in the proof of another theorem.  Lemmas help to
+organize the proof of a major theorem into manageable chunks.)
+
+\begin{lemma}\label{helpful}
+If $N$ is an integer and $N>1$, then there is a prime number
+which evenly divides $N$.
+\end{lemma}
+\begin{proof}
+Let $D$ be the smallest integer which is greater than 1 and
+which evenly divides $N$.  ($D$ exists since there is at least one
+number, namely $N$ itself, which is greater than 1 and which
+evenly divides $N$.  We use the fact that any non-empty subset
+of $\N$ has a smallest member.)  I claim that $D$ is prime, so that
+$D$ is a prime number that evenly divides $N$.
+
+Suppose that $D$ is not prime.  We show that this assumption
+leads to a contradiction.  Since $D$ is not prime, then, by definition,
+there is a number $k$ between 2 and $D-1$, inclusive, such that
+$k$ evenly divides $D$.  But since $D$ evenly divides $N$, we also
+have that $k$ evenly divides $N$ (by exercise 5 in the previous section).  That is, $k$ is an integer
+greater than one which evenly divides $N$.  But since $k$ is
+less than $D$, this contradicts the fact that $D$ is the \emph{smallest}
+such number.  This contradiction proves that $D$ is a prime number.
+\end{proof}
+
+\begin{theorem}
+There are infinitely many prime numbers.
+\end{theorem}
+\begin{proof}
+Suppose that there are only finitely many prime numbers.  We will
+show that this assumption leads to a contradiction.
+
+Let $p_1$, $p_2$, \dots, $p_n$ be a complete list of all prime numbers
+(which exists under the assumption that there are only finitely many
+prime numbers).  Consider the number $N$ obtained by multiplying
+all the prime numbers together and adding one.  That is,
+\[N=(p_1\cdot p_2\cdot p_3\cdots p_n) + 1.\]
+Now, since $N$ is larger than any of the prime numbers $p_i$, and
+since $p_1$, $p_2$, \dots, $p_n$ is a \emph{complete} list of prime numbers,
+we know that $N$ cannot be prime.  By the lemma, there is a prime
+number $p$ which evenly divides $N$.  Now, $p$ must be one of the
+numbers $p_1$, $p_2$, \dots, $p_n$.  But in fact, none of these numbers evenly
+divides $N$, since dividing $N$ by any $p_i$ leaves a remainder of 1.
+This contradiction proves that the assumption that there are only
+finitely many primes is false.
+\end{proof}
+
+This proof demonstrates the power of proof by contradiction.
+The fact that is proved here is not at all obvious, and yet it can
+be proved in just a few paragraphs.
+
+
+
+\begin{exercises}
+
+\problem Suppose that $a_1$, $a_2$, \dots, $a_{10}$ are real numbers,
+and suppose that $a_1+a_2+\cdots+a_{10}>100$.  Use a proof by contradiction
+to conclude that at least one of the numbers $a_i$ must be greater than~10.
+
+
+\problem Prove that each of the following statements is true. 
+In each case, use a proof by contradiction.  Remember that the
+negation of $p\IMP q$ is $p \AND \NOT q$.
+\ppart Let $n$ be an integer.  If $n^2$ is an even integer, then 
+$n$ is an even integer.  
+\ppart $\sqrt{2}$ is irrational.
+\ppart If $r$ is a rational number and $x$ is an
+irrational number, then $r+x$ is an irrational number. (That is, the
+sum of a rational number and an irrational number is irrational.)
+\ppart If $r$ is a non-zero rational number and $x$ is an
+irrational number, then $rx$ is an irrational number.    
+\ppart If $r$ and $r+x$ are both rational, then $x$ is rational.
+
+\problem The \nw{pigeonhole principle} is the following obvious
+observation:  If you have $n$ pigeons in $k$ pigeonholes and if $n>k$,
+then there is at least one pigeonhole that contains more than
+one pigeon.  Even though this observation seems obvious, it's a
+good idea to prove it.  Prove the pigeonhole principle using a
+proof by contradiction.
+
+\end{exercises}
+
+
+
+
