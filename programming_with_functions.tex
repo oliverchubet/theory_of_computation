@@ -1,0 +1,310 @@
+\section{Application: Programming with Functions}\label{S-sets-5}
+
+Functions are fundamental in computer programming,\index{function!in computer programming}
+although not everything in programming that goes by the name of ``function''
+is a function according to the mathematical definition.
+
+In computer programming, a function is a routine that is given 
+some data as input and that will calculate and return an
+answer based on that data.  For example, in the C++ programming
+language, a function that calculates the square of an integer
+could be written
+\begin{verbatim}
+            int square(int n) {
+               return n*n;
+            }
+\end{verbatim}
+In C++, \textit{int} is a data type.  From the mathematical
+point of view, a data type is a set.  The data type \textit{int}
+is the set of all integers that can be represented as 32-bit 
+binary numbers.  Mathematically, then, $\textit{int}\SUB\Z$.
+(You should get used to the fact that sets and functions can
+have names that consist of more than one character, since
+it's done all the time in computer programming.)
+The first line of the above function definition,
+``\verb=int square(int n)='', says that we are defining
+a function named square whose range is \textit{int}
+and whose domain is \textit{int}.  In the usual notation for
+functions, we would express this as $\textit{square}\colon \textit{int}\to\textit{int}$,
+or possibly as $\textit{square}\in{\textit{int}}^{\textit{\small{int}}}$,
+where ${\textit{int}}^{\textit{\small{int}}}$ is the set of all
+functions that map the set \textit{int} to the set \textit{int}.
+
+The first line of the function, \verb=int square(int n)=, is called
+the \nw{prototype} of the function.  The prototype specifies the
+name, the domain, and the range of the function and so carries
+exactly the same information as the notation ``$f\colon A\to B$''.
+The ``$n$'' in ``\verb=int square(int n)='' is a name for
+an arbitrary element of the data type \textit{int}.  In computer
+jargon, $n$ is called a \nw{parameter} of the function.
+The rest of the definition of \textit{square} tells the computer
+to calculate the value of $\textit{square}(n)$ for any $n\in\textit{int}$
+by multiplying $n$ times~$n$.  The statement ``\verb=return n*n=''
+says that $n*n$ is the value that is computed, or ``returned,''
+by the function.  (The $*$ stands for multiplication.)
+
+C++ has many data types in addition to \textit{int}.  There is
+a boolean data type named \textit{bool}.  The values of type
+\textit{bool} are \textit{true} and \textit{false}.  Mathematically,
+\textit{bool} is a name for the set $\{\textit{true},\,\textit{false}\}$.
+The type \textit{float} consists of real numbers, which can
+include a decimal point.  Of course, on a computer, it's not
+possible to represent the entire infinite set of real numbers,
+so \textit{float} represents some subset of the mathematical set
+of real numbers.  There is also a data type whose values are
+strings of characters, such as ``Hello world'' or ``xyz152QQZ''.
+The name for this data type in C++ is \textit{string}.  All these
+types, and many others, can be used in functions.  For example,
+in C++, $m\,\%\,n$ is the remainder when the integer $m$ is
+divided by the integer $n$.  We can define a function to test
+whether an integer is even as follows:
+\begin{verbatim}
+            bool even(int k) {
+               if ( k % 2 == 1 )
+                  return false;
+               else
+                  return true;
+            }
+\end{verbatim}
+You don't need to worry about all the details here, but you should
+understand that the prototype, \verb=bool even(int k)=,
+says that \textit{even} is a function from the set \textit{int}
+to the set \textit{bool}.  That is,
+$\textit{even}\colon\textit{int}\to\textit{bool}$.  Given
+an integer $N$, $\textit{even}(N)$ has the value \textit{true}
+if $N$ is an even integer, and it has the value \textit{false}
+if $N$ is an odd integer.
+
+A function can have more than one parameter.  For example, we might
+define a function with prototype \verb=int index(string str, string sub)=.
+If $s$ and $t$ are strings, then \textit{index}$(s,t)$ would be the
+\textit{int} that is the value of the function at the ordered pair
+$(s,t)$.  We see that the domain of index is the cross product
+$\textit{string}\times\textit{string}$, and we can write
+$\textit{index}\colon \textit{string}\times\textit{string}\to\textit{int}$
+or, equivalently, $\textit{index}\in\textit{int}^{\textit{string}\times\textit{string}}$.
+
+\medbreak
+
+Not every C++ function is actually a function in the mathematical
+sense.  In mathematics, a function must associate a single value in
+its range to each value in its domain.  There are two things
+that can go wrong:  The value of the function might not be defined
+for every element of the domain, and the function might associate
+several different values to the same element of the domain.
+Both of these things can happen with C++ functions.
+
+In computer programming, it is very common for a ``function'' to be
+undefined for some values of its parameter.  In mathematics,
+a \nw{partial function}\index{function!partial} from a set $A$ to
+a set $B$ is defined to be a function from a subset of $A$ to~$B$.
+A partial function from $A$ to $B$ can be undefined for some
+elements of $A$, but when it is defined for some $a\in A$,
+it associates just one element of $B$ to~$a$.  Many functions
+in computer programs are actually partial functions.  (When 
+dealing with partial functions, an ordinary function, which is
+defined for every element of its domain, is sometimes referred to
+as a \nw{total function}.  Note that---with the mind-boggling
+logic that is typical of mathematicians---a total function is
+a type of partial function, because a set is a subset of itself.)
+
+It's also very common for a ``function'' in a computer program
+to produce a variety of values for the same value of its parameter.
+A common example is a function with prototype
+\verb=int random(int N)=, which returns a random integer between
+1 and~$N$.  The value of \textit{random}(5) could be 1, 2, 3, 4, or~5.
+This is not the behavior of a mathematical function!
+
+Even though many functions in computer programs are not really
+mathematical functions, I will continue to refer to them as
+functions in this section.  Mathematicians will just have to stretch
+their definitions a bit to accommodate the realities of computer
+programming.
+
+\medbreak
+
+In most programming languages, functions are not first-class
+objects\index{first-class object}.  That is, a function cannot
+be treated as a data value in the same way as a \textit{string}
+or an \textit{int}.  However, C++ does take a step in this
+direction.  It is possible for a function to be a parameter
+to another function.  For example, consider the function
+prototype
+\begin{verbatim}
+            float sumten( float f(int) )
+\end{verbatim}
+This is a prototype for a function named \textit{sumten} whose
+parameter is a function.  The parameter is specified by the
+prototype ``\verb=float f(int)=''.  This means that the parameter
+must be a function from \textit{int} to \textit{float}.  The parameter
+name, $f$, stands for an arbitrary such function.  Mathematically,
+$f\in \textit{float}^{\textit{int}}$, and so
+$\textit{sumten}\colon \textit{float}^{\textit{int}}\to\textit{float}$.
+
+My idea is that \textit{sumten}($f$) would compute
+$f(1)+f(2)+\cdots+f(10)$.  A more useful function would
+be able to compute $f(a)+f(a+1)+\cdots+f(b)$ for any integers
+$a$ and~$b$.  This just means that $a$ and $b$ should be
+parameters to the function.  The prototype for the improved
+function would look like
+\begin{verbatim}
+            float sum( float f(int), int a, int b )
+\end{verbatim}
+The parameters to \textit{sum} form an ordered triple in which
+the first coordinate is a function and the second and third
+coordinates are integers.  So, we could write
+\[\textit{sum}\colon \textit{float}^{\textit{int}}
+       \times\textit{int}\times\textit{int}\to\textit{float}\]
+It's interesting that computer programmers deal routinely
+with such complex objects.
+
+\medskip
+
+One thing you can't do in C++ is write a function that creates
+new functions from scratch.  The only functions that exist
+are those that are coded into the source code of the program.
+There are programming languages that do allow new functions to
+be created from scratch while a program is running.  In such
+languages, functions are first-class objects.  These languages
+support what is called \nw{functional programming}.  
+
+One of the most accessible languages that supports functional programming
+is JavaScript, a language that is used on Web pages.  (Although
+the names are similar, JavaScript and Java are only distantly
+related.)  In JavaScript, the function that computes the
+square of its parameter could be defined as
+\begin{verbatim}
+            function square(n) {
+               return n*n;
+            }
+\end{verbatim}
+This is similar to the C++ definition of the same function, but
+you'll notice that no type is specified for the parameter $n$ or
+for the value computed by the function.  Given this definition
+of \text{square}, \textit{square}($x$) would be legal for any
+$x$ of any type.  (Of course, the value of \textit{square}($x$)
+would be undefined for most types, so \textit{square} is
+a \emph{very} partial function, like most functions in JavaScript.)
+In effect, all possible data values in JavaScript are bundled
+together into one set, which I will call \textit{data}.
+We then have $\textit{square}\colon \textit{data}\to \textit{data}$.\footnote{Not
+all functional programming languages lump data types together
+in this way.  There is a functional programming language
+named Haskell, for example, that is as strict about types as C++.
+For information about Haskell, see http://www.Haskell.org/.}
+
+In JavaScript, a function really is a first-class object.  We can 
+begin to see this by looking at an alternative definition of the
+function \textit{square}:
+\begin{verbatim}
+            square = function(n) { return n*n; }
+\end{verbatim}
+Here, the notation ``\verb=function(n) { return n*n; }='' creates
+a function that computes the square of its parameter, but it doesn't
+give any name to this function.  This function object is then
+assigned to a variable named \textit{square}.  The value of
+\textit{square} can be changed later, with another assignment
+statement, to a different function or even to a different type
+of value.  This notation for creating function objects can
+be used in other places besides assignment statements.  Suppose,
+for example, that a function with prototype
+\verb=function sum(f,a,b)= has been defined in a JavaScript
+program to compute $f(a)+f(a+1)+\cdots+f(b)$.  Then
+we could compute $1^2+2^2+\cdots+100^2$ by saying
+\begin{verbatim}
+            sum( function(n) { return n*n; }, 1, 100 )
+\end{verbatim}
+Here, the first parameter is the function that computes
+squares.  We have created and used this function
+without ever giving it a name.
+
+It is even possible in JavaScript for a function to return
+another function as its value.  For example,
+\begin{verbatim}
+            function monomial(a, n) {
+               return ( function(x) { a*Math.pow(x,n); } );
+            }
+\end{verbatim}
+Here, \verb=Math.pow(x,n)= computes $x^n$, so for any
+numbers $a$ and $n$, the value of \textit{monomial}($a$,$n$) is 
+a function that computes $ax^n$.  Thus,
+\begin{verbatim}
+            f = monomial(2,3);
+\end{verbatim}
+would define $f$ to be the function that satisfies $f(x)=2x^3$,
+and if \textit{sum} is the function described above, then
+\begin{verbatim}
+            sum( monomial(8,4), 3, 6 )
+\end{verbatim}
+would compute $8*3^4+8*4^4+8*5^4+8*6^4$.  In fact, \textit{monomial}
+can be used to create an unlimited number of new functions
+from scratch.  It is even possible to write \textit{monomial}(2,3)(5)
+to indicate the result of applying the function \textit{monomial}(2,3)
+to the value 5.  The value represented by \textit{monomial}(2,3)(5)
+is $2*5^3$, or 250.  This is real functional programming and
+might give you some idea of its power.
+
+
+
+\begin{exercises}
+
+\problem For each of the following C++ function prototypes, translate the
+prototype into a standard mathematical function specification, such
+as $\textit{func}\colon\textit{float}\to\textit{int}$.
+\tparts {
+   \texttt{int strlen(string s)}\cr
+   \texttt{float pythag(float x, float y)}\cr
+   \texttt{int round(float x)}\cr
+   \texttt{string sub(string s, int n, int m)}\cr
+   \texttt{string unlikely( int f(string) )}\hidewidth\cr
+   \texttt{int h( int f(int), int g(int) )}\hidewidth\cr
+}
+
+\problem Write a C++ function prototype for a function that
+belongs to each of the following sets.
+
+\smallskip
+
+\pparts {
+   \textit{string}^{\textit{string}}\cr\noalign{\smallskip}
+   \textit{bool}^{\textit{float}\times\textit{float}}\cr\noalign{\smallskip}
+   \textit{float}^{ \textit{int}^{\textit{int}} }\cr
+}
+
+\problem It is possible to define new types in C++.  For example, the
+definition
+\begin{verbatim}
+               struct point {
+                  float x;
+                  float y;
+               }
+\end{verbatim}
+defines a new type named \textit{point}.  A value of type \textit{point}
+contains two values of type \textit{float}.  What mathematical operation
+corresponds to the construction of this data type?  Why?
+
+\problem Let \textit{square}, \textit{sum} and \textit{monomial}
+be the JavaScript functions described in this section.  What is the
+value of each of the following?
+\tparts {
+   \textit{sum}(\textit{square}, 2, 4)\cr
+   \textit{sum}(\textit{monomial}(5,2), 1, 3)\cr
+   \textit{monomial}(\textit{square}(2), 7)\cr
+   \textit{sum}(function($n$) $\{$ return $2*n$; $\}$, 1, 5)\cr
+   \textit{square}(\textit{sum}(\textit{monomial}(2,3), 1, 2))
+}
+
+
+\problem Write a JavaScript function named \textit{compose}
+that computes the composition of two functions.  That
+is, \textit{compose}($f$,$g$) is $f\circ g$, where
+$f$ and $g$ are functions of one parameter.  Recall that
+$f\circ g$ is the function defined by $(f\circ g)(x)=f(g(x))$.
+
+\end{exercises}
+
+
+
+
+
+

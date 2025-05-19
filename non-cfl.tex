@@ -1,0 +1,353 @@
+\section{Non-context-free Languages}\label{S-grammars-4}
+
+We have seen that there are context-free languages that are not
+regular.  The natural question arises, are there languages that
+are not context-free?  It's easy to answer this question in the
+abstract:  For a given alphabet $\Sigma$, there are uncountably
+many languages over $\Sigma$, but there are only
+countably many context-free languages over $\Sigma$.  It follows
+that most languages are not context-free.  However, this answer
+is not very satisfying since it doesn't give us any example of
+a specific language that is not context-free.
+
+As in the case of regular languages, one way to show that
+a given language $L$ is not context-free is to find some property
+that is shared by all context-free languages and then to show that
+$L$ does not have that property.  For regular languages, the
+Pumping Lemma gave us such a property.  It turns out that
+there is a similar Pumping Lemma for context-free languages.
+The proof of this lemma uses parse trees.  In the proof, we
+will need a way of representing abstract parse trees, without
+showing all the details of the tree.  The picture
+
+\medskip
+\centerline{\scaledeps{0.5truein}{fig-5-4}}
+\smallskip
+
+\noindent represents a parse tree which has the non-terminal symbol
+$A$ at its root and the string $x$ along the ``bottom'' of the tree.
+(That is, $x$ is the string made up of all the symbols at the
+endpoints of the tree's branches, read from left to right.)  Note that
+this could be a partial parse tree---something that could be a part of a
+larger tree.  That is, we do not require $A$ to be the start symbol
+of the grammar and we allow $x$ to contain both terminal and
+non-terminal symbols.  The string $x$, which is along the bottom
+of the tree, is referred to as the \nw[yield of a parse tree]{yield}
+of the parse tree.  Sometimes, we need to show more explicit detail in
+the tree.  For example, the picture
+
+\medskip
+\centerline{\scaledeps{1truein}{fig-5-5}}
+
+\noindent represents a parse tree in which the yield is the
+string $xyz$.  The string $y$ is the yield of a smaller tree, with
+root $B$, which is contained within the larger tree.
+Note that any of the strings $x$, $y$, or $z$ could be the
+empty string.  
+
+We will also need the concept of the \nw[height of
+a parse tree]{height} of a parse tree.  The height of a parse tree is
+the length of the longest path from the root of the tree to the
+tip of one of its branches.
+
+Like the version for regular languages, the Pumping Lemma for
+context-free languages shows that any sufficiently long string
+in a context-free language contains a pattern that can be repeated
+to produce new strings that are also in the language.  However,
+the pattern in this case is more complicated.  For regular
+languages, the pattern arises because any sufficiently long path
+through a given DFA must contain a loop.   For context-free
+languages, the pattern arises because in a sufficiently
+large parse tree, along a path from the root of the tree to the
+tip of one of its branches, there must be some non-terminal
+symbol that occurs more than once.
+
+\begin{theorem}[Pumping Lemma for Context-free Languages]
+Suppose that $L$ is a context-free language.
+Then there is an integer $K$ such that any string $w\in L(G)$
+with $|w|\ge K$ has the property that $w$ can be written
+in the form $w=uxyzv$ where
+\Item{$\bullet\,$}$x$ and $z$ are not both equal to the empty string;
+\Item{$\bullet\,$}$|xyz|< K$; and
+\Item{$\bullet\,$}For any $n\in\N$, the string $ux^nyz^nv$ is in $L$.
+\end{theorem}
+\begin{proof}
+Let $G=(V,\Sigma,P,S)$ be a context-free grammar for the language $L$.
+Let $N$ be the number of non-terminal symbols in $G$, plus 1.  That is,
+$N=|V|+1$.  Consider all possible parse trees for the grammar $G$
+with height less than or equal to $N$.  (Include parse trees with any
+non-terminal symbol as root, not just parse trees with root $S$.) 
+There are only finitely many such parse trees, and therefore there
+are only finitely many different strings that are the yields of
+such parse trees.  Let $K$ 
+be an integer which is greater than the length of any such string.
+
+Now suppose that $w$ is any string in $L$ whose length is greater
+than or equal to $K$.  Then \textit{any} parse tree for $w$ must have height
+greater than $N$.  (This follows since $|w|\ge K$ and the yield of 
+any parse tree of height $\le N$ has length less than $K$.)
+Consider a parse tree for $w$ of minimal size, that is one that contains
+the smallest possible number of nodes.  Since the height of this parse
+tree is greater than $N$, there is at least one path from the
+root of the tree to tip of a branch of the tree that has length
+greater than $N$.  Consider the longest such path.  The symbol at
+the tip of this path is a terminal symbol, but all the other symbols
+on the path are non-terminal symbols.  There are at least $N$ such
+non-terminal symbols on the path.  Since the number of different
+non-terminal symbols is $|V|$ and since $N=|V|+1$, some non-terminal
+symbol must occur twice on the path.  In fact, some non-terminal
+symbol must occur twice among the bottommost $N$ non-terminal
+symbols on the path.  Call this symbol $A$.  Then we see that
+the parse tree for $w$ has the form shown here:
+
+\medskip
+\centerline{\scaledeps{2truein}{fig-5-6}}
+
+\noindent The structure of this tree breaks the string $w$ into
+five substrings, as shown in the above diagram.
+We then have $w=uxyzv$.  It only remains to show that $x$,
+$y$, and $z$ satisfy the three requirements stated in the 
+theorem.
+
+Let $T$ refer to the entire parse tree, let $T_1$ refer to the 
+parse tree whose root is the upper $A$ in the diagram, and 
+let $T_2$ be the parse tree whose root is the lower $A$ in
+the diagram.  Note that the height of $T_1$ is less than 
+or equal to $N$.  (This follows from two facts:  The path shown in
+$T_1$ from its root to its base has length less than or equal to
+$N$, because we chose the two occurrences of $A$ to be among the $N$
+bottommost non-terminal symbols along the path in $T$ from its
+root to its base.  We know that there is no longer path from
+the root of $T_1$ to its base, since we chose the path in $T$
+to be the longest possible path from the root of $T$ to its base.)
+Since any parse tree with height less than or equal to $N$ has
+yield of length less than $K$, we see that $|xyz|<K$.
+
+If we remove $T_1$ from $T$ and replace it with
+a copy of $T_2$, the result is a parse tree with
+yield $uyv$, so we see that the string $uyv$ is in the language
+$L$.  
+Now, suppose that both $x$ and $z$ are equal to the
+empty string.  In that case, $w=uyv$, so the tree we have
+created would be another parse tree for $w$.  But this tree
+is smaller than $T$, so this would contradict the fact that
+$T$ is the smallest parse tree for $w$.  We see that
+$x$ and $z$ cannot both be the empty string.
+
+If we remove $T_2$ from $T$ and replace it with a copy
+of $T_1$, the result is a parse tree with yield $ux^2yz^2v$,
+so we see that $ux^2yz^2v\in L$.  The two parse trees that
+we have created look like this:
+
+\medskip
+\centerline{\scaledeps{4truein}{fig-5-7}}
+\smallskip
+
+\noindent Furthermore, we can apply the process of replacing
+$T_2$ with a copy of $T_1$ to the tree on the right above to
+create a parse tree with yield $ux^3yz^3v$.  Continuing in this
+way, we see that $ux^nyz^nv\in L$ for all $n\in\N$.
+This completes the proof of the theorem.
+\end{proof}
+
+
+Since this theorem guarantees that all context-free languages
+have a certain property, it can be used to show that specific
+languages are not context-free.  The method is to show that
+the language in question does not have the property that is
+guaranteed by the theorem.  We give two examples.
+
+\begin{corrolary}\label{T-CFG-anbncn}
+Let $L$ be the language $\{a^nb^nc^n \st n\in\N\}$.  Then
+$L$ is not a context-free language.
+\end{corrolary}
+\begin{proof}
+We give a proof by contradiction.  Suppose that $L$ is
+context-free.  Then, by the Pumping Lemma for Context-free Languages,
+there is an integer $K$ such that every string $w\in L$ with 
+$|w|\ge K$ can be written in the form $w=uxyzv$ where
+$x$ and $z$ are not both empty, $|xyz|<K$, and $ux^nyz^nv\in L$
+for every $n\in\N$.
+
+Consider the string $w=a^Kb^Kc^K$, which is in $L$,
+and write $w=uxyzv$, where $u$, $x$, $y$, $z$, and $v$ satisfy the
+stated conditions.  Since $|xyz|<K$, we see that if $xyz$
+contains an $a$, then it cannot contain a $c$.  And if it
+contains a $c$, then it cannot contain an $a$.  It is also possible
+that $xyz$ is made up entirely of $b\text{'}s$.  In any of these cases,
+the string $ux^2yz^2v$ cannot be in $L$, since it does not contain
+equal numbers of $a\text{'}s$, $b\text{'}s$, and $c\text{'}s$.  But this contradicts
+the fact that $ux^nyz^nv\in L$ for all $n\in\N$.  This contradiction
+shows that the assumption that $L$ is context-free is incorrect.
+\end{proof}
+\smallskip
+
+\begin{corrolary}
+Let $\Sigma$ be any alphabet that contains at least two symbols.
+Let $L$ be the language over $\Sigma$ defined by $L=\{ss\st s\in\Sigma^*\}$.
+Then $L$ is not context-free.
+\end{corrolary}
+\begin{proof}
+Suppose, for the sake of contradiction, that $L$ is
+context-free.  Then, by the Pumping Lemma for Context-free Languages,
+there is an integer $K$ such that every string $w\in L$ with 
+$|w|\ge K$ can be written in the form $w=uxyzv$ where
+$x$ and $z$ are not both empty, $|xyz|<K$, and $ux^nyz^nv\in L$
+for every $n\in\N$.
+
+Let $a$ and $b$ represent distinct symbols in $\Sigma$.
+Let $s=a^Kba^Kb$ and let $w=ss=a^Kba^Kba^Kba^Kb$, which is in $L$.
+Write $w=uxyzv$, where $u$, $x$, $y$, $z$, and $v$ satisfy the
+stated conditions.
+
+Since $|xyz|<K$, $x$ and $z$ can, together, contain no more than one $b$.  If
+either $x$ or $y$ contains a $b$, then $ux^2yz^2v$ contains exactly five
+$b\text{'}s$.  But any string in $L$ is of the form $rr$ for some string $r$
+and so contains an even number of $b\text{'}s$.  The fact that
+$ux^2yz^2z$ contains five $b\text{'}s$ contradicts the fact that $ux^2yz^2v\in L$.
+So, we get a contradiction in the case where $x$ or $y$ contains a $b$.
+
+Now, consider the case where $x$ and $y$ consist entirely of $a\text{'}s$.
+Again since $|xyz|<K$, we must have either that $x$ and $y$ are both
+contained in the same group of $a\text{'}s$ in the string $a^Kba^Kba^Kba^Kb$,
+or that $x$ is contained in one group of $a\text{'}s$ and $y$ is contained in
+the next.  In either case, it is easy to check that the string
+$ux^2yz^2v$ is no longer of the form $rr$ for any string $r$,
+which contradicts the fact that $ux^2yz^2v\in L$.
+
+Since we are led to a contradiction in every case, we see that the
+assumption that $L$ is context-free must be incorrect.
+\end{proof}
+
+
+Now that we have some examples of languages that are not context-free,
+we can settle some other questions about context-free languages.
+In particular, we can show that the intersection of two context-free
+languages is not necessarily context-free and that the complement of
+a context-free language is not necessarily context-free.
+
+\begin{theorem}
+The intersection of two context-free languages is not necessarily a
+context-free language.
+\end{theorem}
+\begin{proof}
+To prove this, it is only necessary to produce an example of two
+context-free languages $L$ and $M$ such that $L\cap M$ is not a
+context-free languages.  Consider the following languages, defined
+over the alphabet $\Sigma=\{a,b,c\}$:
+\begin{align*}
+   L&=\{a^nb^nc^m \st n\in\N\text{ and }m\in\N\}\\
+   M&=\{a^nb^mc^m \st n\in\N\text{ and }m\in\N\}
+\end{align*}
+Note that strings in $L$ have equal numbers of $a\text{'}s$ and $b\text{'}s$ while
+strings in $M$ have equal numbers of $b\text{'}s$ and $c\text{'}s$.  It follows that
+strings in $L\cap M$ have equal numbers of $a\text{'}s$, $b\text{'}s$, and $c\text{'}s$.
+That is,
+\begin{align*}
+   L\cap M=\{a^nb^nc^n\st n\in\N\}
+\end{align*}
+We know from the above theorem that $L\cap M$ is not context-free.
+However, both $L$ and $M$ are context-free.  The language $L$
+is generated by the context-free grammar
+\begin{align*}
+   S &\PRODUCES TC\\
+   C &\PRODUCES cC\\
+   C &\PRODUCES \EMPTYSTRING\\
+   T &\PRODUCES aTb\\
+   T &\PRODUCES \EMPTYSTRING
+\end{align*}
+and $M$ is generated by a similar context-free grammar.
+\end{proof}
+\smallskip
+
+\begin{corrolary}
+The complement of a context-free language is not necessarily context-free.
+\end{corrolary}
+\begin{proof}
+  Suppose for the sake of contradiction that the complement of every
+context-free language is context-free.  
+
+Let $L$ and $M$ be two context-free languages over the alphabet $\Sigma$.
+By our assumption, the complements $\overline{L}$ and $\overline{M}$
+are context-free.  By Theorem~\ref{T-CFG-closures}, it follows
+that $\overline{L}\cup\overline{M}$ is context-free.  Applying our
+assumption once again, we have that $\overline{\overline{L}\cup\overline{M}}$
+is context-free.
+But $\overline{\overline{L}\cup\overline{M}}=L\cap M$, so we have
+that $L\cap M$ is context-free.
+
+We have shown, based on our assumption that the complement of any
+context-free language is context-free, that the intersection of any
+two context-free languages is context-free.  But this contradicts
+the previous theorem, so we see that the assumption cannot be true.
+This proves the theorem.
+\end{proof}
+
+Note that the preceding theorem and corollary say only that
+$L\cap M$ is not context-free for \textit{some} context-free languages
+$L$ and $M$ and that $\overline{L}$ is not context-free for 
+\textit{some} context-free language $L$.  There are, of course, many 
+examples of context-free languages $L$ and $M$ for which
+$L\cap M$ and $\overline{L}$ \textit{are} in fact context-free.
+
+Even though the intersection of two context-free languages is not necessarily
+context-free, it happens that the intersection of a context-free language
+with a \textit{regular} language is always context-free.  This is not difficult
+to show, and a proof is outlined in Exercise~4.4.8.
+I state it here without proof:
+
+\begin{theorem}
+Suppose that $L$ is a context-free language and that $M$ is a regular
+language.  Then $L\cap M$ is a context-free language.
+\end{theorem}
+
+For example, let $L$ and $M$ be the languages
+defined by $L=\{w\in \{a,b\}^*\st w=w^R\}$ and
+$M=\{w\in\{a,b\}^*\st$ the length of $w$ is a multiple of 5$\}$.  Since 
+$L$ is context-free and $M$ is regular, we know that
+$L\cap M$ is context-free.  The language $L\cap M$ consists of
+every palindrome over the alphabet $\{a,b\}$ whose length is a
+multiple of five.
+
+This theorem can also be used to show that certain languages are
+\textit{not} context-free.  For example, consider the language
+$L=\{w\in\{a,b,c\}^*\st n_a(w)$ $=n_b(w)=n_c(w)\}$.  (Recall that
+$n_x(w)$ is the number of times that the symbol $x$ occurs in the
+string $w$.)  We can use a proof by contradiction to show that
+$L$ is not context-free. 
+Let $M$ be the regular language defined by the regular
+expression $a^*b^*c^*$.  It is clear that
+$L\cap M=\{a^nb^nc^n\st n\in\N\}$.  If $L$ were context-free,
+then, by the previous theorem, $L\cap M$ would be context-free.
+However, we know from Theorem~\ref{T-CFG-anbncn} that $L\cap M$
+is not context-free.  So we can conclude that $L$ is not
+context-free.
+
+
+\begin{exercises}
+
+\problem Show that the following languages are not context-free:
+\ppart $\{a^nb^mc^k\st n>m>k\}$
+\ppart $\{w\in\{a,b,c\}^*\st n_a(w)>n_b(w)>n_c(w)\}$
+\ppart $\{www\st w\in\{a,b\}^*\}$
+\ppart $\{a^nb^mc^k\st n,m\in\N\text{ and } k=m*n\}$
+\ppart $\{a^nb^m\st m=n^2\}$
+
+\problem Show that the languages $\{a^n\st \,\text{n is a prime number}\}$
+and $\{a^{n^2}\st n\in \N\}$ are not context-free.  (In fact, it 
+can be shown that a language over the alphabet $\{a\}$ is
+context-free if and only if it is regular.)
+
+\problem Show that the language $\{w\in\{a,b\}^*\st n_a(w)=n_b(w)$
+and $w$ contains the string $baaab$ as a substring$\}$ is context-free.
+
+\problem Suppose that $M$ is any finite language and that
+$L$ is any context-free language.  Show that the language
+$L\SETDIFF M$ is context-free.  (Hint: Any finite language is a
+regular language.)
+
+\end{exercises}
+
+
+
+

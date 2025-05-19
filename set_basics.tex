@@ -1,0 +1,488 @@
+\section{Basic Concepts}\label{S-sets-1}
+
+A \nw{set} is a collection of \nw[element (of a set)]{elements}.
+A set is defined entirely by the elements that it contains.
+An element can be anything, including another set.  You will notice
+that this is not a precise mathematical definition.  Instead, it is
+an intuitive description of what the word ``set'' is supposed to mean:
+Any time you have a bunch of entities and you consider them as a unit,
+you have a set.  Mathematically, sets are really defined by the operations
+that can be performed on them.  These operations model things that
+can be done with collections of objects in the real world.  These operations
+are the subject of the branch of mathematics known as \nw{set theory}.
+
+The most basic operation in set theory is forming a set from a given
+list of specific entities.  The set that is formed in this way is denoted
+by enclosing the list of entities between  a left brace, ``$\{$'', and
+a right brace,~``$\}$''.  The entities in the list are separated by
+commas.  For example, the set denoted by
+\[\{\ 17,\ \pi,\ \texttt{New York City},\ \texttt{Barack Obama},\ \texttt{Big Ben}\ \}\]
+is the set that contains the entities 17, $\pi$, New York City, Barack Obama,
+and Big Ben.  These entities are the elements of the set.  Since we assume
+that a set is completely defined by the elements that it contains, the
+set is well-defined.  Of course, we still haven't said what it means to
+be an ``entity.''  Something as definite as ``New York City'' should qualify,
+except that it doesn't seem like New York City really belongs in the world
+of Mathematics.  The problem is that mathematics is supposed to be its own
+self-contained world, but it is supposed to model the real world.  When we 
+use mathematics to model the real world, we admit entities such as New
+York City and even Big Ben.  But when we are doing mathematics {\it per se},
+we'll generally stick to obviously mathematical entities such as the
+integer 17 or the real number~$\pi$.  We will also use letters such
+as $a$ and $b$ to refer to entities.  For example, when I say
+something like ``Let $A$ be the set $\{a,b,c\}$,'' I mean $a$, $b$, and
+$c$ to be particular, but unspecified, entities.
+
+It's important to understand that a set is defined by the elements that
+it contains, and not by the order in which those elements might be listed.
+For example, the notations $\{a,b,c,d\}$ and $\{b,c,a,d\}$ define the same
+set.   Furthermore, a set can only contain one copy of a given element,
+even if the notation that specifies the set lists the element twice.
+This means that $\{a,b,a,a,b,c,a\}$ and $\{a,b,c\}$ specify exactly the
+same set.  Note in particular that it's incorrect to say that
+the set $\{a,b,a,a,b,c,a\}$ contains seven elements, since some of the
+elements in the list are identical.  The notation $\{a,b,c\}$ can lead
+to some confusion, since it might not be clear whether the letters $a$,
+$b$, and $c$ are assumed to refer to three \emph{different} entities.
+A mathematician would generally \emph{not} make this assumption without
+stating it explicitly, so that the set denoted by $\{a,b,c\}$ could
+actually contain either one, two, or three elements.  When it is important
+that different letters refer to different entities, I will say so explicitly,
+as in ``Consider the set $\{a,b,c\}$, where $a$, $b$, and $c$ are distinct.''
+
+The symbol $\in$ is used to express the relation ``is an element of.''
+That is, if $a$ is an entity and $A$ is a set, then $a\in A$ is a statement
+that is true if and only if $a$ is one of the elements of $A$.  In that
+case, we also say that $a$ is a \nw[member (of a set)]{member} of
+the set~$A$.  The assertion that $a$ is not an element of $A$ is
+expressed by the notation $a\not\in A$.  Note that both $a\in A$
+and $a\not\in A$ are statements in the sense of propositional logic.
+That is, they are assertions which can be either true or false.
+The statement $a\not\in A$ is equivalent to $\NOT(a\in A)$.
+
+It is possible for a set to be empty, that is, to contain no elements
+whatsoever.  Since a set is completely determined by the elements
+that it contains, there is only one set that contains no elements.
+This set is called the \nw{empty set}, and it is denoted by the
+symbol~$\emptyset$.  Note that for any element $a$, the
+statement $a\in\emptyset$ is false.  The empty set, $\emptyset$, can also
+be denoted by an empty pair of braces, $\{$~$\}$.
+
+If $A$ and $B$ are sets, then, by definition, $A$ is equal to $B$ if and only
+if they contain exactly the same elements.  In this case, we write $A=B$.
+Using the notation of predicate logic, we can say that $A=B$ if and only
+if $\forall x(x\in A \IFF x\in B)$.  
+
+Suppose now that $A$ and $B$ are sets such that every element of $A$ is
+an element of $B$.  
+In that case, we say that $A$ is a \nw{subset} of~$B$, i.e. $A$ is a subset
+of $B$ if and only if  $\forall x(x\in A \IMP x\in B)$. The fact that 
+$A$ is a subset of $B$ is denoted by $A\SUB B$.  Note that $\emptyset$ is a
+subset of every set $B$: $x \in \emptyset$ is false for any $x$, and so given
+any $B$, $(x\in \emptyset \IMP x\in B)$ is true for all $x$.
+
+If $A=B$, then it is automatically true that $A\SUB B$ and that
+$B\SUB A$.  The converse is also true: If $A\SUB B$ and $B\SUB A$,
+then $A=B$.  This follows from the fact that for any $x$, the statement 
+$(x\in A \IFF x\in B)$ is logically equivalent to the statement $(x\in A\IMP x\in B)
+\AND (x\in B\IMP x\in A)$.  This fact is important enough to state as a
+theorem.
+
+\begin{theorem}\label{T-setequality}
+Let $A$ and $B$ be sets.  Then $A=B$ if and only if both $A\SUB B$ and $B\SUB A$.
+\end{theorem}
+
+This theorem expresses the following advice:  If you want to check that two
+sets, $A$ and $B$, are equal, you can do so in two steps.  First check that
+every element of $A$ is also an element of $B$, and then check that every 
+element of $B$ is also an element of $A$.
+
+If $A\SUB B$ but $A\not= B$, we say that $A$ is a \nw{proper subset} of $B$.
+We use the notation $A\PSUB B$ to mean that $A$ is a proper subset of $B$.
+That is, $A\PSUB B$ if and only if $A\SUB B \AND A\not= B$.  We will sometimes
+use $A\SUP B$ as an equivalent notation for $B\SUB A$, and $A\PSUP B$ as
+an equivalent for $B\PSUB A$.
+
+ 
+\medbreak
+
+A set can contain an infinite number of elements.  In such a case, it
+is not possible to list all the elements in the set.  Sometimes the
+ellipsis ``\dots'' is used to indicate a list that continues on infinitely.
+For example, $\N$, the set of natural numbers, can be specified as
+\[\N = \{ 0, 1, 2, 3, \dots \}\]
+However, this is an informal notation, which is not really well-defined,
+and it should only be used in cases where it is clear what it means.
+It's not very useful to say that ``the set of prime numbers is
+$\{2,3,5,7,11,13,\dots\}$,'' and it is completely meaningless to talk
+about ``the set $\{17,42,105,\dots\}$.''  Clearly, we need another way to
+specify sets besides listing their elements.  The need is fulfilled
+by predicates\index{predicate}.
+
+If $P(x)$ is a predicate, then we can form the set that contains all entities $a$ such
+that $a$ is in the domain of discourse for $P$ and $P(a)$ is true.  The
+notation $\{x \st P(x)\}$ is used to denote this set.  The name of the variable,
+$x$, is arbitrary, so the same set could equally well be denoted as 
+$\{z\st P(z)\}$ or $\{r\st P(r)\}$.   The notation $\{x\st P(x)\}$ can be read
+``the set of $x$ such that $P(x)$.''  For example, if $E(x)$ is the predicate
+``$x$ is an even number,'' and if the domain of discourse for $E$ is the 
+set $\N$ of natural numbers, then the notation $\{x\st E(x)\}$ specifies the 
+set of even natural numbers.  That is, 
+\[\{x\st E(x)\} = \{0,2,4,6,8,\dots\}\]
+It turns out, for deep and surprising reasons that we will discuss later in this
+section, 
+that we have to be a little careful about what
+counts as a predicate.  
+In order for the notation $\{x\st P(x)\}$ to be valid,
+we have to assume that the domain of discourse of $P$ is in fact a set.  
+(You might wonder how it could be anything else.  That's the surprise!)
+Often, it is useful to specify the domain of discourse explicitly in 
+the notation that defines a set.  In the above example, to make it clear that $x$ must 
+be a natural number, we could write the set as $\{x\in\N \st  E(x)\}$.  This notation 
+can be read as ``the set of all $x$ in $\N$ such that $E(x)$.''  More generally,
+if $X$ is a set and $P$ is a predicate whose domain of discourse includes
+all the elements of $X$, then the notation
+\[\{x\in X\st P(x)\}\]
+is the set that consists of all entities $a$ that are members of the set $X$ and
+for which $P(a)$ is true.  In this notation, we don't have to assume that the
+domain of discourse for $P$ is a set, since we are effectively limiting the
+domain of discourse to the set $X$.  The set denoted by $\{x\in X\st P(x)\}$ could
+also be written as $\{x\st x\in X\AND P(x)\}$.
+
+We can use this notation to define the set of prime numbers in a rigorous
+way.  A prime number is a natural number $n$ which is greater than 1 and which
+satisfies the property that for any factorization $n=xy$, where $x$ and $y$ are
+natural numbers, either $x$ or $y$ must be $n$.  We can express this definition
+as a predicate and define the set of prime numbers as
+\[\{n\in\N\st (n>1)\AND\forall x\forall y\big((x\in\N\AND y\in\N\AND n=xy)\IMP(x=n\OR y=n)\big)\}.\]
+Admittedly, this definition is hard to take in in one gulp.  But this example
+shows that it is possible to define complex sets using predicates.
+
+
+
+\medbreak
+
+Now that we have a way to express a wide variety of sets, we turn to operations that
+can be performed on sets.  The most basic operations on sets are 
+\nw{union} and \nw{intersection}.  If $A$ and $B$ are sets, then we define
+the union of $A$ and $B$ to be the set that contains all the elements of
+$A$ together with all the elements of $B$.  The union of $A$ and $B$ is
+denoted by $A\cup B$.  The union can be defined formally as
+\[A\cup B = \{x\st x\in A \OR x\in B\}.\]
+The intersection of $A$ and $B$ is defined to be the set that contains
+every entity that is both a member of $A$ and a member of $B$. The intersection
+of $A$ and $B$ is denoted by $A\cap B$.  Formally,
+\[A\cap B = \{x\st x\in A \AND x\in B\}.\]
+An entity gets into $A\cup B$ if it is in \emph{either} $A$ or $B$.
+It gets into $A\cap B$ if it is in \emph{both} $A$ and $B$.  Note that
+the symbol for the logical ``or'' operator, $\OR$, is similar to the
+symbol for the union operator,~$\cup$, while the logical ``and'' operator,
+$\AND$, is similar to the intersection operator,~$\cap$.
+
+The \nw{set difference} of two sets, $A$ and $B$, is defined to be
+the set of all entities that are members of $A$ but are not members
+of $B$.  The set difference of $A$ and $B$ is denoted $A\SETDIFF B$.
+The idea is that $A\SETDIFF B$ is formed by starting with
+$A$ and then removing any element that is also found in $B$.  Formally,
+\[A\SETDIFF B = \{x\st x\in A \AND x\not\in B\}.\]
+Union and intersection are clearly commutative operations.  That
+is, $A\cup B=B\cup A$ and $A\cap B=B\cap A$ for any sets $A$ and $B$.
+However, set difference is not commutative.  In general,
+$A\SETDIFF B \not= B\SETDIFF A$.
+
+Suppose that $A=\{a,b,c\}$, that $B=\{b,d\}$, and
+that $C=\{d,e,f\}$.  Then we can apply the definitions of
+union, intersection, and set difference to compute, for example,
+that:
+\begin{align*}
+   A\cup B &= \{a,b,c,d\} &  A\cap B &= \{b\}   &  A\SETDIFF B &= \{a,c\}\\
+   A\cup C &= \{a,b,c,d,e,f\}&A\cap C&= \emptyset & A\SETDIFF C &= \{a,b,c\}
+\end{align*}
+In this example, the sets $A$ and $C$ have no elements in common, so
+that $A\cap C=\emptyset$.  There is a term for this:
+Two sets are said to be \nw[disjoint sets]{disjoint} if they
+have no elements in common.  That is, for any sets $A$ and $B$,
+$A$ and $B$ are said to be disjoint if and only if $A\cap B=\emptyset$.
+
+
+Of course, the set operations can also be applied to sets
+that are defined by predicates.   For example, let 
+$L(x)$ be the predicate ``$x$ is lucky,'' and let $W(x)$ be
+the predicate ``$x$ is wise,'' where the domain of discourse for
+each predicate is the set of people.  Let $X = \{x\st L(x)\}$,
+and let $Y=\{x\st W(x)\}$.  Then
+\begin{align*}
+  X\cup Y &= \{x\st L(x)\OR W(x)\} = \{\text{people who are lucky or wise}\}\\
+  X\cap Y &= \{x\st L(x)\AND W(x)\} = \{\text{people who are lucky and wise}\}\\
+  X\SETDIFF Y &= \{x\st L(x)\AND \NOT W(x)\} = \{\text{people who are lucky but not wise}\}\\
+  Y\SETDIFF X &= \{x\st W(x)\AND \NOT L(x)\} = \{\text{people who are wise but not lucky}\}
+\end{align*}
+You have to be a little careful with the English word ``and.''  We might say that
+the set $X\cup Y$ contains people who are lucky \emph{and} people who are
+wise.   But what this means is that a person gets into the set
+$X\cup Y$ either by being lucky \emph{or} by being wise, so
+$X\cup Y$ is defined using the logical ``or'' operator,~$\OR$.
+
+\medbreak
+
+\fig
+  {F-setops}
+  {Some of the notations that are defined in this section.  $A$ and $B$ are
+   sets, and $a$ is an entity.}
+  {\begin{tabular}{|c|l|}
+        \hline
+        \strut\textbf{Notation} & \textbf{Definition}\\
+        \hline
+        \strut $a\in A$      & $a$ is a member (or element) of $A$\\ 
+        \strut $a\not\in A$  & $\NOT(a\in A)$, $a$ is not a member of $A$\\
+        \strut $\emptyset$   & the empty set, which contains no elements\\
+        \strut $A\SUB B$     & $A$ is a subset of $B$, $\forall x(x\in A\IMP x\in B)$\\
+        \strut $A\PSUB B$    & $A$ is a proper subset of $B$, $A\SUB B \AND A\not=B$\\
+        \strut $A\SUP B$     & $A$ is a superset of $B$, same as $B\SUB A$\\
+        \strut $A\PSUP B$    & $A$ is a proper superset of $B$, same as $B\PSUP A$\\
+        \strut $A=B$         & $A$ and $B$ have the same members, $A\SUB B\AND B\SUB A$\\
+        \strut $A\cup B$     & union of $A$ and $B$, $\{x\st x\in A\OR x\in B\}$\\
+        \strut $A\cap B$     & intersection of $A$ and $B$, $\{x\st x\in A\AND x\in B\}$\\
+        \strut $A\SETDIFF B$ & set difference of $A$ and $B$, $\{x\st x\in A\AND x\not\in B\}$\\
+        \strut $\POW(A)$     & power set of $A$, $\{X\st X\SUB A\}$\\
+        \hline
+     \end{tabular}
+   }
+
+Sets can contain other sets as elements.  For example, the notation $\{a,\{b\}\}$
+defines a set that contains two elements, the entity $a$ and the set $\{b\}$.
+Since the set $\{b\}$ is a 
+member of the set $\{a,\{b\}\}$, we have that $\{b\}\in\{a,\{b\}\}$.
+On the other hand, provided that $a\not=b$, the statement $\{b\}\SUB\{a,\{b\}\}$
+is false, since saying $\{b\}\SUB\{a,\{b\}\}$ is equivalent to saying that
+$b\in\{a,\{b\}\}$, and the entity $b$ is not one of the two members
+of $\{a,\{b\}\}$.   For the entity $a$, it is true that $\{a\}\SUB\{a,\{b\}\}$.
+
+Given a set $A$, we can construct the set that contains all the
+subsets of $A$.  This set is called the \nw{power set} of $A$, and
+is denoted $\POW(A)$.  Formally, we define
+\[\POW(A)=\{X\st X\SUB A\}.\]
+For example, if $A=\{a,b\}$, then the subsets of $A$ are the empty set,
+$\{a\}$, $\{b\}$, and $\{a,b\}$, so the power set of $A$ is set given by
+\[\POW(A) = \{\,\emptyset,\,\{a\},\,\{b\},\,\{a,b\}\,\}.\]
+Note that since the empty set is a \emph{subset} of any set, the empty
+set is an \emph{element} of the power set of any set.  That is, for
+any set $A$, $\emptyset\SUB A$ and $\emptyset\in\POW(A)$.  Since the
+empty set is a subset of itself, and is its only subset, we have
+that $\POW(\emptyset) = \{\emptyset\}$.  The set $\{\emptyset\}$ is not
+empty.  It contains one element, namely~$\emptyset$.
+
+
+\medbreak
+
+We remarked earlier in this section that the notation $\{x \st P(x)\}$
+is only valid if the domain of discourse of $P$ is a set.  This might
+seem a rather puzzling thing to say---after all, why and how would
+the domain of discourse be anything else?  The answer is related to
+Russell's Paradox, which we mentioned briefly in Chapter~\ref{C-proof}
+and which 
+shows that it is logically impossible for the
+set of all sets to exist. This impossibility can be demonstrated using a proof by 
+contradiction.  In the proof, we use the existence of the set of
+all sets to define another set which cannot exist because
+its existence would lead to a logical contradiction.
+
+\begin{theorem}\label{T-Russell}
+There is no set of all sets.
+\end{theorem}
+\begin{proof}
+Suppose that the set of all sets exists.  We will show that this
+assumption leads to a contradiction.  Let $V$ be the set of all
+sets.  We can then define the set $R$ to be the set which contains
+every set that does not contain itself.  That is,
+\[R=\{X\in V\st X\not\in X\}\]
+Now, we must have either $R\in R$ or $R\not\in R$.  We will show
+that either case leads to a contradiction.
+
+Consider the case where $R\in R$.  Since $R\in R$, $R$ must satisfy the
+condition for membership in $R$.  A set $X$ is in $R$ iff $X\not\in X$.
+To say that $R$ satisfies this condition means that $R\not\in R$.
+That is, from the fact that $R\in R$, we deduce the contradiction
+that $R\not\in R$.
+
+Now consider the remaining case, where $R\not\in R$.  Since
+$R\not\in R$, $R$ does not satisfy the condition for membership
+in $R$.  Since the condition for membership is that $R\not\in R$,
+and this condition is false,
+the statement $R\not\in R$ must be false.
+But this means that the statement $R\in R$ is true.  From the
+fact that $R\not\in R$, we deduce the contradiction that $R\in R$.
+
+Since both possible cases, $R\in R$ and $R\not\in R$, lead to contradictions,
+we see that it is not possible for $R$ to exist.  Since the existence of
+$R$ follows from the existence of $V$, we see that $V$ also cannot
+exist.
+\end{proof}
+
+To avoid Russell's paradox, we must put limitations on the construction
+of new sets.  We can't force the set of all sets into existence
+simply by thinking of it.  We can't form the set $\{x\st P(x)\}$
+unless the domain of discourse of $P$ is a set.  Any predicate $Q$
+can be used to form a set $\{x\in X\st Q(x)\}$, but this notation
+requires a pre-existing set $X$.
+Predicates can be used to form subsets of existing sets, but they
+can't be used to form new sets completely from scratch.
+
+\medskip
+
+The notation $\{x\in A\st P(x)\}$ is a convenient way to effectively limit
+the domain of discourse of a predicate, $P$, to members of a set, $A$, that
+we are actually interested in.  We will use a similar notation with the
+quantifiers $\forall$ and~$\exists$.  The proposition $(\forall x\in A)(P(x))$
+is true if and only if $P(a)$ is true for every element $a$ of the set $A$.
+And the proposition $(\exists x\in A)(P(x))$ is true if and only if there
+is some element $a$ of the set $A$ for which $P(a)$ is true.  These notations
+are valid only when $A$ is contained in the domain of discourse for~$P$.
+As usual, we can leave out parentheses when doing so introduces no
+ambiguity.  So, for example, we might write $\forall x\in A\;P(x)$.
+
+\medskip
+
+We end this section with proofs of the two forms of the
+principle of mathematical induction.  These proofs were omitted 
+from the previous chapter, but only for the lack of a bit of set
+notation. In fact, the principle of mathematical induction is
+valid only because it follows from one of the basic axioms that
+define the natural numbers, namely the fact that any non-empty
+set of natural numbers has a smallest element.  Given this axiom,
+we can use it to prove the following two theorems:
+
+
+\begin{theorem}\label{T-induction}
+Let $P$ be a one-place predicate whose domain of discourse includes
+the natural numbers.  Suppose that $P(0)\AND \big(\forall k\in\N\;(P(k)\IMP P(k+1))\big)$.
+Then $\forall n\in\N,\,P(n)$.
+\end{theorem}
+\begin{proof}
+Suppose that both $P(0)$ and $\big(\forall k\in\N\,(P(k)\IMP P(k+1))\big)$ are true,
+but that $\big(\forall n\in\N,\,P(n)\big)$ is false.  We show that this assumption
+leads to a contradiction.
+
+Since the statement $\forall n\in\N,\,P(n)$ is false, its negation, $\NOT(\forall n\in\N,\,P(n))$,
+is true.  The negation is equivalent to $\exists n\in\N,\,\NOT P(n)$.
+Let $X=\{n\in\N\st \NOT P(n)\}$.  Since $\exists n\in\N,\,\NOT P(n)$ is true,
+we know that $X$ is not empty.  Since $X$~is a non-empty set of natural numbers,
+it has a smallest element.  Let $x$ be
+the smallest element of $X$.  That is, $x$ is the smallest natural number
+such that $P(x)$ is false.  Since we know that $P(0)$ is true,
+$x$ cannot be~0.  Let $y=x-1$.  Since $x\not=0$, $y$ is a natural number.
+Since $y<x$, we know, by the definition of $x$, that $P(y)$ is true.
+We also know that $\forall k\in\N\,(P(k)\IMP P(k+1))$ is true.
+In particular, taking $k=y$, we know that $P(y)\IMP P(y+1)$.
+Since $P(y)$ and $P(y)\IMP P(y+1)$, we deduce by \textit{modus ponens}
+that $P(y+1)$ is true.  But $y+1=x$, so we have deduced that 
+$P(x)$ is true.  This contradicts the fact that $P(x)$ is false.
+This contradiction proves the theorem.
+\end{proof}
+
+
+\begin{theorem}
+Let $P$ be a one-place predicate whose domain of discourse includes
+the natural numbers.  Suppose that $P(0)$ is true and that
+\[(P(0)\AND P(1)\AND\cdots\AND P(k))\IMP P(k+1)\]
+is true for each natural number $k\geq 0$.  
+Then it is true that $\forall n\in\N,\,P(n)$.
+\end{theorem}
+\begin{proof}
+Suppose that $P$ is a predicate that satisfies the hypotheses of the
+theorem, and suppose that the statement $\forall n\in\N,\,P(n)$ is false.
+We show that this assumption leads to a contradiction.
+
+Let $X=\{n\in\N\st \NOT P(n)\}$.  Because of the assumption that
+$\forall n\in\N,\,P(n)$ is false, $X$ is non-empty.  It follows
+that $X$ has a smallest element.  Let $x$ be the smallest element of
+$X$.  The assumption that $P(0)$ is true means that $0\not\in X$,
+so we must have $x>0$.
+Since $x$ is the smallest natural number for which $P(x)$ is false,
+we know that $P(0)$, $P(1)$, \dots, and $P(x-1)$ are all true.
+From this and the fact that $(P(0)\AND P(1)\AND\cdots\AND P(x-1))\IMP P(x)$,
+we deduce that $P(x)$ is true.  But this contradicts
+the fact that $P(x)$ is false.  This contradiction proves the theorem.
+\end{proof}
+
+
+
+
+\begin{exercises}
+
+\problem If we don't make the assumption that $a$, $b$, and $c$ are distinct,
+then the set denoted by $\{a,b,c\}$ might actually contain either 1, 2, or 3 
+elements.  How many different elements might the set
+$\{\,a,\,b,\,\{a\},\,\{a,c\},\,\{a,b,c\}\,\}$
+contain?  Explain your answer.
+
+\problem Compute $A\cup B$, $A\cap B$, and $A\SETDIFF B$ for each of the following
+pairs of sets
+\pparts{
+     A =\{a,b,c\},\ B=\emptyset \cr
+     A =\{1,2,3,4,5\},\ B=\{2,4,6,8,10\} \cr
+     A =\{a,b\},\ B=\{a,b,c,d\} \cr
+     A =\{a,b,\{a,b\}\},\ B=\{\{a\},\{a,b\}\}
+}
+
+\problem Recall that $\N$ represents the set of natural numbers.  That is,
+$\N=\{0,1,2,3,\dots\}$.  Let $X=\{n\in\N\st n\ge 5\}$,
+let $Y=\{n\in\N\st n\le10\}$, and let $Z=\{n\in\N\st \text{$n$ is an even number}\}$.
+Find each of the following sets:
+\pparts{
+     X\cap Y  & X\cup Y   & X\SETDIFF Y &\N\SETDIFF Z\cr
+     X\cap Z  & Y\cap Z   & Y\cup Z   & Z\SETDIFF\N\cr
+}
+
+
+\problem Find $\POW\big(\{1,2,3\}\big)$. (It has eight elements.)
+
+\problem Assume that $a$ and $b$ are entities and that $a\not=b$. Let $A$ and $B$ be the sets defined by
+$A=\{\,a,\,\{b\},\,\{a,b\}\,\}$ and $B=\{\,a,\,b,\,\{a,\{b\}\}\,\}$.
+Determine whether each of the following statements is true or false.  Explain
+your answers.
+\pparts{
+    b\in A & \{a,b\}\SUB A & \{a,b\}\SUB B\cr 
+    \{a,b\}\in B & \{a,\{b\}\}\in A & \{a,\{b\}\}\in B
+}
+
+\problem Since $\POW(A)$ is a set, it is possible to form the set
+$\POW\big(\POW(A)\big)$.  What is $\POW\big(\POW(\emptyset)\big)\,$?
+What is $\POW\big(\POW(\{a,b\})\big)\,$? (It has sixteen elements.)
+
+\problem In the English sentence, ``She likes men who are tall, dark, and
+handsome,'' does she like an intersection or a union of sets of men?
+How about in the sentence, ``She likes men who are tall, men who are dark,
+and men who are handsome?''
+
+\problem If $A$ is any set, what can you say about $A\cup A\,$?
+About $A\cap A\,$?  About $A\SETDIFF A\,$?  Why?
+
+\problem Suppose that $A$ and $B$ are sets such that $A\SUB B$.
+What can you say about $A\cup B\,$?  About $A\cap B\,$?
+About $A\SETDIFF B\,$?  Why?
+
+\problem Suppose that $A$, $B$, and $C$ are sets.  Show that
+$C\SUB A\cap B$ if and only if $(C\SUB A)\AND (C\SUB B)$.
+
+\problem\label{E-subtrans} Suppose that $A$, $B$, and $C$ are sets, and that
+$A\SUB B$ and $B\SUB C$.  Show that $A\SUB C$.
+
+\problem Suppose that $A$ and $B$ are sets such that $A\SUB B$.
+Is it necessarily true that $\POW(A)\SUB \POW(B)\,$?
+Why or why not?
+
+
+\problem Let $M$ be any natural number, and let $P(n)$ be a
+predicate whose domain of discourse includes all natural numbers
+greater than or equal to $M$.  Suppose that $P(M)$ is true,
+and suppose that $P(k)\IMP P(k+1)$ for all $k\ge M$.
+Show that $P(n)$ is true for all $n\ge M$.
+
+
+\end{exercises}
+
+
+
+
+

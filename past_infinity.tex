@@ -1,0 +1,581 @@
+\section{Counting Past Infinity}\label{S-sets-6}
+
+As children, we all learned to answer the question ``How many?''
+by counting with numbers: 1, 2, 3, 4,~\dots.  But the question of
+``How many?'' was asked and answered long before the abstract concept of
+number was invented.  The answer can be given in terms of ``as many as.''
+How many cousins do you have?  As many cousins as I have fingers on both
+hands.  How many sheep do you own?  As many sheep as there are notches
+on this stick.  How many baskets of wheat must I pay in taxes?
+As many baskets as there are stones in this box.  The question
+of how many things are in one collection of objects is answered
+by exhibiting another, more convenient, collection of objects
+that has just as many members.  
+
+In set theory, the idea of one set having just as many members
+as another set is expressed in terms of \nw{one-to-one
+correspondence}.  A one-to-one correspondence between two sets
+$A$ and $B$ pairs each element of $A$ with an element of $B$
+in such a way that every element of $B$ is paired with one and
+only one element of~$A$.  The process of counting, as it is learned
+by children, establishes a one-to-one correspondence between a set of 
+$n$ objects and the set of numbers from 1 to~$n$.  The rules
+of counting are the rules of one-to-one correspondence:
+Make sure you count every object, make sure you don't count
+the same object more than once.  That is, make sure that
+each object corresponds to \emph{one} and \emph{only one} number.
+Earlier in this chapter,
+we used the fancy name ``bijective function''\index{bijective function}
+to refer to this idea, but we can now see it as
+as an old, intuitive way of answering the question ``How many?''
+
+\medbreak
+
+In counting, as it is learned in childhood, the set $\{1,2,3,\dots,n\}$
+is used as a typical set that contains $n$ elements.  In mathematics
+and computer science, it has become more common to start counting with
+zero instead of with one, so we define the following sets to use
+as our basis for counting:
+\begin{center}
+\begin{tabular}{@{\qquad\qquad}ll}
+   $N_0=\emptyset$,& a set with 0 elements\\
+   $N_1=\{0\}$,& a set with 1 element\\
+   $N_2=\{0,1\}$,& a set with 2 elements\\
+   $N_3=\{0,1,2\}$,& a set with 3 elements\\
+   $N_4=\{0,1,2,3\}$,& a set with 4 elements\\
+\end{tabular}
+\end{center}
+\noindent and so on.  In general, $N_n=\{0,1,2,\dots,n-1\}$ for each $n\in\N$.
+For each natural number $n$, $N_n$ is a set with $n$ elements.
+Note that if $n\not= m$, then there is no one-to-one correspondence
+between $N_n$ and $N_m$.  This is obvious, but like many obvious things
+is not all that easy to prove rigorously, and we omit the argument here. 
+
+\begin{theorem}
+For each $n\in\N$, let $N_n$ be the set $N_n=\{0,1,\dots,n-1\}$.
+If $n\not=m$, then there is no bijective function from $N_m$ to $N_n$.
+\end{theorem}
+
+
+We can now make the following definitions:
+
+\begin{definition}
+A set $A$ is said to be \nw[finite set]{finite} if there is a one-to-one
+correspondence between $A$ and $N_n$ for some natural number~$n$.  We then
+say that $n$ is the \nw{cardinality} of~$A$.  The notation $|A|$ is
+used to indicate the cardinality of~$A$.  That is, if $A$ is a finite set,
+then $|A|$ is the natural number $n$ such that there is a one-to-one
+correspondence between $A$ and $N_n$.  A set that is not finite is
+said to be \nw[infinite set]{infinite}.  That is, a set $B$ is infinite
+if for every $n\in \N$, there is \emph{no} one-to-one correspondence between
+$B$ and~$N_n$.
+\end{definition}
+
+Fortunately, we don't always have to count every element in a set individually
+to determine its cardinality.  Consider, for example, the set $A\times B$,
+where $A$ and $B$ are finite sets.  If we already know $|A|$ and~$|B|$,
+then we can determine $|A\times B|$ by computation, without explicit counting of elements.
+In fact, $|A\times B|=|A|\cdot |B|$.  The cardinality of the cross product
+$A\times B$ can be computed by multiplying the cardinality of $A$ by
+the cardinality of $B$.  To see why this is true, think of how you might
+count the elements of $A\times B$.  You could put the elements into piles,
+where all the ordered pairs in a pile have the same first coordinate.  There
+are as many piles as there are elements of $A$, and each pile contains
+as many ordered pairs as there are elements of~$B$.  That is, there
+are $|A|$ piles, with $|B|$ items in each.  By the definition of multiplication,
+the total number of items in all the piles is $|A|\cdot|B|$.
+A similar result holds for the cross product of more that two finite sets.
+For example, $|A\times B\times C|=|A|\cdot |B|\cdot |C|$.
+
+It's also easy to compute $|A\cup B|$ in the case where $A$ and $B$ are
+disjoint finite sets.  (Recall that two sets $A$ and $B$ are said to be
+disjoint if they have no members in common, that is, if $A\cap B=\emptyset$.)
+Suppose $|A|=n$ and $|B|=m$.  If we wanted to count the elements of $A\cup B$,
+we could use the $n$ numbers from 0 to $n-1$ to count the elements of $A$
+and then use the $m$ numbers from $n$ to $n+m-1$ to count the elements of
+$B$.  This amounts to a one-to-one correspondence between $A\cup B$
+and the set $N_{n+m}$.  We see that $|A\cup B|=n+m$.  That is,
+for disjoint finite sets $A$ and $B$, $|A\cup B|=|A|+|B|$.
+
+What about $A\cup B$, where $A$ and $B$ are not disjoint?  We have to be
+careful not to count the elements of $A\cap B$ twice.  After counting
+the elements of $A$, there are only $|B|-|A\cap B|$ new elements in $B$ that
+still need to be counted.  So we see that for any two finite sets $A$ and $B$,
+$|A\cup B|=|A|+|B|-|A\cap B|$.
+
+What about the number of subsets of a finite set $A$?  What is the relationship
+between $|A|$ and $|\POW(A)|$?  The answer is provided by the following theorem.
+
+\begin{theorem}\label{T-subsetct}
+A finite set with cardinality $n$  has $2^n$ subsets.
+\end{theorem}
+\begin{proof}
+Let $P(n)$ be the statement ``Any set with cardinality $n$ has $2^n$
+subsets.''  We will use induction to show that $P(n)$ is true
+for all $n\in N$.
+
+Base case:  For $n=0$, $P(n)$ is the statement that a set with
+cardinality 0 has $2^0$ subsets.  The only set with 0 elements is
+the empty set.  The empty set has exactly 1 subset, namely itself.
+Since $2^0=1$, $P(0)$ is true.
+
+Inductive case:  Let $k$ be an arbitrary element of $\N$, and
+assume that $P(k)$ is true.  That is, assume that any set with
+cardinality $k$ has $2^k$ elements.  (This is the induction
+hypothesis.)  We must show that $P(k+1)$
+follows from this assumption.  That is, using the assumption
+that any set with cardinality $k$ has $2^k$ subsets, we must show that any
+set with cardinality $k+1$ has $2^{k+1}$ subsets.
+
+Let $A$ be an arbitrary set with cardinality $k+1$. 
+We must show that $|\POW(A)|=2^{k+1}$.   Since $|A|>0$,
+$A$ contains at least one element.  Let $x$ be
+some element of $A$, and let $B=A\SETDIFF\{x\}$.  The cardinality of
+$B$ is $k$, so we have by the induction hypothesis that $|\POW(B)|=2^k$.
+Now, we can divide the subsets of $A$ into two classes: subsets of
+$A$ that do not contain $x$ and subsets of $A$ that do contain $x$.
+Let $Y$ be the collection of subsets of $A$ that do not contain $x$,
+and let $X$ be the collection of subsets of $A$ that do contain $x$.
+$X$ and $Y$ are disjoint, since it is impossible for a given subset
+of $A$ both to contain and to not contain~$x$. It follows that
+$|\POW(A)|=|X\cup Y|=|X|+|Y|$.
+
+Now, a member of $Y$ is a subset of $A$ that does not contain $x$.
+But that is exactly the same as saying that a member of $Y$ is
+a subset of $B$. So $Y=\POW(B)$, which we know contains $2^k$ members.
+As for $X$, there is a one-to-one correspondence between $\POW(B)$
+and $X$.  Namely, the function $f\colon\POW(B)\to X$ defined by
+$f(C)=C\cup \{x\}$ is a bijective function.  (The proof of this
+is left as an exercise.)  From this, it follows that
+$|X|=|\POW(B)|=2^k$.  Putting these facts together, we see that
+$|\POW(A)|=|X|+|Y|=2^k+2^k=2\cdot2^k=2^{k+1}$.  This completes the
+proof that $P(k)\IMP P(k+1)$.
+\end{proof}
+
+We have seen that
+the notation $A^B$ represents the set of all functions from $B$ to~$A$.
+Suppose $A$ and $B$ are finite, and that $|A|=n$ and $|B|=m$.
+Then $\left|A^B\right|=n^m=|A|^{|B|}$.  (This fact is one of the
+reasons why the notation $A^B$ is reasonable.)
+One way to see this is to note that there is a one-to-one correspondence
+between $A^B$ and a cross product $A\times A\times\cdots A$, where the
+number of terms in the cross product is $m$.  (This will be shown in
+one of the exercises at the end of this section.)  It follows that
+$\left|A^B\right|=|A|\cdot|A|\cdots|A|=n\cdot n\cdots n$, where the 
+factor $n$ occurs $m$ times in the product.  This product is,
+by definition,~$n^m$.   
+  
+
+This discussion about computing cardinalities is summarized in the following
+theorem:
+\begin{theorem}
+Let $A$ and $B$ be finite sets.  Then
+\begin{itemize}
+   \item $|A\times B|=|A|\cdot |B|$.
+   
+   \item $|A\cup B|= |A|+|B|-|A\cap B|$.
+   
+   \item If $A$ and $B$ are disjoint then $|A\cup B|= |A|+|B|$.
+   
+   \item $\left|A^B\right|=|A|^{|B|}$.
+   
+   \item $|\POW(A)|=2^{|A|}$.
+\end{itemize}
+\end{theorem}
+When it comes to counting and computing cardinalities, this theorem is
+only the beginning of the story.  There is an entire large and deep branch of
+mathematics known as \nw{combinatorics} that is devoted mostly to the problem
+of counting.  But the theorem is already enough to answer many questions
+about cardinalities.
+
+For example, suppose that $|A|=n$ and $|B|=m$.  We can form the set
+$\POW(A\times B)$, which consists of all subsets of $A\times B$.  Using
+the theorem, we can compute that $|\POW(A\times B)|=2^{|A\times B|}=2^{|A|\cdot|B|}=2^{nm}$.
+If we assume that $A$ and $B$ are disjoint, then we can compute that
+$\left|A^{A\cup B}\right|=|A|^{|A\cup B|}=n^{n+m}$.
+
+To be more concrete, let $X=\{a,b,c,d,e\}$ and let
+$Y=\{c,d,e,f\}$ where $a$, $b$, $c$, $d$, $e$, and $f$ are distinct.
+Then $|X\times Y|=5\cdot 4=20$ while $|X\cup Y|=5 + 4 - |\{c,d,e\}| = 6$
+and $\left|X^Y\right|=5^4=625$.
+
+We can also answer some simple practical questions.  Suppose that in
+a restaurant you can choose one appetizer and one main course.  What is the
+number of possible meals?  If $A$ is the set of possible appetizers and $C$ is the
+set of possible main courses, then your meal is an ordered pair belonging
+to  the set $A\times C$.  The number of possible meals is $|A\times C|$,
+which is the product of the number of appetizers and the number of main courses.
+
+Or suppose that four different prizes are to be awarded, and that the set of people
+who are eligible for the prizes is~$A$.  Suppose that $|A|=n$.
+How many different ways are there
+to award the prizes?  One way to answer this question is to view a way of
+awarding the prizes as a function from the set of prizes to the set of people.
+Then, if $P$ is the set of prizes, the number of different ways of awarding
+the prizes is $\left|A^P\right|$.  Since $|P|=4$ and $|A|=n$, this is $n^4$.  Another
+way to look at it is to note that the people who win the prizes form
+an ordered tuple $(a,b,c,d)$, which is an element of $A\times A\times A\times A$.
+So the number of different ways of awarding the prizes is
+$|A\times A\times A\times A|$, which is $|A|\cdot |A|\cdot |A|\cdot |A|$.  This
+is $|A|^4$, or $n^4$, the same answer we got before.\footnote{This discussion assumes that one person can 
+receive any number of prizes.
+What if the prizes have to go to four different people?   This question
+takes us a little farther into combinatorics than I would like to go,
+but the answer is not hard.  The first award can be given to any of $n$
+people.  The second prize goes to one of the remaining $n-1$ people.  There
+are $n-2$ choices for the third prize and $n-3$ for the fourth.  The
+number of different ways of awarding the prizes to four different people
+is the product $n(n-1)(n-2)(n-3)$.}
+
+\medbreak
+
+So far, we have only discussed finite sets.  $\N$, the set of natural
+numbers $\{0,1,2,3,\dots\}$, is an example of an infinite set.  There
+is no one-to-one correspondence between $\N$ and any of the finite sets~$N_n$.  
+Another example of an infinite set is the set of even natural numbers,
+$E=\{0,2,4,6,8,\dots\}$.  There is a natural sense in which the sets $\N$
+and $E$ have the same number of elements.  That is, there is a one-to-one
+correspondence between them.  The function $f\colon \N\to E$ defined
+by $f(n)=2n$ is bijective.  We will say that $\N$ and $E$ have the same
+cardinality,\index{cardinality} even though that cardinality is not
+a finite number.  Note that $E$ is a proper subset of $\N$.  That is,
+$\N$ has a proper subset that has the same cardinality as~$\N$.
+
+We will see that not all infinite sets have the same cardinality.  When it
+comes to infinite sets, intuition is not always a good guide.  Most people
+seem to be torn between two conflicting ideas.  On the one hand, they think, it seems
+that a proper subset of a set should have fewer elements than the set itself.
+On the other hand, it seems that any two infinite sets should have the same
+number of elements.  Neither of these is true, at least if we define
+having the same number of elements in terms of one-to-one correspondence.
+
+A set $A$ is said to be \nw{countably infinite} if there is a one-to-one
+correspondence between $\N$ and $A$.  A set is said to be
+\nw[countable set]{countable} if it is either finite or countably infinite.
+An infinite set that is not countably infinite is said to be
+\nw[uncountable set]{uncountable}.  If $X$ is an uncountable set, then there
+is no one-to-one correspondence between $\N$ and $X$.  
+
+The idea of ``countable infinity''
+is that even though a countably infinite set cannot be counted
+in a finite time, we can imagine counting all the elements of $A$,
+one-by-one, in an infinite process.  A bijective function
+$f\colon\N\to A$ provides such an infinite listing:
+$(f(0),f(1),f(2),f(3),\dots)$.  Since $f$ is onto, this infinite list
+includes all the elements of $A$.  In fact, making such a list effectively
+shows that $A$ is countably infinite, since the list amounts to a bijective
+function from $\N$ to $A$.  For an uncountable set, it is
+impossible to make a list, even an infinite list, that contains all the
+elements of the set.
+
+Before you start believing in uncountable sets, you should ask for
+an example.  In Chapter~\ref{C-proof}, we worked with the infinite
+sets $\Z$ (the integers), $\Q$ (the rationals), $\R$ (the reals), and
+$\R\SETDIFF\Q$ (the irrationals).  Intuitively, these are all ``bigger''
+than $\N$, but as we have already mentioned, intuition is a poor guide
+when it comes to infinite sets.  Are any of $\Z$, $\Q$, $\R$, and $\R\SETDIFF\Q$
+in fact uncountable?
+
+It turns out that both $\Z$ and $\Q$ are only countably infinite.
+The proof that $\Z$ is countable is left as an exercise; we 
+will show here that the set of non-negative
+rational numbers is countable.  (The fact that $\Q$ itself is countable 
+follows easily from this.)  The reason is that it's possible to make
+an infinite list containing all the non-negative rational numbers.  Start the
+list with all the non-negative rational numbers $n/m$ such that $n+m=1$.  There
+is only one such number, namely $0/1$.  Next come numbers with
+$n+m=2$.  They are $0/2$ and $1/1$, but we leave out $0/2$ since
+it's just another way of writing $0/1$, which is already in the
+list.  Now, we add the numbers with $n+m=3$, namely
+$0/3$, $1/2$, and $2/1$.  Again, we leave out $0/3$, since it's
+equal to a number already in the list.  Next come numbers
+with $n+m=4$.  Leaving out $0/4$ and $2/2$ since they are already
+in the list, we add $1/3$ and $3/1$ to the list.  We continue
+in this way, adding numbers with $n+m=5$, then numbers with
+$n+m=6$, and so on.  The list looks like
+\[
+    \left( {\,0\,\over 1}, {\,1\,\over 1}, {\,1\,\over 2}, {\,2\,\over 1},
+            {\,1\,\over 3}, {\,3\,\over 1}, {\,1\,\over 4}, {\,2\,\over 3},
+              {\,3\,\over 2}, {\,4\,\over 1}, {\,1\,\over 5},
+               {\,5\,\over 1}, {\,1\,\over 6}, {\,2\,\over 5},\dots
+    \right)
+\]
+This process can be continued indefinitely, and every non-negative rational
+number will eventually show up in the list.  So we get a
+complete, infinite list of non-negative rational numbers.  This shows that
+the set of non-negative rational numbers is in fact countable.
+
+On the other hand, $\R$ is uncountable.  It is not possible to
+make an infinite list that contains every real number.  It is
+not even possible to make a list that contains every real
+number between zero and one.  Another way of saying this is that
+every infinite list of real numbers between zero and one, no 
+matter how it is constructed, leaves something out.  To see why
+this is true, imagine such a list, displayed in an infinitely long
+column.  Each row contains one number, which has an infinite
+number of digits after the decimal point.  Since it is a number
+between zero and one, the only digit before the decimal point is
+zero.  For example, the list might look like this:
+\begin{center}
+\begin{tabular}{l}
+    0.\textbf{9}0398937249879561297927654857945\dots\\
+    0.1\textbf{2}349342094059875980239230834549\dots\\
+    0.22\textbf{4}00043298436234709323279989579\dots\\
+    0.500\textbf{0}0000000000000000000000000000\dots\\
+    0.7774\textbf{3}449234234876990120909480009\dots\\
+    0.77755\textbf{5}55588888889498888980000111\dots\\
+    0.123456\textbf{7}8888888888888888800000000\dots\\
+    0.3483544\textbf{0}009848712712123940320577\dots\\
+    0.93473244\textbf{4}47900498340999990948900\dots\\
+    \qquad $\vdots$
+\end{tabular}
+\end{center}
+This is only (a small part of) one possible list.  How can we be certain
+that \emph{every} such list leaves out some real number between
+zero and one?  The trick is to look at the digits shown in bold face.
+We can use these digits to build a number that is not in the
+list.  Since the first number in the list has a 9 in the first
+position after the decimal point, we know that this number
+cannot equal any number of, for example, the form 0.4\dots.  Since the second
+number has a 2 in the second position after the decimal point,
+\emph{neither} of the first two numbers in the list is
+equal to any number that begins with 0.44\dots.  Since the third
+number has a 4 in the third position after the decimal point,
+\emph{none} of the first three numbers in the list is equal to any
+number that begins 0.445\dots.  We can continue to construct
+a number in this way, and we end up with a number that is different
+from every number in the list.  The $n^{th}$ digit of the number
+we are building must differ from the $n^{th}$ digit of the $n^{th}$ number 
+in the list.  These are the digits shown in bold face in the 
+above list.  To be definite, I use a 5 when the corresponding
+boldface number is 4, and otherwise I use a~4.  For the list
+shown above, this gives a number that begins 0.44544445\dots.
+The number constructed in this way is not in the given list,
+so the list is incomplete.
+The same construction clearly works for any list of real numbers
+between zero and one.  No such list can be a complete listing
+of the real numbers between zero and one, and so there can be
+no complete listing of all real numbers.  We conclude that
+the set $\R$ is uncountable.
+
+The technique used in this argument is called \nw{diagonalization}.
+It is named after the fact that the bold face digits in the above
+list lie along a diagonal line.   This proof was discovered by
+a mathematician named Georg Cantor, who caused quite a fuss in the
+nineteenth century when he came up with the idea that there are
+different kinds of infinity.  Since then, his notion of using
+one-to-one correspondence to define the cardinalities of infinite sets
+has been accepted.  Mathematicians now consider it almost intuitive
+that $\N$, $\Z$, and $\Q$ have the same cardinality while $\R$
+has a strictly larger cardinality.
+
+\medbreak
+\begin{theorem}
+Suppose that $X$ is an uncountable set, and that $K$ is a countable
+subset of $X$.  Then the set $X\SETDIFF K$ is uncountable.
+\end{theorem}
+\begin{proof}
+Let $X$ be an uncountable set.  Let $K\SUB X$, and suppose that
+$K$ is countable.  Let $L=X\SETDIFF K$.  We want to show that
+$L$ is uncountable.  Suppose that $L$ is
+countable.  We will show that this assumption leads to a contradiction.
+
+Note that $X=K\cup(X\SETDIFF K)=K\cup L$.  You will show in Exercise~11
+of this section that the union of two countable
+sets is countable.  Since $X$ is the union of the countable
+sets $K$ and $L$, it follows that $X$ is countable.  But this
+contradicts the fact that $X$ is uncountable.  This contradiction
+proves the theorem. 
+\end{proof}
+
+In the proof, both $q$ and $\NOT q$ are shown to follow from the
+assumptions, where $q$ is the statement ``$X$ is countable.''  The 
+statement $q$ is shown to follow from the assumption that $X\SETDIFF K$ 
+is countable.  The statement $\NOT q$ is true by assumption.
+Since $q$ and $\NOT q$ cannot both be true, at least one of the
+assumptions must be false.  The only assumption that can be false
+is the assumption that $X\SETDIFF K$ is countable.
+
+This theorem, by the way, has the following easy corollary.
+(A \nw{corollary} is a theorem that follows easily from another,
+previously proved theorem.)
+
+\begin{corrolary}
+The set of irrational real numbers is uncountable.
+\end{corrolary}
+\begin{proof}
+Let $I$ be the set of irrational real numbers.  By
+definition, $I=\R\SETDIFF\Q$.  We have already shown that
+$\R$ is uncountable and that $\Q$ is countable, so the result
+follows immediately from the previous theorem.
+\end{proof}
+
+\medbreak
+
+You might still think that $\R$ is as big as things get, that is,
+that any infinite set is in one-to-one correspondence with $\R$ or
+with some subset of~$\R$.  In fact, though, if $X$ is any set
+then it's possible to find a set that has strictly larger
+cardinality than $X$.  In fact, $\POW(X)$ is such a set.
+A variation of the diagonalization technique can be used to
+show that there is no one-to-one correspondence between 
+$X$ and $\POW(X)$.  Note that this is obvious for finite
+sets, since for a finite set $X$, $|\POW(X)| = 2^{|X|}$,
+which is larger than $|X|$.  The point of the theorem is that
+it is true even for infinite sets.
+
+\begin{theorem}\label{T-cardinality}
+Let $X$ be any set.  Then there is no one-to-one correspondence
+between $X$ and $\POW(X)$.
+\end{theorem}
+\begin{proof}
+Given an arbitrary function $f\colon X\to \POW(X)$, we can show that
+$f$ is not onto.  Since a one-to-one correspondence is both
+one-to-one and onto, this shows that $f$ is not a one-to-one
+correspondence.
+
+Recall that $\POW(X)$ is the set of subsets of $X$.  So, for
+each $x\in X$, $f(x)$ is a subset of $X$.  We have to show that
+no matter how $f$ is defined, there is some subset of $X$ that
+is not in the image of $f$.
+
+Given $f$, we define $A$ to be the set $A=\{x\in X\st x\not\in f(x)\}$.
+The test ``$x\not\in f(x)$'' makes sense because $f(x)$ is a set.
+Since $A\SUB X$, we have that $A\in\POW(X)$.  However, $A$ is not in the image
+of $f$.  That is, for every $y\in X$, $A\not=f(y)$.\footnote{In fact, we have
+constructed $A$ so that the sets $A$ and $f(y)$ differ in at least
+one element, namely $y$ itself.  
+This is where the ``diagonalization'' comes in.}
+To see why this
+is true, let $y$ be any element of $X$.  There are two cases
+to consider.  Either $y\in f(y)$ or $y\not\in f(y)$.  We show that
+whichever case holds, $A\not=f(y)$.  If it is true that $y\in f(y)$,
+then by the definition of $A$, $y\not\in A$.  Since $y\in f(y)$ but
+$y\not\in A$, $f(y)$ and $A$ do not have the same elements and 
+therefore are not equal.  On the other hand, suppose that
+$y\not\in f(y)$.  Again, by the definition of $A$, this implies that
+$y\in A$.  Since $y\not\in f(y)$ but $y\in A$, $f(y)$ and $A$ do not 
+have the same elements and therefore are not equal.  In either
+case, $A\not=f(y)$.  Since this is true for any $y\in X$,
+we conclude that $A$ is not in the image of $f$ and therefore
+$f$ is not a one-to-one correspondence.
+\end{proof}
+
+
+From this theorem, it follows that there is no one-to-one
+correspondence between $\R$ and $\POW(\R)$.  The cardinality of $\POW(\R)$
+is strictly bigger than the cardinality of~$\R$. But it doesn't 
+stop there.  $\POW(\POW(\R))$ has an even bigger cardinality,
+and the cardinality of $\POW(\POW(\POW(\R)))$ is bigger still.
+We could go on like this forever, and we still won't have exhausted
+all the possible cardinalities.  If we let ${\mathbb X}$ be the infinite
+union $\R\cup\POW(\R)\cup\POW(\POW(\R))\cup\cdots$, then ${\mathbb X}$
+has larger cardinality than any of the sets in the union.
+And then there's $\POW({\mathbb X})$, $\POW(\POW({\mathbb X}))$, ${\mathbb X}\cup\POW({\mathbb X})\cup
+\POW(\POW({\mathbb X}))\cup\cdots$.  There is no end to this.
+There is no upper limit on possible cardinalities, not even an infinite
+one!  We have counted past infinity.
+
+We have seen that $|\R|$ is strictly larger than $|\N|$.
+We end this section with what might look like
+a simple question:  Is there a subset of $\R$ that is neither in
+one-to-one correspondence with $\N$ nor with $\R$?  That is, is
+the cardinality of $\R$ the \emph{next} largest cardinality after
+the cardinality of $\N$, or are there other cardinalities intermediate
+between them?  This problem was unsolved for quite a while, and
+the solution, when it was found, proved to be completely unexpected.  
+It was shown that both ``yes'' and
+``no'' are consistent answers to this question!  That is, the
+logical structure built on the system of axioms that had been
+accepted as the basis of set theory was not extensive enough to
+answer the question.  It is possible to extend the system in
+various ways.  In some extensions, the answer is yes.  In others,
+the answer is no.  You might object, ``Yes, but which answer is
+true for the \emph{real} real numbers?''  Unfortunately, it's 
+not even clear whether this question makes sense, since
+in the world of mathematics, the real numbers are just part of
+a structure built from a system of axioms.  And it's not at
+all clear whether the ``real numbers'' exist in some sense in the real world.
+If all this sounds like it's a bit of a philosophical muddle,
+it is.  That's the state of things today at the foundation of
+mathematics.
+
+\begin{exercises}
+
+\problem Suppose that $A$, $B$, and $C$ are finite sets which are
+pairwise disjoint.  (That is, $A\cap B=A\cap C=B\cap C=\emptyset$.)
+Express the cardinality of each of the following sets in terms
+of $|A|$, $|B|$, and $|C|$.  Which of your answers depend on
+the fact that the sets are pairwise disjoint?
+\pparts{
+   \POW(A\cup B)&      A\times (B^C)&     \POW(A)\times\POW(C)\cr
+   A^{B\times C}&      (A\times B)^C&     \POW(A^B)\cr
+   (A\cup B)^C&        (A\cup B)\times A& A\times A\times B\times B\cr
+}
+
+\problem Suppose that $A$ and $B$ are finite sets which are not necessarily
+disjoint.  What are all the possible values for $|A\cup B|\,$?
+
+\problem Let's say that an ``identifier'' consists of one or two
+characters.  The fist character is one of the twenty-six letters
+(A, B, \dots, C). The second character, if there is one, is either a letter or
+one of the ten digits (0, 1, \dots, 9).  How many different identifiers
+are there?   Explain your answer in terms of unions and cross products.
+
+\problem Suppose that there are five books that you might bring along to
+read on your vacation.  In how many different ways can you decide which
+books to bring, assuming that you want to bring at least one?  Why?
+
+\problem Show that the cardinality of a finite set is well-defined.
+That is, show that if $f$ is a bijective function from a set $A$ to
+$N_n$, and if $g$ is a bijective function from $A$ to $N_m$, then
+$n=m$.
+
+\problem Finish the proof of Theorem~\ref{T-subsetct} by proving the
+following statement:  Let $A$ be a non-empty set, and let $x\in A$.  
+Let $B=A\SETDIFF\{x\}$.
+Let $X=\{C\SUB A\st x\in C\}$.  Define $f\colon\POW(B)\to X$
+by the formula $f(C)=C\cup\{x\}$.  Show that $f$ is a bijective
+function.
+
+\problem Use induction on the cardinality of $B$ to show that for
+any finite sets $A$ and $B$, $\left|A^B\right|=|A|^{|B|}$.
+(Hint:  For the case where $B\not=\emptyset$, choose $x\in B$,
+and divide $A^B$ into classes according to the value of $f(x)$.)
+
+\problem Let $A$ and $B$ be finite sets with $|A|=n$ and $|B|=m$.
+List the elements of $B$ as $B=\{b_0,b_1,\dots,b_{m-1}\}$.
+Define the function ${\mathscr F}\colon A^B\to A\times A\times\cdots\times A$,
+where $A$ occurs $m$ times in the cross product, by
+${\mathscr F}(f)=\big(f(b_0), f(b_1), \dots,~f(b_{m-1})\big)$.
+Show that ${\mathscr F}$ is a one-to-one correspondence.
+
+\problem Show that $\Z$, the set of integers, is countable by finding
+a one-to-one correspondence between $\N$ and $\Z$.
+
+\problem Show that the set $\N\times\N$ is countable.
+
+\problem Complete the proof of Theorem 2.9 as follows:
+\ppart Suppose that $A$ and $B$ are countably infinite sets.
+Show that $A\cup B$ is countably infinite.
+\ppart Suppose that $A$ and $B$ are countable sets.
+Show that $A\cup B$ is countable.
+
+\problem Prove that each of the following statements is true.
+In each case, use a proof by contradiction.
+\ppart Let $X$ be a countably infinite set, and let $N$ be a finite
+subset of $X$.  Then $X\SETDIFF N$ is countably infinite.
+\ppart Let $A$ be an infinite set, and let $X$ be a subset of $A$.
+Then at least one of the sets $X$ and $A\SETDIFF X$ is infinite.
+\ppart Every subset of a finite set is finite.
+
+\problem Let $A$ and $B$ be sets and let $\perp$ be an entity that is \emph{not}
+a member of $B$.  Show that there is a one-to-one correspondence between
+the set of functions from $A$ to $B\cup\{\perp\}$ and the set of
+partial functions from $A$ to~$B$.  (Partial functions were defined
+in Section~\ref{S-sets-5}.  The symbol ``$\perp$'' is sometimes used in
+theoretical computer science to represent the value ``undefined.'')
+
+\end{exercises}
+
+

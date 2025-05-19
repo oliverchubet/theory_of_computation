@@ -1,0 +1,38 @@
+
+\chapter{Grammars}\label{C-grammars}
+
+
+\startchapter{Both natural languages, }such as English and the
+artificial languages used for programming have a structure
+known as grammar or syntax.  In order to form legal sentences
+or programs, the parts of the language must be fit together
+according to certain rules.  For natural languages, the
+rules are somewhat informal (although high-school English
+teachers might have us believe differently).  For programming
+languages, the rules are absolute, and programs that violate
+the rules will be rejected by a compiler.
+
+In this chapter, we will study formal grammars and languages
+defined by them.  The languages we look at will, for the most part,
+be ``toy'' languages, compared to natural languages or even
+to programming languages, but the ideas and techniques are basic
+to any study of language.  In fact, many of the ideas arose
+almost simultaneously in the 1950s in the work of linguists who were
+studying natural language and programmers who were looking for
+ways to specify the syntax of programming languages.
+
+The grammars in this chapter are \nw[generative grammar]{generative grammars}.
+A generative grammar is a set of rules that can be used to generate
+all the legal strings in a language.  We will also consider the closely
+related idea of \nw{parsing}.  To parse a string means to determine
+how that string can be generated according to the rules.
+
+This chapter is a continuation of the preceding chapter.  
+Like a regular expression, a grammar is a way to specify a possibly
+infinite language with a finite amount of information.  In fact,
+we will see that every regular language can be specified
+by a certain simple type of grammar.  We will also see that some languages
+that can be specified by grammars are not regular.
+
+\endinput
+
