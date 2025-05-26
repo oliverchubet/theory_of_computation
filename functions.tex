@@ -121,39 +121,32 @@ pairs $\{(n,n^2)\st n\in \N\}$.
 
 \medbreak
 
-Suppose that $f\colon A\to B$ is a function from the set
-$A$ to the set~$B$.  We say that $A$ is the \nw{domain} of
-the function~$f$ and that $B$ is the \nw{range} of the function.
-We define the \nw{image} of the function~$f$ to be the
-set $\{b\in B\st \exists a\in A\,(b=f(a))\}$.  Put
-more simply, the image of $f$ is the set $\{f(a)\st a\in A\}$.
-That is, the image is the set of all values, $f(a)$, of the
-function, for all $a\in A$.  (You should note that in some
-cases---particularly in calculus courses---the term ``range''
-is used to refer to what I am calling the image.)
-For example, for the function $s\colon\N\to\N$ that is specified
-by $s(n)=n^2$, both the domain and the range are $\N$, and
-the image is the set $\{n^2\st n\in\N\}$, or $\{0,1,4,9,16,\dots\}$.
+Suppose that $f\colon A\to B$ is a function from the set $A$ to the set~$B$.  We say that $A$ is the \nw{domain} of the function~$f$ and that $B$ is the \nw{co-domain} of the function.
+We define the \nw{image} of the function~$f$ to be the set $\{b\in B\st \exists a\in A\,(b=f(a))\}$.
+Put more simply, the image of $f$ is the set $\{f(a)\st a\in A\}$.
+That is, the image is the set of all values, $f(a)$, of the function, for all $a\in A$.
+For example, for the function $s\colon\N\to\N$ that is specified by $s(n)=n^2$, both the domain and the co-domain are $\N$, and the image is the set $\{n^2\st n\in\N\}$, or $\{0,1,4,9,16,\dots\}$.
 
-Note that the image of a function is a subset of its range.
+Note that the image of a function is a subset of its co-domain.
 It can be a proper subset, as in the above example, but it is
 also possible for the image of a function to be equal to
-the range.  In that case, the function is said to be
+the co-domain.  In that case, the function is said to be
 \nw[onto function]{onto}.  Sometimes, the fancier term
 \nw{surjective} is used instead.  Formally, a function
 $f\colon A\to B$ is said to be onto (or surjective) if
 every element of $B$ is equal to $f(a)$ for some element of
 $A$.  In terms of logic, $f$ is onto if and only if
-\[\forall b\in B\,\big(\exists a\in A\, (b=f(a))\big).\]
+for each $b \in B$ there exists some $a \in A$ such that $f(a) = b$.
+
 For example, let $X=\{a,b\}$ and $Y=\{1,2,3\}$, and consider
 the function from $Y$ to $X$ specified by the set of ordered
 pairs $\{(1,a),(2,a),(3,b)\}$.  This function is onto because
-its image, $\{a,b\}$, is equal to the range,~$X$. However,
+its image, $\{a,b\}$, is equal to the co-domain,~$X$. However,
 the function from $X$ to $Y$ given by $\{(a,1),(b,3)\}$ is not
 onto, because its image, $\{1,3\}$, is a proper subset of
-its range,~$Y$.  As a further example, consider the function
+its co-domain,~$Y$.  As a further example, consider the function
 $f$ from $\Z$ to $\Z$ given by $f(n) = n-52$.  To show that $f$
-is onto, we need to pick an arbitrary $b$ in the range $\Z$
+is onto, we need to pick an arbitrary $b$ in the co-domain $\Z$
 and show that there is some number $a$ in the domain $\Z$
 such that $f(a) = b$.  So let $b$ be an arbitrary integer;
 we want to find an $a$ such that $a-52=b$.  Clearly this equation
@@ -170,103 +163,71 @@ a function.  However, no such restriction holds for elements
 of $B$.  If $b\in B$, it is possible for $b$ to be associated
 to zero, one, two, three, \dots, or even to an infinite
 number of elements of~$A$.  In the case where each element of
-the range is associated to at most one element of the domain,
+the co-domain is associated to at most one element of the domain,
 the function is said to be \nw{one-to-one}.  Sometimes,
 the term \nw{injective} is used instead.  The function $f$
-is one-to-one (or injective) if for any two distinct elements $x$ and $y$ in
-the domain of $f$, $f(x)$ and $f(y)$ are also distinct.  In
-terms of logic, $f\colon A\to B$ is one-to-one if and only if
-\[\forall x\in A\,\,\forall y\in A\,\big(x\not=y\IMP f(x)\not=f(y)\big).\]
-Since a proposition is equivalent to its contrapositive,
-we can write this condition equivalently as
-\[\forall x\in A\,\,\forall y\in A\,\big(f(x)=f(y)\IMP x=y\big).\]
-Sometimes, it is easier to work with the definition of one-to-one
-when it is expressed in this form.
-The function that associates every person to his or her mother is
-not one-to-one because it is possible for two different people
-to have the same mother.  The function $s\colon\N\to\N$ specified
-by $s(n)=n^2$ is one-to-one.  However,
-we can define a function $r\colon\Z\to\Z$ by the same formula:
-$r(n)=n^2$, for $n\in\Z$.  The function $r$ is \emph{not}
-one-to-one since two different integers can have the same square.
+is one-to-one (or injective) if for any two elements $x \neq y$ in
+the domain, $f(x)\neq f(y)$.
+Or, equivalently, if $f(x) = f(y)$ then $x = y$.
+(Sometimes, it is easier to work with the definition of one-to-one when it is expressed in this form.)
+The function $s\colon\N\to\N$ specified by $s(n)=n^2$ is one-to-one.
+However, we can define a function $r\colon\Z\to\Z$ by the same formula:
+$r(n)=n^2$, for $n\in\Z$.
+The function $r$ is \emph{not} one-to-one since two different integers can have the same square.
 For example, $r(-2)=r(2)$.
 
-A function that is both one-to-one and onto is said to be
-\nw{bijective}.  The function that associates each point in
-a map of New York State to a point in the state itself is
-presumably bijective.  For each point on the map, there is
-a corresponding point in the state, and \textit{vice versa}.
-If we specify the function $f$ from the set $\{1,2,3\}$ to the 
-set $\{a,b,c\}$ as the set of ordered pairs
-$\{(1,b),(2,a),(3,c)\}$, then $f$ is a bijective function.
-Or consider the function from $\Z$ to $\Z$ given by $f(n) =
-n-52$.  We have already shown that $f$ is onto.  We can show
-that it is also one-to-one: pick an arbitrary $x$ and $y$
-in $\Z$ and assume that $f(x) = f(y)$.  This means that
-$x-52 = y-52$, and adding 52 to both sides of the equation
-gives $x=y$.  Since $x$ and $y$ were arbitrary, we have proved
-$\forall x\in \Z\,\,\forall y\in \Z\,(f(x)=f(y)\IMP x=y)$,
-that is, that $f$ is one-to-one.  Altogether, then, $f$ is a bijection.
+A function that is both one-to-one and onto is said to be \nw{bijective}.
+The function that associates each point in a map of New York State to a point in the state itself is presumably bijective.
+For each point on the map, there is a corresponding point in the state, and \textit{vice versa}.
+If we specify the function $f$ from the set $\{1,2,3\}$ to the set $\{a,b,c\}$ as the set of ordered pairs $\{(1,b),(2,a),(3,c)\}$, then $f$ is a bijective function.
+Or consider the function from $\Z$ to $\Z$ given by $f(n) = n-52$.
+We have already shown that $f$ is onto.
+We can show that it is also one-to-one: 
+pick an arbitrary $x$ and $y$ in $\Z$ and assume that $f(x) = f(y)$.
+This means that $x-52 = y-52$, and adding 52 to both sides of the equation gives $x=y$.
+Since $x$ and $y$ were arbitrary, we have proved if $f(x)=f(y)$ then $x=y$, that is, that $f$ is one-to-one.
+Altogether, then, $f$ is a bijection.
 
 
 \medbreak
 
-One difficulty that people sometimes have with mathematics
-is its generality.  A set is a collection of elements, but
-an ``element'' can be anything at all, including other sets.
-Once we have defined ordered pairs, we can use ordered pairs as elements
-of sets.  We could also make ordered pairs of sets.
-Now that we have defined functions, every function is itself
-an element.  This means that we can have sets that contain
-functions.  We can even have a function whose domain and
-range are sets of functions.  Similarly, the domain or
-range of a function might be a set of sets, or a set of
-ordered pairs.  Computer scientists
-have a good name for this.  They would say that sets, ordered pairs, and
-functions are \nw[first-class object]{first-class objects}.  Once a set, ordered pair, or function
-has been defined, it can be used just like any other element.
-If they were not first-class objects, there could be restrictions
-on the way they can be used.  For example, it might not be
-possible to use functions as members of sets. (This would make them
-``second class.'')
+One difficulty that people sometimes have with mathematics is its generality.
+A set is a collection of elements, but an ``element'' can be anything at all, including other sets.
+Once we have defined ordered pairs, we can use ordered pairs as elements of sets.
+We could also make ordered pairs of sets.
+Now that we have defined functions, every function is itself an element.
+This means that we can have sets that contain functions.
+We can even have a function whose domain and co-domain are sets of functions.
+Similarly, the domain or co-domain of a function might be a set of sets, or a set of ordered pairs.
+Computer scientists have a good name for this.
+They would say that sets, ordered pairs, and functions are \nw[first-class object]{first-class objects}.
+Once a set, ordered pair, or function has been defined, it can be used just like any other element.
+If they were not first-class objects, there could be restrictions on the way they can be used.
+For example, it might not be possible to use functions as members of sets.
+(This would make them ``second class.'')
 
-For example, suppose that $A$, $B$, and $C$ are sets.  Then
-since $A\times B$ is a set, we might have a function
-$f\colon A\times B\to C$.  If $(a,b)\in A\times B$, then
-the value of $f$ at $(a,b)$ would be denoted $f((a,b))$.
-In practice, though, one set of parentheses is usually dropped,
-and the value of $f$ at $(a,b)$ is denoted $f(a,b)$.
-As a particular example, we might define a function
-$p\colon \N\times\N\to\N$ with the formula $p(n,m)=nm+1$.
-Similarly, we might define a function
-$q\colon \N\times\N\times\N\to\N\times\N$ by
-$q(n,m,k)=(nm-k,nk-n)$.
+For example, suppose that $A$, $B$, and $C$ are sets.
+Then since $A\times B$ is a set, we might have a function $f\colon A\times B\to C$.
+If $(a,b)\in A\times B$, then the value of $f$ at $(a,b)$ would be denoted $f((a,b))$.
+In practice, though, one set of parentheses is usually dropped, and the value of $f$ at $(a,b)$ is denoted $f(a,b)$.
+As a particular example, we might define a function $p\colon \N\times\N\to\N$ with the formula $p(n,m)=nm+1$.
+Similarly, we might define a function $q\colon \N\times\N\times\N\to\N\times\N$ by $q(n,m,k)=(nm-k,nk-n)$.
 
-Suppose that $A$ and $B$ are sets.  There are, in general, many
-functions that map $A$ to~$B$.  We can gather all those functions
-into a set.  This set, whose elements are
-all the functions from $A$ to $B$, is denoted~$B^A$.\index{set!of functions from $A$ to $B$}
-(We'll see later why this notation is reasonable.)  Using this notation,
-saying $f\colon A\to B$ is exactly the same as saying
-$f\in B^A$.  Both of these notations assert that $f$ is a function
-from $A$ to~$B$.  Of course, we can also form an unlimited number
-of other sets, such as the power set $\POW\big(B^A\big)$,
-the cross product $B^A\times A$, or the set $A^{A\times A}$,
-which contains all the functions from the set $A\times A$
-to the set~$A$.  And of course, any of these sets can be
-the domain or range of a function.  An example of this
-is the function ${\mathscr E}\colon B^A\times A\to B$ defined
-by the formula ${\mathscr E}(f,a) = f(a)$.  Let's see if
-we can make sense of this notation.  Since the domain of
-${\mathscr E}$ is $B^A\times A$, an element in the domain
-is an ordered pair in which the first coordinate is a function
-from $A$ to $B$ and the second coordinate is an element of~$A$.
-Thus, ${\mathscr E}(f,a)$ is defined for a function $f\colon A\to B$
-and an element $a\in A$.  Given such an $f$ and $a$, the notation
-$f(a)$ specifies an element of~$B$, so the definition of
-${\mathscr E}(f,a)$ as $f(a)$ makes sense.  The function ${\mathscr E}$
-is called the ``evaluation function'' since it captures the idea
-of evaluating a function at an element of its domain.
+Suppose that $A$ and $B$ are sets.
+There are, in general, many functions that map $A$ to~$B$.
+We can gather all those functions into a set.
+This set, whose elements are all the functions from $A$ to $B$, is denoted~$B^A$.\index{set!of functions from $A$ to $B$}
+(We'll see later why this notation is reasonable.)  
+Using this notation, saying $f\colon A\to B$ is exactly the same as saying $f\in B^A$.
+Both of these notations assert that $f$ is a function from $A$ to~$B$.
+Of course, we can also form an unlimited number of other sets, such as the power set $\POW\big(B^A\big)$, the cross product $B^A\times A$, or the set $A^{A\times A}$, which contains all the functions from the set $A\times A$ to the set~$A$.
+And of course, any of these sets can be the domain or co-domain of a function.
+An example of this is the function ${\mathscr E}\colon B^A\times A\to B$ defined by the formula ${\mathscr E}(f,a) = f(a)$.
+Let's see if we can make sense of this notation.
+Since the domain of ${\mathscr E}$ is $B^A\times A$, an element in the domain is an ordered pair in which the first coordinate is a function from $A$ to $B$ and the second coordinate is an element of~$A$.
+Thus, ${\mathscr E}(f,a)$ is defined for a function $f\colon A\to B$ and an element $a\in A$.
+Given such an $f$ and $a$, the notation $f(a)$ specifies an element of~$B$, so the definition of ${\mathscr E}(f,a)$ as $f(a)$ makes sense.
+The function ${\mathscr E}$ is called the ``evaluation function'' since it captures the idea of evaluating a function at an element of its domain.
 
 
 

@@ -126,22 +126,22 @@ the list if and only if $w\in L$.
 
 \smallskip
 \IItem{3.\ }There is a Turing-computable function $f\colon\{a\}^*\to\Sigma^*$
-such that $L$ is the range of the function $f$.
+such that $L$ is the co-domain of the function $f$.
 \end{theorem}
 
 While I will not give a complete, formal proof of this theorem, it's not
 too hard to see why it is true.  Consider a language that satisfies
-property 3.  We can use the fact that $L$ is the range of a Turing-computable function, $f$,
+property 3.  We can use the fact that $L$ is the co-domain of a Turing-computable function, $f$,
 to build a two-tape Turing machine that lists $L$.  The machine will
 consider each of the strings $a^n$, for $n\in \N$, in turn, and it will compute
 $f(a^n)$ for each $n$.  Once the value of $f(a^n)$ has been computed, it can be copied
 onto the machine's second tape, and the machine can move on to do the same
 with $a^{n+1}$.  This machine writes all the elements of $L$ 
-(the range of~$f$) onto its second tape,
+(the co-domain of~$f$) onto its second tape,
 so $L$ satisfies property 2.  Conversely, suppose that
 there is a two-tape Turing machine, $M$, that lists $L$.  Define a function
 $g\colon\{a\}^*\to\Sigma^*$ such that for $n\in\N$, $g(a^n)$ is the $(n+1)^{th}$ item in the
-list produced by $M$.  Then the range of $g$ is $L$, and $g$ is Turing-computable
+list produced by $M$.  Then the co-domain of $g$ is $L$, and $g$ is Turing-computable
 since it can be computed as follows:  On input $a^n$, simulate the computation
 of $M$ until it has produced $n+1$ strings, then halt, giving the $(n+1)^{th}$
 string as output.  This shows that property 2 implies property 3, so these
@@ -240,7 +240,7 @@ Conversely, suppose that $L$ is a language over an alphabet $\Sigma$,
 and that $L$ is Turing-acceptable.  Then it is possible to find a grammar
 $G$ that generates $L$.  To do this, it's convenient to use the
 fact that, as discussed above, there is a Turing-computable function
-$f\colon \{a\}^*\to\Sigma$ such that $L$ is the range of~$f$.
+$f\colon \{a\}^*\to\Sigma$ such that $L$ is the co-domain of~$f$.
 Let $M=(Q,\Lambda,q_0,\delta)$ be a Turing machine that computes
 the function $f$.  We can build a grammar, $G$, that imitates the computations
 performed by $M$.  The idea is that most of the production rules of $G$ will
