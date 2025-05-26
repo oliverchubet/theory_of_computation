@@ -163,7 +163,7 @@ Remember, it's just a shorter and neater way of saying
 up in
 if it starts in $q_0$ and consumes $w$ is one of the states in $F$.")
 
-The \nw{language accepted by $M$}, denoted $L(M)$, is the set of all strings 
+The \nw{language recognized by $M$}, denoted $L(M)$, is the set of all strings 
 $w \in \Sigma^*$ that are accepted by $M$: 
 $L(M) = \{ w \in\Sigma^* \ | \ \delta^*(q_0, w) \in F\}$.
 
@@ -171,12 +171,12 @@ $L(M) = \{ w \in\Sigma^* \ | \ \delta^*(q_0, w) \in F\}$.
 
 \smallskip
 Note that we sometimes use a slightly different phrasing and say that a language
-$L$ is accepted by some machine $M$.  We don't mean by this that $L$ {\em and
+$L$ is recognized by some machine $M$.  We don't mean by this that $L$ {\em and
 maybe some other strings} are accepted by $M$; we mean $L = L(M)$, i.e.\ $L$ is
 {\em exactly} the set of strings accepted by $M$.
 
 It may not be easy, looking at a formal specification of a DFA, to determine what
-language that automaton accepts.  Fortunately, the mathematical description of
+language that automaton recognizes.  Fortunately, the mathematical description of
 the automaton $M=(Q, \Sigma, q_0, \delta, F)$ can be neatly and helpfully
 captured in a picture called a \nw{transition diagram}.  
 Consider again the DFA of the two preceding examples.  It
@@ -186,11 +186,11 @@ can be represented pictorially as:
 
 \noindent The arrow on the left indicates that $p$ is the start state; double
 circles indicate that a state is accepting.  Looking at this picture, it should
-be fairly easy to see that the language accepted by the DFA $M$ is 
+be fairly easy to see that the language recognized by the DFA $M$ is 
 $L(M) = \{ x \in \{0,1\}^* \ | \ n_1(x) \geq 2\}$.
 
 \begin{example}
-Find the language accepted by the DFA shown below (and describe it using a
+Find the language recognized by the DFA shown below (and describe it using a
 regular expression!)
 
 \fsafig{2}
@@ -215,14 +215,14 @@ full diagram:
 \fsafig{4}
 
 
-As well as recognizing what language is accepted by a given DFA, we often want to
-do the reverse and come up with a DFA that accepts a given language.
+As well as recognizing what language is recognized by a given DFA, we often want to
+do the reverse and come up with a DFA that recognizes a given language.
 Building DFAs for specified languages is an art, not a science.
 There is no algorithm that you can apply to produce a DFA from an English-language
 description of the set of strings the DFA should accept.  On the other hand, it
 is not generally successful, either, to simply write down a half-dozen strings
 that are in the language and design a DFA to accept those strings---invariably
-there are strings that are in the language that aren't accepted, and other
+there are strings that are in the language that aren't recognized, and other
 strings that aren't in the language that are accepted.  So how do you go about
 building DFAs that accept all and only the strings they're supposed to accept?
 The best advice I can give is to
@@ -234,7 +234,7 @@ combination of values of relevant characteristics, and determine how the
 consumption of inputs affects those values.  I'll illustrate what I mean with a
 couple of examples.
 \begin{example}
-Find a DFA with input alphabet $\Sigma = \ab$ that accepts the language
+Find a DFA with input alphabet $\Sigma = \ab$ that recognizes the language
 $L= \{\winss \ | \ n_a(w) \mbox{ and } n_b(w) \mbox{ are both even } \}$.
 
 The characteristics that determine whether or not a string $w$ is in $L$ are the
@@ -277,7 +277,7 @@ state.  The complete machine is shown below.
 \end{example}
 
 \begin{example}
-Find a DFA with input alphabet $\Sigma = \ab$ that accepts the language
+Find a DFA with input alphabet $\Sigma = \ab$ that recognizes the language
 $L$ = $\{\winss \ | \  n_a(w)  \mbox{ is divisible by 3 } \}$.
 
 The relevant characteristic here is of course whether or not the number of $a$'s
@@ -300,7 +300,7 @@ state.
 
 
 \begin{example}
-Find a DFA with input alphabet $\Sigma = \ab$ that accepts the language
+Find a DFA with input alphabet $\Sigma = \ab$ that recognizes the language
 $L$ = $\{\winss \ | w \mbox{ contains three consecutive a's } \}$.
 
 Again, it is not quite so simple as making a two-state machine where the states
@@ -319,7 +319,7 @@ state.  The complete automaton is shown below.
 \end{example}
 
 \begin{exercises}
-\problem Give DFAs that accept the following languages over $\Sigma =\ab$.
+\problem Give DFAs that recognizes the following languages over $\Sigma =\ab$.
 \ppart $L_1= \{ x \ | \ x \mbox{ contains the substring } aba\}$
 \ppart $L_2= L(a^*b^*)$
 \ppart $L_3= \{ x \ | \ n_a(x)+n_b(x) \mbox{ is even }\}$
@@ -327,14 +327,14 @@ state.  The complete automaton is shown below.
 \ppart $L_5= \{ x \ | \ x \mbox{ does not contain the substring } abb\}$
 \ppart $L_6= \{ x \ | \ x \mbox{ has no $a$'s in the even positions} \}$
 \ppart $L_7 = L(aa^* \REOR  aba^*b^*)$
-\problem What languages do the following DFAs accept?
+\problem What languages do the following DFAs recognize?
 
 \fsafig{1ex}
 
 \fsafig{2ex}
 
 
-\problem Let $\Sigma=\{0,1\}$. Give a DFA that accepts the language 
+\problem Let $\Sigma=\{0,1\}$. Give a DFA that recognizes the language 
 $$ L = \{ x \in \Sigma^* \ | \ x \mbox{ is the binary representation of an integer
 divisible by 3}\}.$$ 
 
