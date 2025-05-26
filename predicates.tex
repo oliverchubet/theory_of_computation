@@ -12,36 +12,36 @@ logic}, or, when the emphasis is on manipulating and reasoning
 with predicates, \nw{predicate calculus}.
 
 A predicate is a kind of incomplete proposition, which becomes
-a proposition when it is applied to some entity (or, as we'll see later,
-to several entities).  In the proposition ``the rose is red,'' the
+a proposition when it is applied to some element (or, as we'll see later,
+to several elements).  In the proposition ``the rose is red,'' the
 predicate is \emph{is red}.  By itself, ``is red'' is not a proposition.
 Think of it as having an empty slot, that needs to be filled in
 to make a proposition: ``---~is red.''  In the proposition
-``the rose is red,'' the slot is filled by the entity ``the rose,''
-but it could just as well be filled by other entities:
+``the rose is red,'' the slot is filled by the element ``the rose,''
+but it could just as well be filled by other elements:
 ``the barn is red''; ``the wine is red''; ``the banana is red.''
 Each of these propositions uses the same predicate, but they are
 different propositions and they can have different truth values.
 
-If $P$ is a predicate and $a$ is an entity, then $P(a)$ stands for
+If $P$ is a predicate and $a$ is an element, then $P(a)$ stands for
 the proposition that is formed when $P$ is applied to $a$.  If $P$
 represents ``is red'' and $a$ stands for ``the rose,'' then
 $P(a)$ is ``the rose is red.''  If $M$ is the predicate
 ``is mortal'' and $s$ is ``Socrates,'' then $M(s)$ is the proposition
 ``Socrates is mortal.'' 
 
-Now, you might be asking, just what is an \emph{entity}\index{entity} anyway?
+Now, you might be asking, just what is an \emph{element}\index{element} anyway?
 I am using the term here to mean some specific, identifiable thing
 to which a predicate can be applied.  Generally, it doesn't make
-sense to apply a given predicate to every possible entity, but only
-to entities in a certain category.  For example, it probably doesn't
+sense to apply a given predicate to every possible element, but only
+to elements in a certain category.  For example, it probably doesn't
 make sense to apply the predicate ``is mortal'' to your living room
-sofa.  This predicate only applies to entities in the category of
+sofa.  This predicate only applies to elements in the category of
 living things, since there is no way something can be mortal unless it
-is alive.  This category is called the domain of discourse for
+is alive.  This category is called the domain for
 the predicate.\footnote{In the language
 of set theory, which will be introduced in the next chapter,
-we would say that a domain of discourse is a set, $U$, and
+we would say that a domain is a set, $U$, and
 a predicate is a function from $U$ to the set of truth values.
 The definition should be clear enough without the formal language
 of set theory, and in fact you should think of this definition---and
@@ -50,26 +50,26 @@ many others---as motivation for that language.}
 We are now ready for a formal definition of one-place
 predicates.  A one-place
 predicate, like all the examples we have seen so far, has a single
-slot which can be filled in with one entity:
+slot which can be filled in with one element:
 
 
 \begin{definition}
-A \nw{one-place predicate}\index{predicate} associates a proposition with each entity in some
-collection of entities.  This collection is called the \nw{domain
-of discourse} for the predicate.  If $P$ is a predicate and $a$ is
-an entity in the domain of discourse for $P$, then $P(a)$ denotes
+A \nw{one-place predicate}\index{predicate} associates a proposition with each element in some
+collection of elements.  This collection is called the \nw{domain
+} for the predicate.  If $P$ is a predicate and $a$ is
+an element in the domain for $P$, then $P(a)$ denotes
 the proposition that is associated with $a$ by~$P$.  We say that $P(a)$
 is the result of \nw[none]{applying} $P$ to~$a$.
 \end{definition}
 
 We can obviously extend this to predicates that can be applied to
-two or more entities.  In the proposition ``John loves Mary,''
+two or more elements.  In the proposition ``John loves Mary,''
 \emph{loves} is a two-place predicate.  Besides John and Mary,
-it could be applied to other pairs of entities:  ``John loves Jane,''
+it could be applied to other pairs of elements:  ``John loves Jane,''
 ``Bill loves Mary,'' ``John loves Bill,''  ``John loves John.''
 If $Q$ is a two-place
 predicate, then $Q(a,b)$ denotes the proposition that is obtained
-when $Q$ is applied to the entities $a$ and~$b$.  Note that each of
+when $Q$ is applied to the elements $a$ and~$b$.  Note that each of
 the ``slots'' in a two-place predicate can have its own domain of
 discourse.  For example, if $Q$ represents the predicate ``owns,''
 then $Q(a,b)$ will only make sense when $a$ is a person and $b$ is an
@@ -78,11 +78,11 @@ inanimate object.  An example of a three-place predicate is
 ``$a$~bought $b$ from $c$ for $d$ dollars.''  But keep in mind that
 not every predicate has to correspond to an English sentence.
 
-When predicates are applied to entities, the results are propositions,
+When predicates are applied to elements, the results are propositions,
 and all the operators of propositional logic can be applied to these
 propositions just as they can to any propositions.  Let $R$ be the
 predicate ``is red,'' and let $L$ be the two-place predicate ``loves.''
-If $a$, $b$, $j$, $m$, and $b$ are entities belonging to the 
+If $a$, $b$, $j$, $m$, and $b$ are elements belonging to the 
 appropriate categories, then we can form compound propositions such
 as:
 \[
@@ -101,9 +101,9 @@ Let's go back to the proposition with which we started this section:
 ``Roses are red.''  This sentence is more difficult to handle than
 it might appear.  We still can't express it properly in logic.
 The problem is that this proposition is not saying something about
-some particular entity.  It really says that \emph{all} roses are red 
+some particular element.  It really says that \emph{all} roses are red 
 (which happens to be a false statement, but that's what it means).
-Predicates can only be applied to individual entities.
+Predicates can only be applied to individual elements.
 
 Many other sentences raise similar difficulties:
 ``All persons are mortal.''  ``Some roses are red, but no roses are black.''
@@ -113,27 +113,27 @@ are called \nw{quantifiers}.\index{quantifier!in English}  We need to be able to
 in logic.
 
 Suppose that $P$ is a predicate, and we want to express the proposition that
-$P$ is true when applied to any entity in the domain of discourse.
-That is, we want to say ``for any entity $x$ in the domain of discourse,
+$P$ is true when applied to any element in the domain.
+That is, we want to say ``for any element $x$ in the domain,
 $P(x)$ is true.''  In predicate logic, we write this in symbols as
 $\forall x(P(x))$.  The $\forall$ symbol, which looks like an
 upside-down~A, is usually read ``for all,'' so that $\forall x(P(x))$
 is read as ``for all $x$, $P(x)$.''  (It is understood that this means
-for all $x$ in the domain of discourse for~$P$.)  For example,
-if $R$ is the predicate ``is red'' and the domain of discourse consists
+for all $x$ in the domain for~$P$.)  For example,
+if $R$ is the predicate ``is red'' and the domain consists
 of all roses, then $\forall x(R(x))$ expresses the proposition
 ``All roses are red.''  Note that the same proposition could be
 expressed in English as ``Every rose is red'' or ``Any rose is red.''
  
 Now, suppose we want to say that a predicate, $P$, is true for \emph{some}
-entity in its domain of discourse.  This is expressed in predicate
+element in its domain.  This is expressed in predicate
 logic as $\exists x(P(x))$.  The $\exists$ symbol, which looks like a
 backwards~E, is usually read ``there exists,'' but a more exact reading
 would be ``there is at least one.'' Thus, $\exists x(P(x))$ is read
 as ``There exists an $x$ such that $P(x)$,'' and it means ``there is
-at least one $x$ in the domain of discourse for $P$ for which $P(x)$
+at least one $x$ in the domain for $P$ for which $P(x)$
 is true.''  If, once again, $R$ stands for ``is red'' and the domain
-of discourse is ``roses,'' then $\exists x(R(x))$ could be expressed
+is ``roses,'' then $\exists x(R(x))$ could be expressed
 in English as ``There is a red rose'' or ``At least one rose is red''
 or ``Some rose is red.''  It might also be expressed as ``Some roses
 are red,'' but the plural is a bit misleading since $\exists x(R(x))$
@@ -143,32 +143,32 @@ We can now give the formal definitions:
 \begin{definition}
 Suppose that $P$ is a one-place predicate.  Then $\forall x(P(x))$ is
 a proposition, which is true if and only if $P(a)$ is true for every
-entity $a$ in the domain of discourse for~$P$.  And $\exists x(P(x))$
+element $a$ in the domain for~$P$.  And $\exists x(P(x))$
 is a proposition which is true if and only if there is at least one
-entity, $a$, in the domain of discourse for $P$ for which $P(a)$ is
+element, $a$, in the domain for $P$ for which $P(a)$ is
 true.  The $\forall$ symbol is called the \nw{universal quantifier},
 and $\exists$ is called the \nw{existential quantifier}.
 \end{definition}
 
 The $x$ in $\forall x(P(x))$ and $\exists x(P(x))$ is a variable.\index{variable}
-(More precisely, it is an \emph{entity} variable, since its value
-can only be an entity.)\index{entity!variable}
+(More precisely, it is an \emph{element} variable, since its value
+can only be an element.)\index{element!variable}
 Note that a plain $P(x)$---without the $\forall x$ or $\exists x$---is
 not a proposition.  $P(x)$~is neither true nor false because $x$
-is not some particular entity, but just a placeholder in a slot that
-can be filled in with an entity.  $P(x)$~would stand for
+is not some particular element, but just a placeholder in a slot that
+can be filled in with an element.  $P(x)$~would stand for
 something like the statement ``$x$~is red,'' which is not really a
 statement in English at all.  But it becomes a statement when
-the $x$ is replaced by some particular entity, such as ``the rose.''
-Similarly, $P(x)$ becomes a proposition if some entity $a$ is substituted
+the $x$ is replaced by some particular element, such as ``the rose.''
+Similarly, $P(x)$ becomes a proposition if some element $a$ is substituted
 for the~$x$, giving $P(a)$.\footnote{There is certainly room for confusion
 about names here.  In this discussion, $x$ is a variable and $a$ is 
-an entity.  But that's only because I said so.  Any letter could be used
+an element.  But that's only because I said so.  Any letter could be used
 in either role, and you have to pay attention to the context to
 figure out what is going on.  Usually, $x$, $y$, and $z$ will be variables.}
 
-An \nw{open statement} is an expression that contains one or more entity
-variables, which becomes a proposition when entities are substituted
+An \nw{open statement} is an expression that contains one or more element 
+variables, which becomes a proposition when elements are substituted
 for the variables.  (An open statement has open ``slots'' that need to
 be filled in.)  $P(x)$ and ``$x$ is red'' are examples of open 
 statements that contain one variable.  If $L$ is a two-place predicate
@@ -206,7 +206,7 @@ meanings among them.
 For example, I will write $\forall x\, P(x)$ instead of $\forall x(P(x))$
 and $\exists x\,\exists y\,L(x,y)$ instead of
 $\exists x\big(\exists y(L(x,y))\big)$.  Furthermore, I will
-sometimes give predicates and entities names that are complete words
+sometimes give predicates and elements names that are complete words
 instead of just letters, as in  $Red(x)$ and $Loves(john,mary)$.
 This might help to make examples more readable.)
 
@@ -214,7 +214,7 @@ This might help to make examples more readable.)
 
 In predicate logic, the operators and laws of Boolean algebra\index{Boolean algebra!in predicate logic} still
 apply.  For example, if $P$ and $Q$ are one-place predicates and
-$a$ is an entity in the domain of discourse, then $P(a)\IMP Q(a)$
+$a$ is an element in the domain, then $P(a)\IMP Q(a)$
 is a proposition, and it is logically equivalent to $\NOT P(a)\OR Q(a)$.
 Furthermore, if $x$ is a variable, then $P(x)\IMP Q(x)$ is an open
 statement, and $\forall x(P(x)\IMP Q(x))$ is a proposition.
@@ -224,9 +224,9 @@ the translation between predicate logic and English sentences is not
 always obvious.
 
 Let's look one more time at the proposition ``Roses are red.''
-If the domain of discourse consists of roses, this translates into
+If the domain consists of roses, this translates into
 predicate logic as $\forall x\, Red(x)$.  However, the sentence makes
-more sense if the domain of discourse is larger---for example if it
+more sense if the domain is larger---for example if it
 consists of all flowers.  Then ``Roses are red'' has to be read as
 ``All flowers which are roses are red,'' or ``For any flower,
 if that flower is a rose, then it is red.'' The last form translates
@@ -240,7 +240,7 @@ $\forall x\big((Rose(x)\AND Red(x))\IMP Pretty(x)\big)$.
 Here are a few more examples of translations from predicate logic
 to English.  Let $H(x)$ represent ``$x$~is happy,'' let
 $C(y)$~represent ``$y$~is a computer,'' and let $O(x,y)$~represent
-``$x$~owns~$y$.''  (The domain of discourse for $x$ consists of 
+``$x$~owns~$y$.''  (The domain for $x$ consists of 
 people, and the domain for $y$ consists of inanimate objects.)
 Then we have the following translations:
 
@@ -266,7 +266,7 @@ everyone.)
 \item At least two people are happy:
  $\exists x \exists y\big(H(x) \AND H(y) \AND (x\ne y)\big)$.  (The stipulation
  that $x\ne y$ is necessary because two different variables can refer to
- the same entity.  The proposition $\exists x\exists y(H(x)\AND H(y))$ is
+ the same element.  The proposition $\exists x\exists y(H(x)\AND H(y))$ is
  true even if there is only one happy person.)
 \item There is exactly one happy person:\\*
  \hspace*{0.5 in}$\big(\exists x H(x)\big)) \AND \big(\forall y \forall z((H(y)\AND H(z))\IMP (y=z))\big)$.
@@ -300,14 +300,14 @@ value.  Unfortunately, we can't---as we did in propositional logic---just check
 this fact with a truth table: there are no subpropositions, connected by
 $\AND$, $\OR$, etc, out of which to build a table.  So, let's reason it out:
 To say $\NOT(\forall x P(x))$ is true is just to say that it is not the case that
-$P(x)$ is true for all possible entities $x$.  So, there must be some entity $a$
+$P(x)$ is true for all possible elements $x$.  So, there must be some element $a$
 for which $P(a)$ is false.  Since $P(a)$ is false, $\NOT P(a)$ is true.
 But saying that there is an $a$ for which $\NOT P(a)$ is true is just saying
 that $\exists x(\NOT P(x))$ is true.  So, the truth of $\NOT(\forall x P(x))$
 implies the truth of $\exists x (\NOT P(x))$.  On the other hand, if 
 $\NOT(\forall x P(x))$ is false, then $\forall x P(x)$ is true.  Since $P(x)$
 is true for every~$x$, $\NOT P(x)$ is false for every~$x$; that is, there is no
-entity $a$ for which the statement $\NOT P(a)$ is true.
+element $a$ for which the statement $\NOT P(a)$ is true.
 But this just means that the statement $\exists x(\NOT P(x))$
 is false.  In any case, then, the truth values of $\NOT(\forall x P(x))$ and
 $\exists x(\NOT P(x))$ are the same.  Since this is true for any predicate $P$,
@@ -364,8 +364,8 @@ To define logical equivalence in predicate logic more formally,
 we need to talk about formulas that contain predicate variables,\index{variable}
 that is, variables that act as place-holders for arbitrary predicates
 in the same way that propositional variables are place-holders for
-propositions and entity variables are place-holders for
-entities.  With this in mind, we can define logical equivalence
+propositions and element variables are place-holders for
+elements.  With this in mind, we can define logical equivalence
 and the closely related concept of tautology for predicate logic.
 
 \begin{definition}
@@ -410,21 +410,21 @@ $\NOT$ operator should be applied only to individual predicates.
 \ppart $\NOT$$\exists n (\forall s (L(s,n) \IMP (\exists x \exists y \exists z (s=xyz \AND 
 R(x,y) \AND T(y) \AND U(x,y,z))))$.
 
-\problem Suppose that the domain of discourse for a predicate $P$
-contains only two entities.  Show that $\forall x P(x)$ is equivalent to
+\problem Suppose that the domain for a predicate $P$
+contains only two elements.  Show that $\forall x P(x)$ is equivalent to
 a conjunction of two simple propositions, and $\exists x P(x)$ is equivalent
 to a disjunction.  Show that in this case, DeMorgan's Laws for propositional
 logic and DeMorgan's Laws for predicate logic actually say exactly the same
-thing.  Extend the results to a domain of discourse that contains exactly
-three entities.
+thing.  Extend the results to a domain that contains exactly
+three elements.
 
-\problem Let $H(x)$ stand for ``$x$ is happy,'' where the domain of discourse
+\problem Let $H(x)$ stand for ``$x$ is happy,'' where the domain 
 consists of people.  Express the proposition ``There are exactly three happy
 people'' in predicate logic.
 
 \problem Let $T(x,y)$ stand for ``$x$~has taken~$y$,'' where the
-domain of discourse for $x$ consists of students and the domain
-of discourse for $y$ consists of math courses (at your school).
+domain for $x$ consists of students and the domain
+for $y$ consists of math courses (at your school).
 Translate each of the following propositions into an unambiguous English sentence:
 \pparts{ \forall x\,\forall y \,T(x,y) & \forall x \,\exists y \,T(x,y) & \forall y \,\exists x \,T(x,y)\cr
          \exists x\,\exists y \,T(x,y) & \exists x \,\forall y \,T(x,y) & \exists y \,\forall x \,T(x,y)\cr
@@ -438,7 +438,7 @@ people all of the time.''
 
 \problem Translate each of the following sentences into a proposition 
 using predicate logic.  Make up any predicates you need.  State what
-each predicate means and what its domain of discourse is.
+each predicate means and what its domain is.
 \ppart All crows are black.
 \ppart Any white bird is not a crow.
 \ppart Not all politicians are honest.

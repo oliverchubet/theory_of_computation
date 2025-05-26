@@ -4,7 +4,7 @@
 The structure of the natural numbers---0, 1, 2, 3, and on to infinity---makes 
 possible a powerful proof technique known as \nw{induction} or \nw{mathematical induction}.
 The idea behind induction is simple.  Let $P$ be a one-place predicate
-whose domain of discourse includes the natural numbers.  Suppose that
+whose domain includes the natural numbers.  Suppose that
 we can prove that $P(0)$ is true.  Suppose that we can also prove
 the statements $P(0)\IMP P(1)$, $P(1)\IMP P(2)$, $P(2)\IMP P(3)$,
 and so on.  The principal of mathematical induction is the observation
@@ -22,7 +22,7 @@ When applying induction, we don't actually prove each of the
 implications $P(0)\IMP P(1)$, $P(1)\IMP P(2)$, and so on, individually.
 That would require an infinite amount of work.  The whole point of
 induction is to avoid any infinitely long process.  Instead, we
-prove $\forall k\,(P(k)\IMP P(k+1))$ (where the domain of discourse for the
+prove $\forall k\,(P(k)\IMP P(k+1))$ (where the domain for the
 predicate $P$ is~$\N$).
 The statement $\forall k\,(P(k)\IMP P(k+1))$ summarizes all the
 infinitely many implications in a single statement.  Stated formally,
@@ -30,7 +30,7 @@ the principle of
 mathematical induction says that if we can prove the statement
 $P(0)\AND \big(\forall k\,(P(k)\IMP P(k+1)\big)$, then we 
 can deduce that $\forall n\,P(n)$ (again, with $\N$ as the domain
-of discourse).
+).
 
 It should be intuitively clear that the principle of induction
 is valid.  It follows from the fact that the list 0, 1, 2, 3, \dots,
@@ -43,10 +43,10 @@ in the next chapter (see Theorem~\ref{T-induction}), but for now
 we just state it as a theorem:
 
 \begin{theorem}
-Let $P$ be a one-place predicate whose domain of discourse includes
+Let $P$ be a one-place predicate whose domain includes
 the natural numbers.  Suppose that $P(0)\AND \big(\forall k\in\N\,(P(k)\IMP P(k+1))\big)$.
 Then $P(n)$ is true for all natural numbers~$n$.  (That is, 
-the statement $\forall n\,P(n)$ is true, where the domain of discourse for $P$ is
+the statement $\forall n\,P(n)$ is true, where the domain for $P$ is
 the set of natural numbers.)
 \end{theorem}
 
@@ -238,7 +238,7 @@ second form of induction in the next two sections.
 A proof will be given in the next chapter.
 
 \begin{theorem}
-Let $P$ be a one-place predicate whose domain of discourse includes
+Let $P$ be a one-place predicate whose domain includes
 the natural numbers.  Suppose that $P(0)$ is true and that
 \[(P(0)\AND P(1)\AND\cdots\AND P(k))\IMP P(k+1)\]
 is true for each natural number $k\geq 0$.  

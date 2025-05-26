@@ -1,86 +1,28 @@
 \section{Functions}\label{S-sets-4}
 
-Both the real world and the world of mathematics are full of
-what are called, in mathematics, ``functional relationships.''
-A functional relationship is a relationship between two sets,
-which associates exactly one element from the second set to 
-each element of the first set.  
+Both the real world and the world of mathematics are full of ``functions''.
+A function is a relationship between two sets that associates each element from the first set to exactly one element of the second set.  
 
 For example, each item for sale in a store has a price.
-The first set in this relationship is the set of items in the store.  For each
-item in the store, there is an associated price, so the
-second set in the relationship is the set of possible prices.
-The relationship is a functional relationship because 
-each item has a price.  That is, the question ``What is the price
-of this item?'' has a single, definite answer for each item
-in the store.
+The first set in this relationship is the set of items in the store.
+For each item in the store, there is an associated price, so the
+second set in is the set of possible prices.
+This relationship is a function because each item has exactly one price.
 
-Similarly, the question ``Who is the (biological) mother of this person?'' has
-a single, definite answer for each person.  So, the
-relationship ``mother of'' defines a functional relationship.
-In this case, the two sets in the relationship are the same set,
-namely the set of people.\footnote{I'm avoiding here the question
-of Adam and Eve or of pre-human ape-like ancestors.  (Take your 
-pick.)}  On the other hand, the relationship ``child of''
-is not a functional relationship.  The question ``Who is the
-child of this person?'' does not have a single, definite answer for
-each person.  A given person might not have any child at all.
-And a given person might have more than one child.  Either of
-these cases---a person with no child or a person with more than
-one child---is enough to show that the relationship
-``child of'' is not a functional relationship.
+There are also many natural examples of functions in mathematics.
+For example, every rectangle has an associated area.
+There is a function between the set of rectangles and the set of numbers.
+Every natural number $n$ has a square,~$n^2$.
+The relationship ``square of'' is a function from the set of natural numbers to itself.  
 
-Or consider an ordinary map, such as a map of New York State or
-a street map of Rome.  The whole point of the map, if it is
-accurate, is that there is a functional relationship between
-points on the map and points on the surface of the Earth.
-Perhaps because of this example, a functional relationship
-is sometimes called a \nw{mapping}.
+The notation $f\colon A\to B$ expresses that $f$ is a function from the set $A$ to the set $B$. 
+The notation $f\colon A\to B$ is read as ``$f$~is a function from $A$ to~$B$'' or more simply as ``$f$~maps $A$ to~$B$.''
+If $f\colon A\to B$ and if $a\in A$, then $f$ associates some element of $B$ to~$a$, denoted~$f(a)$.
 
-There are also many natural examples of functional relationships
-in mathematics.  For example, every rectangle has an associated
-area.  This fact expresses a functional relationship between the
-set of rectangles and the set of numbers.  Every natural number $n$
-has a square,~$n^2$.  The relationship ``square of'' is a functional
-relationship from the set of natural numbers to itself.  
-
-In mathematics, of course, we need to work with functional
-relationships in the abstract.  To do this, we introduce
-the idea of \nw{function}.  You should think of a function
-as a mathematical object that expresses a functional relationship
-between two sets.  The notation $f\colon A\to B$ expresses
-the fact that $f$ is a function from the set $A$ to the
-set $B$.  That is, $f$ is a name for a mathematical object
-that expresses a functional relationship from the set $A$ to the set~$B$.
-The notation $f\colon A\to B$ is
-read as ``$f$~is a function from $A$ to~$B$'' or more simply
-as ``$f$~maps $A$ to~$B$.''
-
-If $f\colon A\to B$ and if $a\in A$, the fact that $f$ is
-a functional relationship from $A$ to $B$ means that $f$ associates
-some element of $B$ to~$a$.  That element is denoted~$f(a)$.
-That is, for each $a\in A$, $f(a)\in B$ and $f(a)$ is the single,
-definite answer to the question ``What element of $B$ is
-associated to~$a$ by the function~$f\,$?''  The fact that
-$f$ is a function from $A$ to $B$ means that this question
-has a single, well-defined answer.  Given $a\in A$,
-$f(a)$ is called the \nw[value (of a function)]{value}
-of the function $f$ at~$a$.
-
-For example, if $I$ is the set of items for sale in a
-given store and $M$ is the set of possible prices,
-then there is function $c\colon I\to M$ which
-is defined by the fact that for each $x\in I$, $c(x)$
-is the price of the item~$x$.  Similarly, if
-$P$ is the set of people, then there is a function
-$m\colon P\to P$ such that for each person $p$,
-$m(p)$ is the mother of~$p$.  And if $\N$ is the set
-of natural numbers, then the formula $s(n) = n^2$
-specifies a function $s\colon \N\to\N$.  It is in the
-form of formulas such as $s(n)=n^2$ or $f(x)=x^3-3x+7$ that
-most people first encounter functions.  But you should
-note that a formula by itself is not a function, although it might
-well specify a function between two given sets of numbers.
+For example, if $I$ is the set of items for sale in a given store and $M$ is the set of possible prices, then there is function $c\colon I\to M$ where for each item $x\in I$, $c(x)$ is the price of the item~$x$.
+And if $\N$ is the set of natural numbers, then the formula $s(n) = n^2$ specifies a function $s\colon \N\to\N$.
+It is in the form of formulas such as $s(n)=n^2$ or $f(x)=x^3-3x+7$ that most people first encounter functions.
+But you should note that a formula by itself is not a function, although it might well specify a function between two given sets of numbers.
 Functions are much more general than formulas, and they
 apply to all kinds of sets, not just to sets of numbers.
 
@@ -89,15 +31,13 @@ apply to all kinds of sets, not just to sets of numbers.
 Suppose that $f\colon A\to B$ and $g\colon B\to C$ are functions.
 Given $a\in A$, there is an associated element $f(a)\in B$.
 Since $g$ is a function from $B$ to $C$, and since $f(a)\in B$,
-$g$ associates some element of $C$ to $f(a)$.  That element
-is $g(f(a))$.  Starting with an element $a$ of $A$, we have
-produced an associated element $g(f(a))$ of $C$.  This means
-that we have defined a new function from the set $A$ to
-the set $C$.  This function is called the \nw{composition}
-of $g$ with $f$, and it is denoted by $g\circ f$.  
-That is, if $f\colon A\to B$ and $g\colon B\to C$ are functions,
-then $g\circ f\colon A\to C$ is the function which is defined
-by \[(g\circ f)(a) = g(f(a))\]
+$g$ associates some element of $C$ to $f(a)$.
+That element is $g(f(a))$.
+Starting with an element $a$ of $A$, we have produced an associated element $g(f(a))$ of $C$.
+This means that we have defined a new function from the set $A$ to the set $C$.
+This function is called the \nw{composition} of $g$ with $f$, and it is denoted by $g\circ f$.  
+That is, if $f\colon A\to B$ and $g\colon B\to C$ are functions, then $g\circ f\colon A\to C$ is the function which is defined by 
+\[(g\circ f)(a) = g(f(a))\]
 for each $a\in A$.  For example, suppose that $p$ is the function
 that associates to each item in a store the price of the item,
 and suppose that $t$ is a function that associates the amount of
@@ -126,7 +66,7 @@ that person's maternal grandmother.
 
 \medbreak
 
-If $a$ and $b$ are entities, then $(a,b)$ denotes the
+If $a$ and $b$ are elements, then $(a,b)$ denotes the
 \nw{ordered pair} containing $a$ and~$b$.  The ordered pair
 $(a,b)$ differs from the set $\{a,b\}$ because a set is
 not ordered.  That is, $\{a,b\}$ and $\{b,a\}$ denote the
@@ -157,47 +97,16 @@ of a cross product is \nw{tuple} or, more specifically,
 \nw{ordered n-tuple}.  For example, $(a,b,c,d,e)$ is
 an ordered 5-tuple.
 
-Given a function $f\colon A\to B$, consider the
-set $\{(a,b)\in A\times B\st a\in A \text{ and } b=f(a)\}$.  
-This set of ordered pairs consists
-of all pairs $(a,b)$ such that $a\in A$ and $b$ is the element of
-$B$ that is associated to $a$ by the function~$f$.  The set
-$\{(a,b)\in A\times B\st a\in A \text{ and } b=f(a)\}$ is called the
-\nw{graph} of the function~$f$.  Since $f$ is a function,
-each element $a\in A$ occurs once and only once as a first coordinate
-among the ordered pairs in the graph of~$f$.  Given $a\in A$, we
-can determine $f(a)$ by finding that ordered pair and looking
-at the second coordinate.  In fact, it is convenient to consider
-the function and its graph to be the same thing, and to use
-this as our official mathematical definition.\footnote{This is
-a convenient definition for the mathematical world, but as is often
-the case in mathematics, it leaves out an awful lot of the real
-world.  Functional relationships in the real world are \emph{meaningful},
-but we model them in mathematics with meaningless sets of ordered
-pairs.  We do this for the usual reason: to have something precise
-and rigorous enough that we can make logical deductions and prove
-things about it.}
-
 \begin{definition}
-Let $A$ and $B$ be sets.  A \nw{function} from $A$ to
-$B$ is a subset of $A\times B$ which has the property that
-for each $a\in A$, the set contains one and only one ordered
-pair whose first coordinate is $a$.  If $(a,b)$ is that
-ordered pair, then $b$ is called the value of the function at~$a$
-and is denoted~$f(a)$.  If $b=f(a)$, then we also say that the
-function $f$ \nw[none]{maps} $a$ to~$b$.
-The fact that $f$ is a function from
-$A$ to $B$ is indicated by the notation $f\colon A\to B$.
+Let $A$ and $B$ be sets.  A \nw{function} from $A$ to $B$ is a subset of $A\times B$ which has the property that for each $a\in A$, the set contains one and only one ordered pair whose first coordinate is $a$.
+If $(a,b)$ is that ordered pair, then $b$ is called the value of the function at~$a$ and is denoted~$f(a)$.
+If $b=f(a)$, then we also say that the function $f$ \nw[none]{maps} $a$ to~$b$.
+The fact that $f$ is a function from $A$ to $B$ is indicated by the notation $f\colon A\to B$.
 \end{definition}
 
-For example, if $X=\{a,b\}$ and $Y=\{1,2,3\}$, then the
-set $\{(a,2), (b,1)\}$ is a function from $X$ to $Y$,
-and $\{(1,a), (2,a), (3,b)\}$ is a function from $Y$ to~$X$.
-On the other hand, $\{(1,a),(2,b)\}$ is not a function from
-$Y$ to~$X$, since it does not specify any value for~3.
-And $\{(a,1),(a,2),(b,3)\}$ is not a function from $X$ to
-$Y$ because it specifies two different values, 1 and 2, 
-associated with the same element, $a$, of $X$.
+For example, if $X=\{a,b\}$ and $Y=\{1,2,3\}$, then the set $\{(a,2), (b,1)\}$ is a function from $X$ to $Y$, and $\{(1,a), (2,a), (3,b)\}$ is a function from $Y$ to~$X$.
+On the other hand, $\{(1,a),(2,b)\}$ is not a function from $Y$ to~$X$, since it does not specify any value for~3.
+And $\{(a,1),(a,2),(b,3)\}$ is not a function from $X$ to $Y$ because it specifies two different values, 1 and 2, associated with the same element, $a$, of $X$.
 
 Even though the technical definition of a function is a set
 of ordered pairs, it's usually better to think of a function
@@ -303,19 +212,19 @@ that is, that $f$ is one-to-one.  Altogether, then, $f$ is a bijection.
 \medbreak
 
 One difficulty that people sometimes have with mathematics
-is its generality.  A set is a collection of entities, but
-an ``entity'' can be anything at all, including other sets.
+is its generality.  A set is a collection of elements, but
+an ``element'' can be anything at all, including other sets.
 Once we have defined ordered pairs, we can use ordered pairs as elements
 of sets.  We could also make ordered pairs of sets.
 Now that we have defined functions, every function is itself
-an entity.  This means that we can have sets that contain
+an element.  This means that we can have sets that contain
 functions.  We can even have a function whose domain and
 range are sets of functions.  Similarly, the domain or
 range of a function might be a set of sets, or a set of
 ordered pairs.  Computer scientists
 have a good name for this.  They would say that sets, ordered pairs, and
 functions are \nw[first-class object]{first-class objects}.  Once a set, ordered pair, or function
-has been defined, it can be used just like any other entity.
+has been defined, it can be used just like any other element.
 If they were not first-class objects, there could be restrictions
 on the way they can be used.  For example, it might not be
 possible to use functions as members of sets. (This would make them

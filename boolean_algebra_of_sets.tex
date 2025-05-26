@@ -6,13 +6,13 @@ of sets can be defined in terms of the logical ``and''\index{and (logical operat
 and logical ``or''\index{or (logical operator)} operators.
 The notation $\{x\st P(x)\}$ makes it possible to use predicates
 to specify sets.  And if $A$ is any set, then the formula
-$x\in A$ defines a one place predicate that is true for an entity $x$
+$x\in A$ defines a one place predicate that is true for an element $x$
 if and only if $x$ is a member of~$A$.  So it should not be a
 surprise that many of the rules of logic have analogs in
 set theory.
 
 For example, we have already noted that $\cup$ and $\cap$ are
-commutative operations.   This fact can be verified using the
+commutative operations.   This can be verified using the
 rules of logic.  Let $A$ and $B$ be sets.  According to the definition 
 of equality of sets, we can show that $A\cup B=B\cup A$ by showing
 that $\forall x\,\big((x\in A\cup B)\IFF(x\in B\cup A)\big)$.
@@ -61,7 +61,7 @@ set $A$, it is tempting to try to define $\{x\st \NOT(x\in A)\}$,
 the set that contains everything that does not belong to~$A$. 
 Unfortunately, the rules of set theory do not allow us to define 
 such a set.  The notation $\{x\st P(x)\}$ can only be used when
-the domain of discourse of $P$ is a set, so there must be an underlying
+the domain of $P$ is a set, so there must be an underlying
 set from which the elements that are/are not in $A$ are chosen,
 i.e. some underlying set of which $A$ is a subset.  We can get around
 this problem by restricting the discussion to subsets of
@@ -180,7 +180,7 @@ Law for three sets:
 \end{align*}
 From there, we can derive similar laws for four sets, five sets, and
 so on.  However, just saying ``and so on'' is not a rigorous
-proof of this fact.  Here is a rigorous inductive proof of a generalized
+proof.  Here is a rigorous inductive proof of a generalized
 DeMorgan's Law:
 
 \begin{theorem}
@@ -229,8 +229,8 @@ table:
       \hline
       \strut $\T$& $U$\cr
       \strut $\F$& $\emptyset$\cr
-      \strut $p\AND q$& $A\cap B$\cr
-      \strut $p\OR q$& $A\cup B$\cr
+      \strut $p\land q$& $A\cap B$\cr
+      \strut $p\lor q$& $A\cup B$\cr
       \strut $\NOT p$& $\overline{A}$\cr
       \hline
    \end{tabular}
@@ -292,8 +292,8 @@ consider the set-theoretical expression $A\cap (A\cup B)$ and
 the corresponding compound proposition $p\AND(p\OR q)$.  (These
 correspond since for any $x$, $x\in A\cap(A\cup B) \equiv
 (x\in A)\AND ((x\in A)\OR (x\in B))$.)  You might find it intuitively
-clear that $A\cap(A\cup B)=A$.  Formally, this follows from the
-fact that $p\AND(p\OR q)\equiv p$, which might be less intuitively
+clear that $A\cap(A\cup B)=A$.  Formally, this follows from
+$p\AND(p\OR q)\equiv p$, which might be less intuitively
 clear and is surprising difficult to prove algebraically from the laws
 of logic.  However, there is another way to check that a logical
 equivalence is valid: Make a truth table.  Consider a truth table
@@ -311,8 +311,9 @@ for $p\AND(p\OR q)$:
         \hline
       \end{tabular}
    \end{center}
-The fact that the first column and the last column of this table are
-identical shows that $p\AND(p\OR q)\equiv p$.  Taking $p$ to 
+The first column and the last column of this table are
+identical.
+This shows that $p\AND(p\OR q)\equiv p$.  Taking $p$ to 
 be the proposition $x\in A$ and $q$ to be the proposition $x\in B$,
 it follows that the sets $A$ and $A\cap (A\cup B)$ have the same
 members and therefore are equal.

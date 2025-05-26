@@ -31,13 +31,13 @@ in ordinary algebra.  Instead of the equals sign,\index{equals sign} Boolean alg
 uses logical equivalence,\index{logical equivalence} $\equiv$, which has essentially the
 same meaning.\footnote{In ordinary algebra, it's easy to be confused
 by the equals sign, because it has two very different roles.
-In an identity such as the distributive law, it means
+In an idelement such as the distributive law, it means
 ``is always equal to.''  On the other hand, an equation such as $x^2+3x=4$ is
 a statement that might or might not be true, depending on the value of~$x$.
 Boolean algebra has two operators, $\equiv$ and $\IFF$, that play
 roles similar to the two roles of the equals sign.}
 For example, for propositions $p$, $q$, and $r$, the $\equiv$ operator
-in $p\AND(q\AND r)\equiv(p\AND q)\AND r$ means ``has the same value as,
+in $p\land (q\land r)\equiv(p\land q)\land r$ means ``has the same value as,
 no matter what logical values $p$, $q$, and $r$ have.''
 
 Many of the rules of Boolean algebra\index{laws of Boolean Algebra} are fairly obvious, if you think
@@ -46,12 +46,12 @@ be verified easily by using a truth table.\index{truth table}  Figure~\ref{F-boo
 lists the most important of these laws.   You will
 notice that all these laws, except the first, come in pairs:  Each 
 law in the pair can be obtained from the other
-by interchanging $\AND$ with $\OR$ and $\T$ with~$\F$.  This cuts down
+by interchanging $\land$ with $\lor$ and $\T$ with~$\F$.  This cuts down
 on the number of facts you have to remember.\footnote{It is also an
 example of a more general fact known as \nw{duality}, which asserts
 that given any tautology that uses only
-the operators $\AND$, $\OR$, and $\NOT$, another tautology can be
-obtained from it by interchanging $\AND$ with $\OR$ and $\T$ with $\F$.
+the operators $\land$, $\lor$, and $\NOT$, another tautology can be
+obtained from it by interchanging $\land$ with $\lor$ and $\T$ with $\F$.
 We won't attempt to prove this here.}
 
 
@@ -62,26 +62,26 @@ We won't attempt to prove this here.}
       \hline
       \strut Double negation&   $\NOT(\NOT p)\equiv p$\\
       \hline
-      \strut Excluded middle&   $p\OR\NOT p\equiv\T$\\
-      \strut Contradiction&   $p\AND\NOT p\equiv\F$\\
+      \strut Excluded middle&   $p\lor\NOT p\equiv\T$\\
+      \strut Contradiction&   $p\land\NOT p\equiv\F$\\
       \hline
-      \strut Identity laws&          $\T\AND p\equiv p$\\
-      \strut&                        $\F\OR p \equiv p$\\
+      \strut Idelement laws&          $\T\land p\equiv p$\\
+      \strut&                        $\F\lor p \equiv p$\\
       \hline
-      \strut Idempotent laws&    $p\AND p\equiv p$\\
-      \strut&                   $p\OR p\equiv p$\\
+      \strut Idempotent laws&    $p\land p\equiv p$\\
+      \strut&                   $p\lor p\equiv p$\\
       \hline
-      \strut Commutative laws&   $p\AND q\equiv q\AND p$\\
-      \strut&                   $p\OR q\equiv q\OR p$\\
+      \strut Commutative laws&   $p\land q\equiv q\land p$\\
+      \strut&                   $p\lor q\equiv q\lor p$\\
       \hline
-      \strut Associative laws&   $(p\AND q)\AND r\equiv p\AND(q\AND r)$\\
-      \strut&                   $(p\OR q)\OR r\equiv p\OR(q\OR r)$\\
+      \strut Associative laws&   $(p\land q)\land r\equiv p\land (q\land r)$\\
+      \strut&                   $(p\lor q)\lor r\equiv p\lor(q\lor r)$\\
       \hline
-      \strut Distributive laws&  $p\AND(q\OR r)\equiv (p\AND q)\OR (p\AND r)$\\
-      \strut&                   $p\OR(q\AND r)\equiv (p\OR q)\AND (p\OR r)$\\
+      \strut Distributive laws&  $p\land (q\lor r)\equiv (p\land q)\lor (p\land r)$\\
+      \strut&                   $p\lor(q\land r)\equiv (p\lor q)\land (p\lor r)$\\
       \hline
-      \strut DeMorgan's laws&    $\NOT(p\AND q)\equiv (\NOT p)\OR(\NOT q)$\\
-      \strut&                   $\NOT(p\OR q)\equiv (\NOT p)\AND(\NOT q)$\\
+      \strut DeMorgan's laws&    $\NOT(p\land q)\equiv (\NOT p)\lor(\NOT q)$\\
+      \strut&                   $\NOT(p\lor q)\equiv (\NOT p)\land (\NOT q)$\\
       \hline
    \end{tabular}
   }
@@ -117,7 +117,7 @@ logical equivalence of $p$ and $\NOT(\NOT p)$.  The point here is not
 just that $\NOT(\NOT p)\equiv p$, but also that this logical
 equivalence is valid because it can be verified computationally
 based just on the relevant definitions.  Its validity does \emph{not}
-follow from the fact that ``it's obvious'' or ``it's a well-known
+follow because ``it's obvious'' or ``it's a well-known
 rule of grammar.''  Students often ask ``Why do I have to prove\index{proof}
 something when it's obvious.''  The point is that logic---and mathematics
 more generally---is its own little world with its own set of rules.
@@ -138,8 +138,8 @@ the laws of Boolean algebra can stand for any propositions, including
 compound propositions.  
 It is not just true, as the Double Negation Law states,
 that $\NOT(\NOT p)\equiv p$.  It is also
-true that $\NOT(\NOT q)\equiv q$, that $\NOT(\NOT(p\AND q))\equiv (p\AND q)$,
-that $\NOT(\NOT(p\IMP(q\AND \NOT p)))\equiv(p\IMP (q\AND\NOT p))$,
+true that $\NOT(\NOT q)\equiv q$, that $\NOT(\NOT(p\land q))\equiv (p\land q)$,
+that $\NOT(\NOT(p\IMP(q\land \NOT p)))\equiv(p\IMP (q\land \NOT p))$,
 and an infinite number of other statements of the same form.  Here,
 a ``statement of the same form'' is one that can be obtained by
 substituting something for $p$ in both places where it occurs in $\NOT(\NOT p)\equiv p$.
@@ -167,11 +167,11 @@ it is also true that when $(Q)$ is substituted for $p$ in a logical equivalence,
 the result is again a logical equivalence.\footnote{I've added parentheses around 
 $Q$ here for technical reasons. Sometimes, the parentheses are necessary
 to make sure that $Q$ is evaluated as a whole, so that its final value is used in place
-of $p$.  As an example of what can go wrong, consider $q\AND r$.  If this is
+of $p$.  As an example of what can go wrong, consider $q\land r$.  If this is
 substituted literally for $p$ in $\NOT(\NOT p)$, without
-parentheses, the result is $\NOT(\NOT q \AND r)$.  But this expression
-means $\NOT((\NOT q)\AND r)$, which is \emph{not} equivalent to
-$q\AND r$.}
+parentheses, the result is $\NOT(\NOT q \land r)$.  But this expression
+means $\NOT((\NOT q)\land r)$, which is \emph{not} equivalent to
+$q\land r$.}
 
 The First Substitution Law lets you do algebra!  For example, you
 can substitute $p\IMP q$ for $p$ in the law of double negation, $\NOT(\NOT p)\equiv p$.
@@ -207,9 +207,9 @@ $(p)$ for $(\NOT(\NOT p))$.  The resulting expression, $q\IMP(p)$,
 or just $q \IMP p$ without the parentheses,
 is logically equivalent to the original $q\IMP (\NOT(\NOT p))$.
 Once again, we have to be careful about parentheses:  The fact that
-$p\OR p\equiv p$ does \emph{not} allow us to rewrite $q\AND p\OR p\AND r$
-as $q\AND p\AND r$.  The problem is that $q\AND p\OR p\AND r$
-means $(q\AND p)\OR (p\AND r)$, so that $(p\OR p)$ is not a subexpression.
+$p\lor p\equiv p$ does \emph{not} allow us to rewrite $q\land p\lor p\land r$
+as $q\land p\land r$.  The problem is that $q\land p\lor p\land r$
+means $(q\land p)\lor (p\land r)$, so that $(p\lor p)$ is not a subexpression.
 So even though in practice we won't always write all the parentheses,
 you always have to be aware of where the parentheses belong.
 
@@ -226,24 +226,24 @@ This means that we can show that two compound propositions are
 logically equivalent\index{logical equivalence} by finding a chain of logical equivalences that
 lead from one to the other.  For example:
 \begin{align*}
- p\AND(p\IMP q) &\equiv p\AND(\NOT p\OR q)          &&\text{definition of $p\IMP q$, Theorem \ref{T-sub2}}\\
-                &\equiv (p\AND \NOT p)\OR (p\AND q) &&\text{Distributive Law}\\ 
-                &\equiv \F\OR(p\AND q)              &&\text{Law of Contradiction, Theorem \ref{T-sub2}}\\
-                &\equiv (p\AND q)                   &&\text{Identity Law}\\
+ p\land (p\IMP q) &\equiv p\land (\NOT p\lor q)          &&\text{definition of $p\IMP q$, Theorem \ref{T-sub2}}\\
+                &\equiv (p\land \NOT p)\lor (p\land q) &&\text{Distributive Law}\\ 
+                &\equiv \F\lor(p\land q)              &&\text{Law of Contradiction, Theorem \ref{T-sub2}}\\
+                &\equiv (p\land q)                   &&\text{Idelement Law}\\
 \end{align*}
 Each step in the chain has its own justification.  In several cases,
 a substitution law is used without stating as much.  In the first line,
-for example, the definition of $p\IMP q$ is that $p\IMP q\equiv \NOT p\OR q$.
-The Second Substitution Law allows us to substitute $(\NOT p\OR q)$ for
+for example, the definition of $p\IMP q$ is that $p\IMP q\equiv \NOT p\lor q$.
+The Second Substitution Law allows us to substitute $(\NOT p\lor q)$ for
 $(p\IMP q)$.  In the last line, we implicitly applied the First
-Substitution Law to the Identity Law, $\F\OR p\equiv p$, to obtain
-$\F\OR(p\AND q)\equiv (p\AND q)$.  
+Substitution Law to the Idelement Law, $\F\lor p\equiv p$, to obtain
+$\F\lor(p\land q)\equiv (p\land q)$.  
 
 The chain of equivalences in the above example allows us to conclude
-that $p\AND(p\IMP q)$ is logically equivalent to $p\AND q$.
+that $p\land (p\IMP q)$ is logically equivalent to $p\land q$.
 This means that if you were to make a truth table\index{truth table} for these two
-expressions, the truth values in the column for $p\AND(p\IMP q)$
-would be identical to those in the column for $p\AND q$.  We know
+expressions, the truth values in the column for $p\land (p\IMP q)$
+would be identical to those in the column for $p\land q$.  We know
 this without actually making the table.  In this case, the table
 would only be four lines long and easy enough to make.  But Boolean
 algebra can be applied in cases where the number of propositional
@@ -257,20 +257,20 @@ So, we can prove that a compound proposition, $P$, is a tautology\index{tautolog
 finding a chain of logical equivalences leading from $P$ to $\T$.
 For example:
 \begin{align*}
-   ((p\OR q) &\AND \NOT p)\IMP q &&\\
-      &\equiv (\NOT((p\OR q)\AND\NOT p))\OR q &&\text{definition of $\IMP$}\\
-      &\equiv (\NOT(p\OR q) \OR \NOT (\NOT p))\OR q                     &&\text{DeMorgan's Law, Theorem \ref{T-sub2}}\\
-      &\equiv (\NOT(p\OR q) \OR p)\OR q                                 &&\text{Double Negation, Theorem \ref{T-sub2}}\\
-      &\equiv (\NOT (p\OR q)) \OR (p\OR q)                              &&\text{Associative Law for $\OR$}\\
+   ((p\lor q) &\land \NOT p)\IMP q &&\\
+      &\equiv (\NOT((p\lor q)\land \NOT p))\lor q &&\text{definition of $\IMP$}\\
+      &\equiv (\NOT(p\lor q) \lor \NOT (\NOT p))\lor q                     &&\text{DeMorgan's Law, Theorem \ref{T-sub2}}\\
+      &\equiv (\NOT(p\lor q) \lor p)\lor q                                 &&\text{Double Negation, Theorem \ref{T-sub2}}\\
+      &\equiv (\NOT (p\lor q)) \lor (p\lor q)                              &&\text{Associative Law for $\lor$}\\
       &\equiv \T                                                        &&\text{Law of Excluded Middle}\\
 \end{align*}
-From this chain of equivalences, we can conclude that $((p\OR q) \AND \NOT p)\IMP q$
+From this chain of equivalences, we can conclude that $((p\lor q) \land \NOT p)\IMP q$
 is a tautology.
 
 Now, it takes some practice to look at an expression and see which
-rules can be applied to it; to see $(\NOT (p\OR q)) \OR (p\OR q)$
+rules can be applied to it; to see $(\NOT (p\lor q)) \lor (p\lor q)$
 as an application of the law of the excluded middle for example,
-you need to mentally substitute $(p\OR q)$ for $p$ in the law as it is stated
+you need to mentally substitute $(p\lor q)$ for $p$ in the law as it is stated
 in Figure~\ref{F-boole1}.  Often, there are several rules that
 apply, and there are no definite guidelines about which one you
 should try.  This is what makes algebra something of an art.
@@ -281,33 +281,33 @@ should try.  This is what makes algebra something of an art.
 It is certainly not true that all possible rules of Boolean algebra are given
 in Figure~\ref{F-boole1}.  For one thing, there are many rules that are easy
 consequences of the rules that are listed there.  For example, although the
-table asserts only that $\F\OR p\equiv p$, it is also true that
-$p\OR\F\equiv p$.  This can be checked directly or by a simple calculation:
+table asserts only that $\F\lor p\equiv p$, it is also true that
+$p\lor\F\equiv p$.  This can be checked directly or by a simple calculation:
 \begin{align*}
-p\OR\F &\equiv \F\OR p &&\text{Commutative Law}\\
-        &\equiv p        &&\text{Identity Law as given in the table}\\
+p\lor\F &\equiv \F\lor p &&\text{Commutative Law}\\
+        &\equiv p        &&\text{Idelement Law as given in the table}\\
 \end{align*}
 Additional rules can be obtained by applying the Commutative Law to other
 rules in the table, and we will use such rules freely in the future.
 
 Another sort of easy extension can be applied to the Associative Law,
-$(p\OR q)\OR r\equiv p\OR(q\OR r)$. The law is stated for the $\OR$ operator
+$(p\lor q)\lor r\equiv p\lor(q\lor r)$. The law is stated for the $\lor$ operator
 applied to three terms, but it generalizes to four or more terms. For example
 \begin{align*}
-((p\OR q)&\OR r)\OR s\\
-     &\equiv (p\OR q)\OR (r\OR s) &&\text{by the Associative Law for three terms}\\
-     &\equiv p\OR(q\OR (r\OR s))  &&\text{by the Associative Law for three terms}\\
+((p\lor q)&\lor r)\lor s\\
+     &\equiv (p\lor q)\lor (r\lor s) &&\text{by the Associative Law for three terms}\\
+     &\equiv p\lor(q\lor (r\lor s))  &&\text{by the Associative Law for three terms}\\
 \end{align*}
-We will, of course, often write this expression as $p\OR q\OR r\OR s$, with no
+We will, of course, often write this expression as $p\lor q\lor r\lor s$, with no
 parentheses at all, knowing that wherever we put the parentheses the value is the
 same.
 
 One other thing that you should keep in mind is that rules can be applied in
 either direction.  The Distributive Law, for example, allows you to
-distribute the $p$ in $p\OR(q\AND\NOT p)$ to get $(p\OR q)\AND(p\OR\NOT p)$.
+distribute the $p$ in $p\lor(q\land \NOT p)$ to get $(p\lor q)\land (p\lor\NOT p)$.
 But it can also be used in reverse to ``factor out'' a term, as when you
-start with $(q\OR(p\IMP q))\AND(q\OR(q\IMP p))$ and factor out the $q$
-to get $q\OR((p\IMP q)\AND(q\IMP p))$.
+start with $(q\lor(p\IMP q))\land (q\lor(q\IMP p))$ and factor out the $q$
+to get $q\lor((p\IMP q)\land (q\IMP p))$.
 
 
 \medbreak
@@ -318,12 +318,12 @@ reasonable.  Of course, you can apply the laws in calculations without
 understanding them.  But if you want to figure out \emph{which}
 calculations to do, you need some understanding.  Most of the laws
 are clear enough with a little thought.  For example, if we already
-know that $q$ is false, then $p\OR q$ will be true when $p$ is true
-and false when $p$ is false.  That is, $p\OR\F$ has the same logical
-value as $p$.  But that's just what the Identity Law\index{identity law} for $\OR$ says.
+know that $q$ is false, then $p\lor q$ will be true when $p$ is true
+and false when $p$ is false.  That is, $p\lor\F$ has the same logical
+value as $p$.  But that's just what the Idelement Law\index{idelement law} for $\lor$ says.
 A few of the laws need more discussion.
 
-The Law of the Excluded Middle,\index{excluded middle, law of} $p\OR\NOT p\equiv \T$,
+The Law of the Excluded Middle,\index{excluded middle, law of} $p\lor\NOT p\equiv \T$,
 says that given any proposition $p$, at
 least one of $p$ or $\NOT p$ must be true.  Since $\NOT p$ is true 
 exactly when $p$ is false, this is the same as saying that
@@ -336,7 +336,7 @@ there are some people who think there should be a third truth value,
 one that means something like ``unknown'' or ``not proven.''  But the
 mathematicians who think this way tend to be considered a bit odd
 by most other mathematicians.}  The Law of Contradiction,
-$p\AND\NOT p\equiv\F$, says that it is not possible for 
+$p\land \NOT p\equiv\F$, says that it is not possible for 
 \emph{both} $p$ and $\NOT p$ to be true.  Both of these rules are obvious.
 
 The Distributive Laws\index{distributive law} cannot be called obvious, but a few
@@ -346,22 +346,22 @@ card is the ace of spaces or this card is the ace of clubs.''  But this is
 just an example of the first distributive law!  For, let $a$ represent the
 proposition ``This card is an ace,'' let $s$ represent ``This card is a spade,''
 and let $c$ represent ``This card is a club.''  Then ``This card is the ace of
-spades or clubs'' can be translated into logic as $a\AND(s\OR c)$, while
+spades or clubs'' can be translated into logic as $a\land (s\lor c)$, while
 ``This card is the ace of spades or this card is the ace of clubs'' becomes
-$(a\AND s)\OR (a\AND c)$.  And the distributive law assures us that
-$a\AND(s\OR c)\equiv(a\AND s)\OR (a\AND c)$.  The second distributive
+$(a\land s)\lor (a\land c)$.  And the distributive law assures us that
+$a\land (s\lor c)\equiv(a\land s)\lor (a\land c)$.  The second distributive
 law tells us, for example, that ``This card is either a joker or is the ten of diamonds''
 is logically equivalent to ``This card is either a joker or a ten, and it is either
-a joker or a diamond.''  That is, $j\OR(t\AND d)\equiv(j\OR t)\AND(j\OR d)$.
+a joker or a diamond.''  That is, $j\lor(t\land d)\equiv(j\lor t)\land (j\lor d)$.
 The distributive laws are powerful
 tools and you should keep them in mind whenever you are faced with a
-mixture of $\AND$ and $\OR$ operators.
+mixture of $\land $ and $\lor$ operators.
 
 DeMorgan's Laws\index{DeMorgan's Laws} must also be less than obvious, since people often get
-them wrong.  But they do make sense.  When considering $\NOT(p\AND q)$,
+them wrong.  But they do make sense.  When considering $\NOT(p\land q)$,
 you should ask yourself, how can ``$p$ and $q$'' \emph{fail} to be true.
 It will fail to be true if either $p$ is false \emph{or} if $q$ is false (or both).
-That is, $\NOT(p \AND q)$ is equivalent to $(\NOT p)\OR(\NOT q)$.  Consider
+That is, $\NOT(p \land q)$ is equivalent to $(\NOT p)\lor(\NOT q)$.  Consider
 the sentence ``A raven is large and black.''  If a bird is \emph{not} large and black,
 then it is not a raven.  But what exactly does it mean to be
 ``\emph{not (large and black)}''?  How can you tell whether the assertion ``not (large
@@ -369,15 +369,15 @@ and black)'' is true of something?  This will be true if it is either
 not large \emph{or} not black.  (It doesn't have to be both---it could be
 large and white, it could be small and black.)  Similarly, for ``$p$ or $q$''
 to fail to be true, \emph{both} $p$ and $q$ must be false.  That
-is, $\NOT(p\OR q)$ is equivalent to $(\NOT p)\AND (\NOT q)$.  This is DeMorgan's
+is, $\NOT(p\lor q)$ is equivalent to $(\NOT p)\land (\NOT q)$.  This is DeMorgan's
 second law.
 
-Recalling that $p\IMP q$ is equivalent to $(\NOT p)\OR q$, we can apply DeMorgan's
+Recalling that $p\IMP q$ is equivalent to $(\NOT p)\lor q$, we can apply DeMorgan's
 law to obtain a formula for the negation an implication:
 \begin{align*}
-     \NOT(p\IMP q)&\equiv \NOT((\NOT p)\OR q)\\
-                   &\equiv (\NOT(\NOT p))\AND(\NOT q)\\
-                   &\equiv p\AND\NOT q\\
+     \NOT(p\IMP q)&\equiv \NOT((\NOT p)\lor q)\\
+                   &\equiv (\NOT(\NOT p))\land (\NOT q)\\
+                   &\equiv p\land \NOT q\\
 \end{align*}
 That is, $p\IMP q$ is false exactly when both $p$ is true and $q$ is false.
 For example, the negation of ``If you have an ace, you win'' is
@@ -392,10 +392,10 @@ was not true.
 each of the distributive laws.
 
 \problem Construct the following truth tables:
-\ppart Construct truth tables to demonstrate that $\NOT (p \AND q)$ is {\bf not}
-logically equivalent to $(\NOT p) \AND (\NOT q)$.
-\ppart Construct truth tables to demonstrate that $\NOT (p \OR q)$ is {\bf not}
-logically equivalent to $(\NOT p) \OR (\NOT q)$. 
+\ppart Construct truth tables to demonstrate that $\NOT (p \land q)$ is {\bf not}
+logically equivalent to $(\NOT p) \land (\NOT q)$.
+\ppart Construct truth tables to demonstrate that $\NOT (p \lor q)$ is {\bf not}
+logically equivalent to $(\NOT p) \lor (\NOT q)$. 
 \ppart Construct truth tables to demonstrate the validity of both
 DeMorgan's Laws.
 
@@ -418,41 +418,41 @@ look like?  Is it a valid law in the algebra of numbers?
 
 \problem The distributive laws given in Figure \ref{F-boole1} are sometimes
 called the \emph{left} distributive laws.  The \nw[distributive law]{right distributive
-laws} say that $(p\OR q)\AND r\equiv (p\AND r)\OR (q\AND r)$ and
-that $(p\AND q)\OR r\equiv (p\OR r)\AND (q \OR r)$.  Show that
+laws} say that $(p\lor q)\land r\equiv (p\land r)\lor (q\land r)$ and
+that $(p\land q)\lor r\equiv (p\lor r)\land (q \lor r)$.  Show that
 the right distributive laws are also valid laws of Boolean algebra.
 (Note: In practice, both the left and the right distributive laws
 are referred to simply as the distributive laws, and both can be used
 freely in proofs.)
 
-\problem Show that $p\AND(q\OR r\OR s)\equiv (p\AND q)\OR(p\AND r)\OR
-(p\AND s)$ for any propositions $p$, $q$, $r$, and $s$.  In words, 
+\problem Show that $p\land(q\lor r\lor s)\equiv (p\land q)\lor(p\land r)\lor
+(p\land s)$ for any propositions $p$, $q$, $r$, and $s$.  In words, 
 we can say that conjunction distributes over a disjunction of
-three terms.  (Recall that the $\AND$ operator is called conjunction and $\OR$
+three terms.  (Recall that the $\land$ operator is called conjunction and $\lor$
 is called disjunction.)
-Translate into logic and verify the fact that
+Translate into logic and verify that
 conjunction distributes over a disjunction of four terms.  Argue that,
 in fact, conjunction distributes over a disjunction of any number
 of terms.
 
 \problem There are two additional basic laws of logic, involving the
-two expression $p\AND\F$ and $p\OR\T$.  What are the missing laws?
+two expression $p\land\F$ and $p\lor\T$.  What are the missing laws?
 Show that your answers are, in fact, laws.
 
 \problem For each of the following pairs of propositions, show that
 the two propositions are logically equivalent by finding a chain of
 equivalences from one to the other.
 State which definition or law of logic justifies each equivalence in the chain.
-\tparts{$p\AND (q\AND p)$,\quad $p\AND q$       &$(\NOT p)\IMP q$,\quad $p\OR q$\cr
-$(p\OR q)\AND\NOT q$,\quad $p\AND \NOT q$                  &$p\IMP(q\IMP r)$,\quad $(p\AND q)\IMP r$\cr
-$(p\IMP r)\AND(q\IMP r)$,\quad $(p\OR q)\IMP r$ &$p\IMP(p\AND q)$,\quad $p\IMP q$\cr
+\tparts{$p\land (q\land p)$,\quad $p\land q$       &$(\NOT p)\IMP q$,\quad $p\lor q$\cr
+$(p\lor q)\land\NOT q$,\quad $p\land \NOT q$                  &$p\IMP(q\IMP r)$,\quad $(p\land q)\IMP r$\cr
+$(p\IMP r)\land(q\IMP r)$,\quad $(p\lor q)\IMP r$ &$p\IMP(p\land q)$,\quad $p\IMP q$\cr
 }
 
 \problem For each of the following compound propositions, find a 
 simpler proposition that is logically equivalent.  Try to find a proposition
 that is as simple as possible.
-\pparts{(p\AND q)\OR\NOT q      &\NOT(p\OR q)\AND p       &p\IMP\NOT p\cr
-        \NOT p\AND(p\OR q)      &(q\AND p)\IMP q          &(p\IMP q)\AND(\NOT p\IMP q)\cr
+\pparts{(p\land q)\lor\NOT q      &\NOT(p\lor q)\land p       &p\IMP\NOT p\cr
+        \NOT p\land(p\lor q)      &(q\land p)\IMP q          &(p\IMP q)\land(\NOT p\IMP q)\cr
   }
 
 \problem Express the negation of each of the following sentences in
