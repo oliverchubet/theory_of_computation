@@ -1,7 +1,7 @@
 \section{Predicates and Quantifiers}\label{S-logic-4}
 
 In propositional logic,\index{propositional logic} we can let $p$ stand for ``Roses are red'' and
-$q$ stand for ``Violets are blue.''  Then $p\AND q$ will stand for
+$q$ stand for ``Violets are blue.''  Then $p\land q$ will stand for
 ``Roses are red and violets are blue.''  But we lose a lot in the
 translation into logic.  Since propositional logic only deals with
 truth values, there's nothing we can do with $p$ and $q$ in propositional
@@ -81,7 +81,7 @@ These formulas make
 sense for any predicate $P$, and for any predicate $P$ they have the same truth
 value.  Unfortunately, we can't---as we did in propositional logic---just check
 this fact with a truth table: there are no subpropositions, connected by
-$\AND$, $\OR$, etc, out of which to build a table.  So, let's reason it out:
+$\land$, $\lor$, etc, out of which to build a table.  So, let's reason it out:
 To say $\NOT(\forall x P(x))$ is true is just to say that it is not the case that
 $P(x)$ is true for all possible elements $x$.  So, there must be some element $a$
 for which $P(a)$ is false.  Since $P(a)$ is false, $\NOT P(a)$ is true.
@@ -121,22 +121,22 @@ are known as DeMorgan's Laws\index{DeMorgan's Laws} for predicate logic.  (They 
 DeMorgan's Laws for propositional logic; see the exercises.)  These
 laws can be used to help simplify expressions.  For example, 
 \begin{align*}
-  \NOT\,\forall y (R(y)\OR Q(y)) &\equiv \exists y(\NOT(R(y)\OR Q(y)))\\
-       &\equiv \exists y((\NOT R(y))\AND(\NOT Q(y))\\
+  \NOT\,\forall y (R(y)\lor Q(y)) &\equiv \exists y(\NOT(R(y)\lor Q(y)))\\
+       &\equiv \exists y((\NOT R(y))\land(\NOT Q(y))\\
 \end{align*}
 It might not be clear exactly why this qualifies as a ``simplification,''
 but it's generally considered simpler to have the negation operator applied
 to basic propositions such as $R(y)$, rather than to quantified expressions
-such as \hbox{$\forall y (R(y)\OR Q(y))$}.
+such as \hbox{$\forall y (R(y)\lor Q(y))$}.
 For a more complicated example:
 \begin{align*}
-  \NOT\,\exists x\big(P(x)&\AND (\forall y (Q(y)\IMP Q(x)))\big)\\
-            &\equiv\forall x\big(\NOT\big(P(x)\AND (\forall y (Q(y)\IMP Q(x)))\big)\\
-            &\equiv\forall x\big((\NOT P(x))\OR (\NOT \forall y (Q(y)\IMP Q(x)))\big)\\
-            &\equiv\forall x\big((\NOT P(x))\OR (\exists y(\NOT (Q(y)\IMP Q(x))))\big)\\
-            &\equiv\forall x\big((\NOT P(x))\OR (\exists y(\NOT (\NOT Q(y)\OR Q(x))))\big)\\
-            &\equiv\forall x\big((\NOT P(x))\OR (\exists y(\NOT\NOT Q(y)\AND \NOT Q(x)))\big)\\
-            &\equiv\forall x\big((\NOT P(x))\OR (\exists y(Q(y)\AND \NOT Q(x)))\big)\\
+  \NOT\,\exists x\big(P(x)&\land (\forall y (Q(y)\IMP Q(x)))\big)\\
+            &\equiv\forall x\big(\NOT\big(P(x)\land (\forall y (Q(y)\IMP Q(x)))\big)\\
+            &\equiv\forall x\big((\NOT P(x))\lor (\NOT \forall y (Q(y)\IMP Q(x)))\big)\\
+            &\equiv\forall x\big((\NOT P(x))\lor (\exists y(\NOT (Q(y)\IMP Q(x))))\big)\\
+            &\equiv\forall x\big((\NOT P(x))\lor (\exists y(\NOT (\NOT Q(y)\lor Q(x))))\big)\\
+            &\equiv\forall x\big((\NOT P(x))\lor (\exists y(\NOT\NOT Q(y)\land \NOT Q(x)))\big)\\
+            &\equiv\forall x\big((\NOT P(x))\lor (\exists y(Q(y)\land \NOT Q(x)))\big)\\
 \end{align*}
 DeMorgan's Laws are listed in Figure~\ref{F-predlogic} along with two
 other laws of predicate logic.  The other laws allow you to interchange
@@ -171,11 +171,11 @@ $\mathscr{P}$ is logically equivalent to $\mathscr{Q}$.
 \problem Simplify each of the following propositions.  In your answer, the
 $\NOT$ operator should be applied only to individual predicates.
 \pparts{
-   \NOT\,\forall x (\NOT P(x)) & \NOT\,\exists x(P(x)\AND Q(x))\cr
+   \NOT\,\forall x (\NOT P(x)) & \NOT\,\exists x(P(x)\land Q(x))\cr
    \NOT \,\forall z(P(z)\IMP Q(z))&
-      \NOT\big((\forall x P(x))\AND \forall y(Q(y))\big) \cr
+      \NOT\big((\forall x P(x))\land \forall y(Q(y))\big) \cr
    \NOT\, \forall x \exists y P(x,y)&
-      \NOT\,\exists x (R(x)\AND \forall y S(x,y))\cr
+      \NOT\,\exists x (R(x)\land \forall y S(x,y))\cr
     \NOT\,\exists y(P(y)\IFF Q(y))&
        \NOT \big(\forall x (P(x)\IMP (\exists y Q(x,y)))\big) \cr
 }
@@ -190,8 +190,8 @@ $\NOT$ operator should be applied only to individual predicates.
 \ppart $\NOT$$\exists n (\forall s C(s,n))$
 \ppart $\NOT$$\exists n (\forall s (L(s,n) \IMP P(s)))$
 \ppart $\NOT$$\exists n (\forall s (L(s,n) \IMP (\exists x \exists y \exists z Q(x,y,z))))$.
-\ppart $\NOT$$\exists n (\forall s (L(s,n) \IMP (\exists x \exists y \exists z (s=xyz \AND 
-R(x,y) \AND T(y) \AND U(x,y,z))))$.
+\ppart $\NOT$$\exists n (\forall s (L(s,n) \IMP (\exists x \exists y \exists z (s=xyz \land 
+R(x,y) \land T(y) \land U(x,y,z))))$.
 
 \problem Suppose that the domain for a predicate $P$
 contains only two elements.  Show that $\forall x P(x)$ is equivalent to

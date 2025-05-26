@@ -154,18 +154,18 @@ need to handle that case explicitly.  In the remaining case, when $p$ is
 true, we can show that $p\IMP q$ is true by showing that the truth of $q$
 follows from the truth of $p$.
 
-A statement of the form $p\AND q$ can be proven by proving
-$p$ and $q$ separately.  A statement of the form $p\OR q$
+A statement of the form $p\land q$ can be proven by proving
+$p$ and $q$ separately.  A statement of the form $p\lor q$
 can be proved by proving the logically equivalent statement
 $(\NOT p)\IMP q$: to prove
-$p\OR q$, you can assume that $p$ is false and prove, under
+$p\lor q$, you can assume that $p$ is false and prove, under
 that assumption, that $q$ is true.  For example, the
 statement ``Every integer is either even or odd'' is
 equivalent to the statement ``Every integer that is not even
 is odd.''
 
 Since $p\IFF q$ is equivalent
-to $(p\IMP q)\AND(q\IMP p)$, a statement of the form $p\IFF q$
+to $(p\IMP q)\land (q\IMP p)$, a statement of the form $p\IFF q$
 is often proved by giving two proofs, one of
 $p\IMP q$ and one of $q\IMP p$.  In English,
 $p\IFF q$ can be stated in several forms such as
@@ -379,10 +379,10 @@ biconditionals $p\IFF r\IFF s\IFF \cdots\IFF q$.
 %
 %\problem Find a natural number $n$ for which $n^2+n+41$ is not prime.
 %
-%\problem Show that the propositions $p\OR q$ and $(\NOT p)\IMP q$
+%\problem Show that the propositions $p\lor q$ and $(\NOT p)\IMP q$
 %are logically equivalent.
 %
-%\problem Show that the proposition $(p\OR q)\IMP r$ is equivalent
+%\problem Show that the proposition $(p\lor q)\IMP r$ is equivalent
 %to $(p\IMP r)\AND(q\IMP r)$.
 %%  Explain how this
 %%fact is used in the proof of Theorem~\ref{T-image}.
