@@ -23,80 +23,8 @@ but it could just as well be filled by other elements:
 Each of these propositions uses the same predicate, but they are
 different propositions and they can have different truth values.
 
-If $P$ is a predicate and $a$ is an element, then $P(a)$ stands for
-the proposition that is formed when $P$ is applied to $a$.  If $P$
-represents ``is red'' and $a$ stands for ``the rose,'' then
-$P(a)$ is ``the rose is red.''  If $M$ is the predicate
-``is mortal'' and $s$ is ``Socrates,'' then $M(s)$ is the proposition
-``Socrates is mortal.'' 
-
-Now, you might be asking, just what is an \emph{element}\index{element} anyway?
-I am using the term here to mean some specific, identifiable thing
-to which a predicate can be applied.  Generally, it doesn't make
-sense to apply a given predicate to every possible element, but only
-to elements in a certain category.  For example, it probably doesn't
-make sense to apply the predicate ``is mortal'' to your living room
-sofa.  This predicate only applies to elements in the category of
-living things, since there is no way something can be mortal unless it
-is alive.  This category is called the domain for
-the predicate.\footnote{In the language
-of set theory, which will be introduced in the next chapter,
-we would say that a domain is a set, $U$, and
-a predicate is a function from $U$ to the set of truth values.
-The definition should be clear enough without the formal language
-of set theory, and in fact you should think of this definition---and
-many others---as motivation for that language.}
-
-We are now ready for a formal definition of one-place
-predicates.  A one-place
-predicate, like all the examples we have seen so far, has a single
-slot which can be filled in with one element:
-
-
-\begin{definition}
-A \nw{one-place predicate}\index{predicate} associates a proposition with each element in some
-collection of elements.  This collection is called the \nw{domain
-} for the predicate.  If $P$ is a predicate and $a$ is
-an element in the domain for $P$, then $P(a)$ denotes
-the proposition that is associated with $a$ by~$P$.  We say that $P(a)$
-is the result of \nw[none]{applying} $P$ to~$a$.
-\end{definition}
-
-We can obviously extend this to predicates that can be applied to
-two or more elements.  In the proposition ``John loves Mary,''
-\emph{loves} is a two-place predicate.  Besides John and Mary,
-it could be applied to other pairs of elements:  ``John loves Jane,''
-``Bill loves Mary,'' ``John loves Bill,''  ``John loves John.''
-If $Q$ is a two-place
-predicate, then $Q(a,b)$ denotes the proposition that is obtained
-when $Q$ is applied to the elements $a$ and~$b$.  Note that each of
-the ``slots'' in a two-place predicate can have its own domain of
-discourse.  For example, if $Q$ represents the predicate ``owns,''
-then $Q(a,b)$ will only make sense when $a$ is a person and $b$ is an
-inanimate object.  An example of a three-place predicate is
-``$a$~gave $b$ to~$c$,'' and a four-place predicate would be
-``$a$~bought $b$ from $c$ for $d$ dollars.''  But keep in mind that
-not every predicate has to correspond to an English sentence.
-
-When predicates are applied to elements, the results are propositions,
-and all the operators of propositional logic can be applied to these
-propositions just as they can to any propositions.  Let $R$ be the
-predicate ``is red,'' and let $L$ be the two-place predicate ``loves.''
-If $a$, $b$, $j$, $m$, and $b$ are elements belonging to the 
-appropriate categories, then we can form compound propositions such
-as:
-\[
-\begin{array}{l@{\qquad}l}
-   R(a)\AND R(b)         &\text{$a$ is red and $b$ is red}\\
-   \NOT R(a)             &\text{$a$ is not red}\\
-   L(j,m)\AND\NOT L(m,j) &\text{$j$ loves $m$, and $m$ does not love $j$}\\
-   L(j,m)\IMP L(b,m)     &\text{if $j$ loves $m$ then $b$ loves $m$}\\
-   R(a)\IFF L(j,j)       &\text{$a$ is red if and only if $j$ loves $j$}\\
-\end{array}
-\]
-
-
 \medbreak
+
 Let's go back to the proposition with which we started this section:
 ``Roses are red.''  This sentence is more difficult to handle than
 it might appear.  We still can't express it properly in logic.
@@ -112,33 +40,6 @@ is odd.''  Words like \emph{all}, \emph{no}, \emph{some}, and \emph{every}
 are called \nw{quantifiers}.\index{quantifier!in English}  We need to be able to express similar concepts
 in logic.
 
-Suppose that $P$ is a predicate, and we want to express the proposition that
-$P$ is true when applied to any element in the domain.
-That is, we want to say ``for any element $x$ in the domain,
-$P(x)$ is true.''  In predicate logic, we write this in symbols as
-$\forall x(P(x))$.  The $\forall$ symbol, which looks like an
-upside-down~A, is usually read ``for all,'' so that $\forall x(P(x))$
-is read as ``for all $x$, $P(x)$.''  (It is understood that this means
-for all $x$ in the domain for~$P$.)  For example,
-if $R$ is the predicate ``is red'' and the domain consists
-of all roses, then $\forall x(R(x))$ expresses the proposition
-``All roses are red.''  Note that the same proposition could be
-expressed in English as ``Every rose is red'' or ``Any rose is red.''
- 
-Now, suppose we want to say that a predicate, $P$, is true for \emph{some}
-element in its domain.  This is expressed in predicate
-logic as $\exists x(P(x))$.  The $\exists$ symbol, which looks like a
-backwards~E, is usually read ``there exists,'' but a more exact reading
-would be ``there is at least one.'' Thus, $\exists x(P(x))$ is read
-as ``There exists an $x$ such that $P(x)$,'' and it means ``there is
-at least one $x$ in the domain for $P$ for which $P(x)$
-is true.''  If, once again, $R$ stands for ``is red'' and the domain
-is ``roses,'' then $\exists x(R(x))$ could be expressed
-in English as ``There is a red rose'' or ``At least one rose is red''
-or ``Some rose is red.''  It might also be expressed as ``Some roses
-are red,'' but the plural is a bit misleading since $\exists x(R(x))$
-is true even if there is only one red rose.
-We can now give the formal definitions:
 
 \begin{definition}
 Suppose that $P$ is a one-place predicate.  Then $\forall x(P(x))$ is
@@ -150,58 +51,6 @@ true.  The $\forall$ symbol is called the \nw{universal quantifier},
 and $\exists$ is called the \nw{existential quantifier}.
 \end{definition}
 
-The $x$ in $\forall x(P(x))$ and $\exists x(P(x))$ is a variable.\index{variable}
-(More precisely, it is an \emph{element} variable, since its value
-can only be an element.)\index{element!variable}
-Note that a plain $P(x)$---without the $\forall x$ or $\exists x$---is
-not a proposition.  $P(x)$~is neither true nor false because $x$
-is not some particular element, but just a placeholder in a slot that
-can be filled in with an element.  $P(x)$~would stand for
-something like the statement ``$x$~is red,'' which is not really a
-statement in English at all.  But it becomes a statement when
-the $x$ is replaced by some particular element, such as ``the rose.''
-Similarly, $P(x)$ becomes a proposition if some element $a$ is substituted
-for the~$x$, giving $P(a)$.\footnote{There is certainly room for confusion
-about names here.  In this discussion, $x$ is a variable and $a$ is 
-an element.  But that's only because I said so.  Any letter could be used
-in either role, and you have to pay attention to the context to
-figure out what is going on.  Usually, $x$, $y$, and $z$ will be variables.}
-
-An \nw{open statement} is an expression that contains one or more element 
-variables, which becomes a proposition when elements are substituted
-for the variables.  (An open statement has open ``slots'' that need to
-be filled in.)  $P(x)$ and ``$x$ is red'' are examples of open 
-statements that contain one variable.  If $L$ is a two-place predicate
-and $x$ and $y$ are variables, then $L(x,y)$ is an open statement
-containing two variables.  An example in English would be
-``$x$~loves~$y$.''  The variables in an open statement are called 
-\nw[free variable]{free variables}.  An open statement that contains $x$ as a free
-variable can be quantified with $\forall x$ or $\exists x$.
-The variable $x$ is then said to be \nw[bound variable]{bound}.  For example,
-$x$ is free in $P(x)$ and is bound in $\forall x(P(x))$ and
-$\exists x(P(x))$.  The free variable $y$ in $L(x,y)$ becomes
-bound in $\forall y(L(x,y))$ and in $\exists y(L(x,y))$.
-
-Note that $\forall y(L(x,y))$ is still an open statement, since
-it contains $x$ as a free variable.\index{quantifier!on a two-place predicate}
-Therefore, it is possible to
-apply the quantifier $\forall x$ or $\exists x$ to $\forall y(L(x,y))$,
-giving $\forall x\big(\forall y(L(x,y))\big)$ and
-$\exists x\big(\forall y(L(x,y))\big)$.  Since all the variables are
-bound in these expressions, they are propositions.  If $L(x,y)$ represents
-``$x$~loves~$y$,'' then $\forall y(L(x,y))$ is something like ``$x$~loves
-everyone,''  and $\exists x\big(\forall y(L(x,y))\big)$ is the
-proposition, ``There is someone who loves everyone.''  Of course, we
-could also have started with $\exists x(L(x,y))$: ``There is someone
-who loves~$y$.''  Applying $\forall y$ to this gives 
-$\forall y\big(\exists x(L(x,y))\big)$,
-which means ``For every person, there is someone who loves that person.''
-Note in particular that $\exists x\big(\forall y(L(x,y))\big)$ and
-$\forall y\big(\exists x(L(x,y))\big)$ do \emph{not} mean the same thing.
-Altogether, there are eight different propositions that can
-be obtained from $L(x,y)$ by applying quantifiers, with six distinct
-meanings among them.
-
 (From now on, I will leave out parentheses when there is no ambiguity.
 For example, I will write $\forall x\, P(x)$ instead of $\forall x(P(x))$
 and $\exists x\,\exists y\,L(x,y)$ instead of
@@ -211,72 +60,6 @@ instead of just letters, as in  $Red(x)$ and $Loves(john,mary)$.
 This might help to make examples more readable.)
 
 \medbreak
-
-In predicate logic, the operators and laws of Boolean algebra\index{Boolean algebra!in predicate logic} still
-apply.  For example, if $P$ and $Q$ are one-place predicates and
-$a$ is an element in the domain, then $P(a)\IMP Q(a)$
-is a proposition, and it is logically equivalent to $\NOT P(a)\OR Q(a)$.
-Furthermore, if $x$ is a variable, then $P(x)\IMP Q(x)$ is an open
-statement, and $\forall x(P(x)\IMP Q(x))$ is a proposition.
-So are $P(a)\AND(\exists x\,Q(x))$ and $(\forall x\,P(x))\IMP(\exists xP(x))$.
-Obviously, predicate logic can be very expressive.  Unfortunately,
-the translation between predicate logic and English sentences is not
-always obvious.
-
-Let's look one more time at the proposition ``Roses are red.''
-If the domain consists of roses, this translates into
-predicate logic as $\forall x\, Red(x)$.  However, the sentence makes
-more sense if the domain is larger---for example if it
-consists of all flowers.  Then ``Roses are red'' has to be read as
-``All flowers which are roses are red,'' or ``For any flower,
-if that flower is a rose, then it is red.'' The last form translates
-directly into logic as $\forall x\big(Rose(x)\IMP Red(x)\big)$.
-Suppose we want to say that all red roses are pretty.  The phrase
-``red rose'' is saying both that the flower is a rose and that it is
-red, and it must be translated as a conjunction, $Rose(x)\AND Red(x)$.
-So, ``All red roses are pretty'' can be rendered as
-$\forall x\big((Rose(x)\AND Red(x))\IMP Pretty(x)\big)$.
-
-Here are a few more examples of translations from predicate logic
-to English.  Let $H(x)$ represent ``$x$~is happy,'' let
-$C(y)$~represent ``$y$~is a computer,'' and let $O(x,y)$~represent
-``$x$~owns~$y$.''  (The domain for $x$ consists of 
-people, and the domain for $y$ consists of inanimate objects.)
-Then we have the following translations:
-
-\begin{itemize}
-\setlength{\itemsep}{0pt plus 1 pt}
-\setlength{\parsep}{0pt plus 1 pt}
-\item Jack owns a computer: $\exists x\big(O(jack,x)\AND C(x)\big)$.
-(That is, there is at least one thing such that Jack owns that thing and that thing
-is a computer.)
-\item Everything Jack owns is a computer: $\forall x\big(O(jack,x)\IMP C(x)\big)$.
-\item If Jack owns a computer, then he's happy:\\*
-\hspace*{0.5in}$\big(\exists y(O(jack,y)\AND C(y))\big)\IMP H(jack)$.
-\item Everyone who owns a computer is happy:\\*
-\hspace*{0.5in} $\forall x\big(\,\big(\exists y(O(x,y)\AND C(y)\big)\IMP H(x)\big)\,\big)$.
-\item Everyone owns a computer: $\forall x\,\exists y\big(C(y)\AND O(x,y)\big)$.
-(Note that this allows each person to own a different computer.
-The proposition $\exists y\,\forall x\big(C(y)\AND O(x,y)\big)$
-would mean that there is a single computer which is owned by
-everyone.)
-\item Everyone is happy: $\forall xH(x)$.
-\item Everyone is unhappy: $\forall x(\NOT H(x))$.
-\item Someone is unhappy: $\exists x(\NOT H(x))$.
-\item At least two people are happy:
- $\exists x \exists y\big(H(x) \AND H(y) \AND (x\ne y)\big)$.  (The stipulation
- that $x\ne y$ is necessary because two different variables can refer to
- the same element.  The proposition $\exists x\exists y(H(x)\AND H(y))$ is
- true even if there is only one happy person.)
-\item There is exactly one happy person:\\*
- \hspace*{0.5 in}$\big(\exists x H(x)\big)) \AND \big(\forall y \forall z((H(y)\AND H(z))\IMP (y=z))\big)$.
- (The first part of this conjunction says that there is at least one happy person.
- The second part says that if $y$ and $z$ are both happy people, then they are actually
- the same person. That is, it's not possible to find two \emph{different} people who
- are happy.)
-\end{itemize}
-
-\medskip
 
 To calculate in predicate logic, we need a notion of logical equivalence.
 Clearly, there are pairs of propositions in predicate logic that mean the same

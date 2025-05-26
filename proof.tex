@@ -42,203 +42,12 @@ on your own.
 
 \medskip
 
-The mathematical world and the real world weren't always quite so
-separate.  Until some time near the middle of the nineteenth
-century, the statements of mathematics were regarded as
-statements about the world.  A proof\index{proof} was simply a convincing
-argument, rather than a chain forged of absolute logic.  
-It was something closer to the original meaning of the word ``proof",
-as a test or trial:  To prove something was to test its truth by
-putting it to the trial of logical argument.
-
-The first rumble of trouble came in the form of \nw{non-Euclidean
-geometry}.  For two thousand years, the geometry of the Greek mathematician
-Euclid\index{Euclid} had been accepted, simply, as the geometry of the world.
-In the middle of the nineteenth century, it was discovered that
-there are other systems of geometry, which are at least as valid
-and self-consistent as Euclid's system.  Mathematicians can work
-in any of these systems, but they cannot all claim to be working 
-in the real world.
-
-Near the end of the nineteenth century came another shock, in the form
-of cracks in the very foundation of mathematics.  At that time,
-mathematician Gottlieb Frege\index{Frege, Gottlieb} was finishing
-a book on set theory that represented his life's work.  In Frege's
-set theory, a set could be defined by any property.  You could have,
-for example, the set consisting of all sets that contain three objects.
-As he was finishing his book, Frege received a letter from a young
-mathematician named Bertrand Russell\index{Russell, Bertrand} which
-described what became known as \nw{Russell's Paradox}.  Russell
-pointed out that the set of all sets---that is, the set that contains
-every element that satisfies the property of being a set---cannot logically
-exist.  We'll see Russell's reasoning in the following chapter.  Frege could
-only include a postscript in his book stating that the basis of the
-work had been swept away.
-
-Mathematicians responded to these problems by banishing appeals to
-facts about the real world from mathematical proof.  Mathematics was to
-be its own world, built on its own secure foundation.  The foundation
-would be a basic set of assumptions or ``axioms'' from which
-everything else would follow by logic.  It would only be
-necessary to show that the axioms themselves were logically consistent and complete,
-and the world of mathematics would be secure.  Unfortunately,
-even this was not to be.  In the 1930s, Kurt G\"odel\index{G\"odel, Kurt}
-showed that there is no consistent, finite set of axioms that completely
-describes even the corner of the mathematical world known as
-arithmetic.  G\"odel showed that given any finite, consistent set of
-axioms, there are true statements about arithmetic that do not follow
-logically from those axioms.
-
-We are left with a mathematical world in which iron chains of
-logic still bind conclusions to assumptions.  But the assumptions
-are no longer rooted in the real world.  Nor is there any finite core
-of axioms to which the rest of the mathematical world can be chained.
-In this world, axioms are set up as signposts in a void, and then
-structures of logic are built around them.  
-For example, instead of talking about
-\emph{the} set theory that describes the real world, we have \emph{a}
-set theory, based on a given set of axioms.  That set theory is
-necessarily incomplete, and it might differ from other set theories
-which are based on other sets of axioms.
-
-
-
-Understandably, mathematicians are very picky about getting their
-proofs right.  It's how they construct their world.  Students
-sometimes object that mathematicians are too picky about proving
-things that are ``obvious.'' But the fact that something is
-obvious in the real world counts for very little in the constructed
-world of mathematics.  Too many obvious things have turned
-out to be dead wrong.  (For that matter, even things in the real
-world that seem ``obviously'' true are not necessarily true at all.
-For example, consider the quantity $f(n) = n^2 + n + 41$.  When $n=0$, $f(n)=41$ which is
-prime; when $n=1$, $f(n) = 43$ which is prime; when $n=2$, $f(n) = 47$, which is prime.
-By the time you had calculated $f(3), f(4), \ldots, f(10)$ and found that they were all
-prime, you might conclude that it is ``obvious'' that $f(n)$ is prime for all $n\geq 0$.
-But this is not in fact the case!  (See exercises.)
-Similarly, those of you who are baseball fans might consider it ``obvious'' that if
-player A has a higher batting average against left-handers than player B, and player A has
-a higher batting average against right-handers than player B, then player A must have
-a higher batting average than player B.  Again, this is not true!) 
-
-
-\medbreak
-
-
-As we saw in Section~\ref{S-logic-5}, a 
-formal proof consists of a sequence of statements where each
-statement is either an assumption or follows by a rule of logic
-from previous statements. The examples in that section all worked
-with unspecified generic propositions ($p$, $q$, etc).  Let us
-now look at how one might use the same techniques to prove a
-specific proposition about the mathematical world.  We will prove
-that for all integers $n$, if $n$ is even then $n^2$ is even.
-(Definition: an integer $n$ is {\em even} iff $n=2k$ for some
-integer $k$.  For example, 2 is even since $2=2\cdot 1$;
-66 is even since $66=2\cdot 33$; 0 is even since $0=2\cdot 0$.)
-\begin{proof}
-This is a proposition of the form $\forall n (P(n) \IMP Q(n))$
-where $P(n)$ is ``$n$ is even'' and $Q(n)$ is ``$n^2$ is even.''
-We need to show that $P(n) \IMP Q(n)$ is true for all values of $n$.
-In the language of Section~\ref{S-logic-5}, we need to show that for
-any $n$, $P(n)$ logically implies $Q(n)$; or, equivalently, that
-$Q(n)$ can be logically deduced from $P(n)$; or, equivalently, that
-\begin{center}
-\argument{$n$ is even}{$n^2$ is even}
-\end{center}
-is a valid argument.  
-Here is a formal proof that
-\begin{center}
-\argument{$n$ is even}{$n^2$ is even}
-\end{center}
-is in fact a valid argument for any value of $n$:
-
-Let $n$ 
-be an arbitrary integer.
-\begin{center}
-\begin{tabular}{r@{\ \ }l@{\qquad}l}
-1.&$n$ is even                                      &  premise\\
-2.&if $n$ is even, then $n=2k$                      & \\
-  & \ \ \ for some integer $k$                      & definition of even \\
-3.&$n=2k$ for some integer $k$                      & from 1, 2 (\textit{modus ponens})\\
-4.&if $n=2k$ for some integer $k$,                  & \\
-  & \ \ \  then $n^2=4k^2$ for that integer $k$     & basic algebra\\
-5.&$n^2 = 4k^2$ for some integer $k$                & from 3, 4 (\textit{modus ponens})\\
-6.&if $n^2=4k^2$ for some integer $k$,              & \\
-  & \ \ \  then $n^2=2(2k^2)$ for that $k$          & basic algebra\\
-7.&$n^2=2(2k^2)$ for some integer $k$               & from 5, 6 (\textit{modus ponens})\\
-8.&if $n^2 = 2(2k^2)$ for some integer $k$,         & \\
-  & \ \ \  then $n^2 = 2k'$ for some integer $k'$   & basic fact about integers\\
-9.&$n^2 = 2k'$ for some integer $k'$                & from 7, 8 (\textit{modus ponens})\\
-10.&if $n^2 = 2k'$ for some integer $k'$,           & \\
-  & \ \ \ then $n^2$ is even                        & definition of even\\
-11.&$n^2$ is even                                   & from 9, 10 (\textit{modus ponens})\\
-\end{tabular}
-\end{center}
-(The ``basic fact about integers'' referred to above is that the product of
-integers is again an integer.)
-Since $n$ could be replaced by any integer throughout this argument, we have proved
-the statement ``if $n$ is even then $n^2$
-is even'' is true for all integers $n$. (You might worry that the argument is only
-valid for even $n$; see the disclaimer about Keanu Reeves' acting ability on 
-page 34, or remind yourself that $P(n) \IMP Q(n)$ is automatically true if
-$P(n)$ is false.)
-\end{proof}
-
-Mathematical proofs are rarely presented with this degree of detail and formality.
-A slightly less formal proof of our proposition might leave out 
-the explicit implications and instances
-of \textit{modus ponens} and appear as follows:
-\begin{proof}
-Let $n$ be an arbitrary integer.
-
-\begin{center}
-  \begin{tabular}{r@{\ \ }l@{\qquad}l}
-1.&$n$ is even & premise \\
-2.&$n=2k$ for some integer $k$ & definition of even\\
-3.&$n^2=4k^2$ for that integer $k$ & basic algebra\\
-4.&$n^2=2(2k^2)$ for that $k$ & basic algebra\\
-5.&$n^2 = 2k'$ for some integer $k'$  & substituting $k'=2k^2$\\
-6.&$n^2$ is even & definition of even\\
-\end{tabular}
-\end{center}
-Since $n$ was an arbitrary integer, the statement is true for all integers.
-\end{proof} 
-
-A more typical proof would take the argument above and present it in prose
-rather than list form: 
-\begin{proof}
-Let $n$ be an arbitrary integer and assume $n$ is even.  Then
-$n=2k$ for some integer $k$ by the definition of even, and $n^2=4k^2=2(2k^2)$. 
-Since the product of integers is an integer, we have $n^2=2k'$ for some integer
-$k'$.  Therefore $n^2$ is even.  Since $n$ was an arbitrary integer, the statement
-is true for all integers.
-\end{proof}
-
-Typically, in a ``formal'' proof, it is this
-kind of (relatively) informal discussion that is
-given, with enough details to convince the reader that a complete,
-formal proof could be constructed.  Of course, how many details
-the reader can be expected to fill in depends on the reader,
-and reading proofs is a skill that must be developed and
-practiced.  Writing a proof is even more difficult.  Every
-proof involves a creative act of discovery, in which a
-chain of logic that leads from assumptions to conclusion is
-discovered.  It also involves a creative act of expression,
-in which that logic is presented in a clear and convincing way.
-There is no algorithm for producing correct, coherent proofs.
-There are, however, some general guidelines
-for discovering
-and writing proofs.
-
 One of the most important pieces of advice to keep in mind is,
 ``Use the definition.''  In the world of mathematics, terms
 mean exactly what they are defined to mean and nothing more.
 Definitions allow very complex ideas to be summarized as
 single terms.  When you are trying to prove things about
 those terms, you generally need to ``unwind'' the definitions.
-In our example above, we used the definition of
-even to write $n=2k$, and then we worked with that equation.
 When you are trying to prove something about equivalence relations
 in Chapter~\ref{C-sets},
 you can be pretty sure that you will need to use the
@@ -332,12 +141,13 @@ is rational.''
 A proof of such a statement often begins something like this:
 ``Assume that $p$.  We want to show that $q$.''  In the rest of
 the proof, $p$ is treated as an assumption that is known to be
-true.  As discussed above, the logical reasoning behind this is that 
-you are essentially proving that 
-\begin{center}
-\argument{$p$}{$q$}
-\end{center}
-is a valid argument. Another way of thinking about it is to remember
+true.  %As discussed above, the logical reasoning behind this is that 
+%you are essentially proving that 
+%\begin{center}
+%\argument{$p$}{$q$}
+%\end{center}
+%is a valid argument.
+Another way of thinking about it is to remember
 that $p\IMP q$ is
 automatically true in the case where $p$ is false, so there is no
 need to handle that case explicitly.  In the remaining case, when $p$ is
@@ -371,241 +181,241 @@ biconditionals $p\IFF r\IFF s\IFF \cdots\IFF q$.
 
 \medbreak
 
-We'll turn to a few examples, but first  
-here is some terminology that we will use throughout our sample proofs:
-
-\begin{itemize}
-
-\item The \nw{natural numbers} (denoted $\N$) are the numbers $0,1,2,\ldots$.  Note that the
-sum and product of natural numbers are natural numbers.
-
-\item The \nw{integers} (denoted $\Z$) are the numbers $0, -1, 1, -2, 2, -3, 3, \ldots$.
-Note that the sum, product, and difference of integers are integers.
-
-\item The \nw{rational numbers} (denoted $\Q$)
-are all numbers that can be written in the form $\frac{m}{n}$
-where $m$ and $n$ are integers and $n\not=0$.  So $\frac{1}{3}$ and $\frac{-65}{7}$ are
-rationals; so, less obviously, are 6 and $\frac{\sqrt{27}}{\sqrt{12}}$ since $6=\frac{6}{1}$
-(or, for that matter, $6=\frac{-12}{-2}$), and $\frac{\sqrt{27}}{\sqrt{12}} = 
-\sqrt{\frac{27}{12}} = \sqrt{\frac{9}{4}} = \frac{3}{2}$.  Note the restriction that the
-number in the denominator cannot be 0: $\frac{3}{0}$ is not a number at all, rational
-or otherwise; it is an undefined quantity.  Note also that the sum, product, difference,
-and quotient of rational numbers are rational numbers (provided you don't attempt to divide
-by~0.)
-
-\item The \nw{real numbers} (denoted $\R$) are numbers
-that can be written in decimal form, possibly with an infinite number of
-digits after the decimal point.  Note that the sum, product, difference,
-and quotient of real numbers are real numbers (provided you don't attempt to divide
-by~0.)
-
-\item The \nw{irrational numbers} are real numbers that are not rational, i.e.\ that cannot
-be written as a ratio of integers.  Such numbers include $\sqrt{3}$ (which we will
-prove is not rational) and $\pi$ (if anyone ever told you that $\pi = \frac{22}{7}$,
-they lied---$\frac{22}{7}$ is only an {\em approximation} of the value of $\pi$).
-
-\item An integer $n$ is \nw{divisible by $m$} iff $n=mk$ for some integer $k$. (This can also
-be expressed by saying that $m$ {\nw evenly divides} $n$.) So
-for example, $n$ is divisible by $2$ iff $n=2k$ for some integer $k$; $n$ is divisible
-by 3 iff $n=3k$ for some integer $k$, and so on.  Note that if $n$ is {\em not} divisible
-by 2, then $n$ must be 1 more than a multiple of 2 so $n=2k+1$ for some integer $k$.
-Similarly, if $n$ is not divisible by 3 then $n$ must be 1 or 2 more than a multiple of 3,
-so $n=2k+1$ or $n=2k+2$ for some integer $k$.
-
-\item An integer is \nw{even} iff it is divisible by 2 and \nw{odd} iff it is not.
-
-\item An integer $n>1$ is \nw{prime} if it is divisible by exactly two positive integers, namely 1 and itself.
-Note that a number must be greater than 1 to even have a chance of being termed ``prime''.
-In particular, neither 0 nor 1 is prime.
-
-\end{itemize}
-
-
-\medskip
-
-Let's look now at another example: prove that the sum of any two rational numbers is
-rational. 
-\begin{proof}
-We start by assuming that $x$ and $y$ are arbitrary rational numbers.
-Here's a formal proof that the inference rule
-\begin{center}
-\argument{$x$ is rational \\ $y$ is rational}{$x+y$ is rational}
-\end{center}
-is a valid rule of inference:
-
-\breakSixByNine
-
-\begin{center}
-\begin{tabular}{r@{\ \ }l@{\qquad}l}
-1.&$x$ is rational                                                 & premise\\
-2.&if $x$ is rational, then $x=\frac{a}{b}$                        & \\
-  & \ \ \ for some integers $a$ and $b\not=0$                      & definition of rationals \\
-3.&$x=\frac{a}{b}$ for some integers $a$ and $b\not=0$             & from 1,2 (\textit{modus ponens}) \\
-4.&$y$ is rational                                                 & premise\\
-5.&if $y$ is rational, then $y=\frac{c}{d}$ for                    & \\
-  & \ \ \ some integers $c$ and $d\not=0$                          & definition of rational\\
-6.&$y=\frac{c}{d}$ for some $c$ and $d\not=0$                      & from 4,5 (\textit{modus ponens})\\
-7.&$x=\frac{a}{b}$ for some $a$ and $b\not=0$ and                  & \\
-  & \ \ \ $y=\frac{c}{d}$ for some $c$ and $d\not=0$               & from 3,6\\
-8.&if $x=\frac{a}{b}$ for some $a$ and $b\not=0$ and               & \\
-  & \ \ \ $y=\frac{c}{d}$ for $c$ and $d\not=0$ then               & \\
-  & \ \ \ $x+y = \frac{ad+bc}{bd}$where $a,b,c,d$                  & \\
-  & \ \ \ are integers and $b,d \not=0$                            & basic algebra\\
-9.&$x+y = \frac{ad+bc}{bd}$ for some $a,b,c,d$                     & \\
-  & \ \ \ where $b,d \not=0$                                       & from 7,8 (\textit{modus ponens})\\
-10.&if $x+y = \frac{ad+bc}{bd}$ for some $a,b,c,d$                 & \\
-  & \ \ \  where $b,d \not=0$ then $x+y = \frac{m}{n}$             & \\
-  & \ \ \  where $m,n$ are integers and $n\not= 0$                 & properties of integers\\
-11.&$x+y = \frac{m}{n}$ where $m$ and $n$                          & \\
-   & \ \ \ are integers and $n\not= 0$                             & from 9,10 (\textit{modus ponens})\\
-12.&if  $x+y = \frac{m}{n}$ where $m$ and $n$ are                  & \\
-   & \ \ \ integers and $n\not= 0$                                 & \\
-   & \ \ \ then $x+y$ is rational                                  & definition of rational\\
-13.&$x+y$ is rational                                              & from 11,12 (\textit{modus ponens})\\
-\end{tabular}
-\end{center}
-So the rule of inference given above is valid.
-Since $x$ and $y$ are arbitrary rationals, we have proved that the rule is valid for all
-rationals, and hence the sum of any two rationals is rational.
-\end{proof}
-
-Again, a more informal presentation would look like: 
-\begin{proof}
-Let $x$ and $y$ be arbitrary rational
-numbers.  By the definition of rational, there are integers $a,b\not=0,c,d\not=0$ such
-that $x=\frac{a}{b}$ and $y=\frac{c}{d}$.  Then $x+y = \frac{ad+bc}{bd}$; we know 
-$ad+bc$ and $bd$ are integers since the sum and product of integers are integers, and
-we also know $bd\not=0$ since neither $b$ nor $d$ is 0.  So we have written
-$x+y$ as the ratio of two integers, the denominator being non-zero.  Therefore, by
-the definition of rational numbers, $x+y$ is rational.  Since $x$ and $y$ were arbitrary
-rationals, the sum of any two rationals is rational. 
-\end{proof}
-
-\medskip
-
-And one more example: we will prove that any 4-digit number $d_1d_2d_3d_4$ is 
-divisible by 3 iff the sum of the four digits is divisible by 3.
-
-\begin{proof}
-This statement is of the form $p \IFF q$; recall that $p \IFF q$
-is logically equivalent to $(p\IMP q) \wedge
-(q \IMP p)$.  So we need to prove for any 4-digit number $d_1d_2d_3d_4$ that (1) if
-$d_1d_2d_3d_4$ is divisible by~3 then $d_1+d_2+d_3+d_4$ is divisible by~3, and (2)
-if $d_1+d_2+d_3+d_4$ is divisible by~3 then $d_1d_2d_3d_4$ is divisible by~3.
-So let $d_1d_2d_3d_4$ be an arbitrary 4-digit number.
-
-(1) Assume $d_1d_2d_3d_4$ is divisible by 3, i.e. $d_1d_2d_3d_4=3k$ for some integer
-$k$.  The number $d_1d_2d_3d_4$ is actually $d_1 \times 1000 + d_2 \times 100 +
-d_3 \times 10 + d_4$, so we have the equation 
-$$d_1 \times 1000 + d_2 \times 100 +
-d_3 \times 10 + d_4 = 3k.$$  
-Since $1000=999+1$, $100=99+1$, and $10=9+1$, this
-equation can be rewritten 
-$$999d_1 + d_1 + 99d_2 + d_2 +9d_3 + d_3 + d_4 = 3k.$$
-Rearranging gives
-\begin{align*}
-d_1 + d_2 +d_3 +d_4 &= 3k - 999d_1 - 99d_2 - 9d_3 \\
-                    &= 3k - 3(333d_1) - 3(33d_2) - 3(3d_3).
-\end{align*}
-We can now factor a 3
-from the right side to get 
-$$d_1 + d_2 +d_3 +d_4 = 3(k - 333d_1 - 33d_2 - d_3).$$
-Since $(k - 333d_1 - 33d_2 - d_3)$ is an integer, we have shown that $d_1 + d_2 +d_3 +d_4$
-is divisible by 3.
-
-(2) Assume $d_1 + d_2 +d_3 +d_4$
-is divisible by 3. Consider the number $d_1d_2d_3d_4$.  As remarked above,
-$$d_1d_2d_3d_4 = d_1 \times 1000 + d_2 \times 100 +
-d_3 \times 10 + d_4$$ 
-so 
-\begin{align*}d_1d_2d_3d_4 &= 999d_1 + d_1 + 99d_2 + d_2 + 9d_3 + d_3 + d_4\\
-                             &= 999d_1 + 99d_2 + 9d_3 + (d_1 + d_2 +d_3 +d_4).
-\end{align*} 
-We assumed that
-$d_1 + d_2 +d_3 +d_4 = 3k$ for some integer $k$, so we can substitute into the
-last equation to get 
-$$d_1d_2d_3d_4 = 999d_1 + 99d_2 + 9d_3 + 3k = 3(333d_1 +
-33d_2 + 3d_3 + k).$$  
-Since the quantity in parentheses is an integer, we have
-proved that $d_1d_2d_3d_4$ is divisible by 3.
-
-In (1) and (2) above, the number $d_1d_2d_3d_4$ was an arbitrary 4-digit integer,
-so we have proved that  for all 4-digit integers,
-$d_1d_2d_3d_4$ is  divisible by 3 iff the sum of the four digits is divisible by 3.
-\end{proof}
-
-
-\medskip
-
-Now suppose we wanted to prove the statement ``For all integers $n$, $n^2$ is even if
-and only if $n$ is even.''  We have already proved half of this
-statement (``For all integers $n$, if $n$ is even then $n^2$ is even''), so
-all we need to do is prove the statement
-``For all integers $n$, if $n^2$ is even then $n$ is even'' and we'll be done.
-Unfortunately, this is not as straightforward as it seems: suppose we started
-in our standard manner and let $n$
-be an arbitrary integer and assumed that $n^2=2k$ for some integer $k$.  Then we'd be
-stuck!  Taking the square root of both sides would give us $n$ on the left but would
-leave a $\sqrt{2k}$ on the right. This quantity is not of the form $2k'$ for any
-integer $k'$; multiplying it by $\frac{\sqrt{2}}{\sqrt{2}}$ would give $2\frac{\sqrt{k}}
-{\sqrt{2}}$ but there is no way for us to prove that $\frac{\sqrt{k}}
-{\sqrt{2}}$ is an integer.  So we've hit a dead end.  What do we do now?
-
-The answer is that we need a different proof technique.  The proofs we have written
-so far are what are called \nw{direct proofs}: to prove $p \IMP q$ you assume
-$p$ is true and prove that the truth of $q$ follows.
-Sometimes, when a direct proof of $p \IMP q$ fails, an \nw{indirect proof} will
-work.  Recall that the {\em contrapositive} of the implication $p \IMP q$
-is the implication $\NOT q \IMP \NOT p$, and that this proposition is
-logically equivalent to $p \IMP q$. An indirect proof of 
-$p \IMP q$, then, is a direct proof of the contrapositive 
-$\NOT q \IMP \NOT p$.  In our current example, instead of proving
-``if $n^2$ is even then $n$ is even" directly, we can prove its contrapositive
-``if $n$ is not even (i.e. $n$ is odd) then $n^2$ is not even (i.e. $n^2$ is odd.)''
-The proof of this contrapositive is a routine direct argument which we leave to the
-exercises.
-
-\begin{exercises}
-
-\problem Find a natural number $n$ for which $n^2+n+41$ is not prime.
-
-\problem Show that the propositions $p\OR q$ and $(\NOT p)\IMP q$
-are logically equivalent.
-
-\problem Show that the proposition $(p\OR q)\IMP r$ is equivalent
-to $(p\IMP r)\AND(q\IMP r)$.
-%  Explain how this
-%fact is used in the proof of Theorem~\ref{T-image}.
-
-\problem Determine whether each of the following statements is
-true.  If it true, prove it.  If it is false, give a counterexample.
-\ppart Every prime number is odd.
-\ppart Every prime number greater than 2 is odd.
-\ppart If $x$ and $y$ are integers with $x<y$, then there is an integer
-$z$ such that $x<z<y$.
-\ppart If $x$ and $y$ are real numbers with $x<y$, then there is a real number
-$z$ such that $x<z<y$.
-
-\problem Suppose that $r$, $s$, and $t$ are integers, such that $r$ evenly divides $s$ and
-$s$ evenly divides $t$.  Prove that $r$ evenly divides $t$.
-
-\problem Prove that for all integers $n$, if $n$ is odd then $n^2$ is odd.
-
-\problem\label{divby3}Prove that an integer $n$ is divisible by 3 iff $n^2$ is divisible
-by 3.  (Hint: give an indirect proof of ``if $n^2$ is divisible by 3 then
-$n$ is divisible by 3.'')
-
-\problem Prove or disprove each of the following statements.
-\ppart The product of two even integers is even.
-\ppart The product of two integers is even only if both integers are even.
-\ppart The product of two rational numbers is rational.
-\ppart The product of two irrational numbers is irrational.
-\ppart For all integers $n$, if $n$ is divisible by 4 then $n^2$ is
-divisible by 4.
-\ppart For all integers $n$, if $n^2$ is divisible by 4 then $n$ is
-divisible by 4.
-
-\end{exercises}
-
-
-
+%We'll turn to a few examples, but first  
+%here is some terminology that we will use throughout our sample proofs:
+%
+%\begin{itemize}
+%
+%\item The \nw{natural numbers} (denoted $\N$) are the numbers $0,1,2,\ldots$.  Note that the
+%sum and product of natural numbers are natural numbers.
+%
+%\item The \nw{integers} (denoted $\Z$) are the numbers $0, -1, 1, -2, 2, -3, 3, \ldots$.
+%Note that the sum, product, and difference of integers are integers.
+%
+%\item The \nw{rational numbers} (denoted $\Q$)
+%are all numbers that can be written in the form $\frac{m}{n}$
+%where $m$ and $n$ are integers and $n\not=0$.  So $\frac{1}{3}$ and $\frac{-65}{7}$ are
+%rationals; so, less obviously, are 6 and $\frac{\sqrt{27}}{\sqrt{12}}$ since $6=\frac{6}{1}$
+%(or, for that matter, $6=\frac{-12}{-2}$), and $\frac{\sqrt{27}}{\sqrt{12}} = 
+%\sqrt{\frac{27}{12}} = \sqrt{\frac{9}{4}} = \frac{3}{2}$.  Note the restriction that the
+%number in the denominator cannot be 0: $\frac{3}{0}$ is not a number at all, rational
+%or otherwise; it is an undefined quantity.  Note also that the sum, product, difference,
+%and quotient of rational numbers are rational numbers (provided you don't attempt to divide
+%by~0.)
+%
+%\item The \nw{real numbers} (denoted $\R$) are numbers
+%that can be written in decimal form, possibly with an infinite number of
+%digits after the decimal point.  Note that the sum, product, difference,
+%and quotient of real numbers are real numbers (provided you don't attempt to divide
+%by~0.)
+%
+%\item The \nw{irrational numbers} are real numbers that are not rational, i.e.\ that cannot
+%be written as a ratio of integers.  Such numbers include $\sqrt{3}$ (which we will
+%prove is not rational) and $\pi$ (if anyone ever told you that $\pi = \frac{22}{7}$,
+%they lied---$\frac{22}{7}$ is only an {\em approximation} of the value of $\pi$).
+%
+%\item An integer $n$ is \nw{divisible by $m$} iff $n=mk$ for some integer $k$. (This can also
+%be expressed by saying that $m$ {\nw evenly divides} $n$.) So
+%for example, $n$ is divisible by $2$ iff $n=2k$ for some integer $k$; $n$ is divisible
+%by 3 iff $n=3k$ for some integer $k$, and so on.  Note that if $n$ is {\em not} divisible
+%by 2, then $n$ must be 1 more than a multiple of 2 so $n=2k+1$ for some integer $k$.
+%Similarly, if $n$ is not divisible by 3 then $n$ must be 1 or 2 more than a multiple of 3,
+%so $n=2k+1$ or $n=2k+2$ for some integer $k$.
+%
+%\item An integer is \nw{even} iff it is divisible by 2 and \nw{odd} iff it is not.
+%
+%\item An integer $n>1$ is \nw{prime} if it is divisible by exactly two positive integers, namely 1 and itself.
+%Note that a number must be greater than 1 to even have a chance of being termed ``prime''.
+%In particular, neither 0 nor 1 is prime.
+%
+%\end{itemize}
+%
+%
+%\medskip
+%
+%Let's look now at another example: prove that the sum of any two rational numbers is
+%rational. 
+%\begin{proof}
+%We start by assuming that $x$ and $y$ are arbitrary rational numbers.
+%Here's a formal proof that the inference rule
+%\begin{center}
+%\argument{$x$ is rational \\ $y$ is rational}{$x+y$ is rational}
+%\end{center}
+%is a valid rule of inference:
+%
+%\breakSixByNine
+%
+%\begin{center}
+%\begin{tabular}{r@{\ \ }l@{\qquad}l}
+%1.&$x$ is rational                                                 & premise\\
+%2.&if $x$ is rational, then $x=\frac{a}{b}$                        & \\
+%  & \ \ \ for some integers $a$ and $b\not=0$                      & definition of rationals \\
+%3.&$x=\frac{a}{b}$ for some integers $a$ and $b\not=0$             & from 1,2 (\textit{modus ponens}) \\
+%4.&$y$ is rational                                                 & premise\\
+%5.&if $y$ is rational, then $y=\frac{c}{d}$ for                    & \\
+%  & \ \ \ some integers $c$ and $d\not=0$                          & definition of rational\\
+%6.&$y=\frac{c}{d}$ for some $c$ and $d\not=0$                      & from 4,5 (\textit{modus ponens})\\
+%7.&$x=\frac{a}{b}$ for some $a$ and $b\not=0$ and                  & \\
+%  & \ \ \ $y=\frac{c}{d}$ for some $c$ and $d\not=0$               & from 3,6\\
+%8.&if $x=\frac{a}{b}$ for some $a$ and $b\not=0$ and               & \\
+%  & \ \ \ $y=\frac{c}{d}$ for $c$ and $d\not=0$ then               & \\
+%  & \ \ \ $x+y = \frac{ad+bc}{bd}$where $a,b,c,d$                  & \\
+%  & \ \ \ are integers and $b,d \not=0$                            & basic algebra\\
+%9.&$x+y = \frac{ad+bc}{bd}$ for some $a,b,c,d$                     & \\
+%  & \ \ \ where $b,d \not=0$                                       & from 7,8 (\textit{modus ponens})\\
+%10.&if $x+y = \frac{ad+bc}{bd}$ for some $a,b,c,d$                 & \\
+%  & \ \ \  where $b,d \not=0$ then $x+y = \frac{m}{n}$             & \\
+%  & \ \ \  where $m,n$ are integers and $n\not= 0$                 & properties of integers\\
+%11.&$x+y = \frac{m}{n}$ where $m$ and $n$                          & \\
+%   & \ \ \ are integers and $n\not= 0$                             & from 9,10 (\textit{modus ponens})\\
+%12.&if  $x+y = \frac{m}{n}$ where $m$ and $n$ are                  & \\
+%   & \ \ \ integers and $n\not= 0$                                 & \\
+%   & \ \ \ then $x+y$ is rational                                  & definition of rational\\
+%13.&$x+y$ is rational                                              & from 11,12 (\textit{modus ponens})\\
+%\end{tabular}
+%\end{center}
+%So the rule of inference given above is valid.
+%Since $x$ and $y$ are arbitrary rationals, we have proved that the rule is valid for all
+%rationals, and hence the sum of any two rationals is rational.
+%\end{proof}
+%
+%Again, a more informal presentation would look like: 
+%\begin{proof}
+%Let $x$ and $y$ be arbitrary rational
+%numbers.  By the definition of rational, there are integers $a,b\not=0,c,d\not=0$ such
+%that $x=\frac{a}{b}$ and $y=\frac{c}{d}$.  Then $x+y = \frac{ad+bc}{bd}$; we know 
+%$ad+bc$ and $bd$ are integers since the sum and product of integers are integers, and
+%we also know $bd\not=0$ since neither $b$ nor $d$ is 0.  So we have written
+%$x+y$ as the ratio of two integers, the denominator being non-zero.  Therefore, by
+%the definition of rational numbers, $x+y$ is rational.  Since $x$ and $y$ were arbitrary
+%rationals, the sum of any two rationals is rational. 
+%\end{proof}
+%
+%\medskip
+%
+%And one more example: we will prove that any 4-digit number $d_1d_2d_3d_4$ is 
+%divisible by 3 iff the sum of the four digits is divisible by 3.
+%
+%\begin{proof}
+%This statement is of the form $p \IFF q$; recall that $p \IFF q$
+%is logically equivalent to $(p\IMP q) \wedge
+%(q \IMP p)$.  So we need to prove for any 4-digit number $d_1d_2d_3d_4$ that (1) if
+%$d_1d_2d_3d_4$ is divisible by~3 then $d_1+d_2+d_3+d_4$ is divisible by~3, and (2)
+%if $d_1+d_2+d_3+d_4$ is divisible by~3 then $d_1d_2d_3d_4$ is divisible by~3.
+%So let $d_1d_2d_3d_4$ be an arbitrary 4-digit number.
+%
+%(1) Assume $d_1d_2d_3d_4$ is divisible by 3, i.e. $d_1d_2d_3d_4=3k$ for some integer
+%$k$.  The number $d_1d_2d_3d_4$ is actually $d_1 \times 1000 + d_2 \times 100 +
+%d_3 \times 10 + d_4$, so we have the equation 
+%$$d_1 \times 1000 + d_2 \times 100 +
+%d_3 \times 10 + d_4 = 3k.$$  
+%Since $1000=999+1$, $100=99+1$, and $10=9+1$, this
+%equation can be rewritten 
+%$$999d_1 + d_1 + 99d_2 + d_2 +9d_3 + d_3 + d_4 = 3k.$$
+%Rearranging gives
+%\begin{align*}
+%d_1 + d_2 +d_3 +d_4 &= 3k - 999d_1 - 99d_2 - 9d_3 \\
+%                    &= 3k - 3(333d_1) - 3(33d_2) - 3(3d_3).
+%\end{align*}
+%We can now factor a 3
+%from the right side to get 
+%$$d_1 + d_2 +d_3 +d_4 = 3(k - 333d_1 - 33d_2 - d_3).$$
+%Since $(k - 333d_1 - 33d_2 - d_3)$ is an integer, we have shown that $d_1 + d_2 +d_3 +d_4$
+%is divisible by 3.
+%
+%(2) Assume $d_1 + d_2 +d_3 +d_4$
+%is divisible by 3. Consider the number $d_1d_2d_3d_4$.  As remarked above,
+%$$d_1d_2d_3d_4 = d_1 \times 1000 + d_2 \times 100 +
+%d_3 \times 10 + d_4$$ 
+%so 
+%\begin{align*}d_1d_2d_3d_4 &= 999d_1 + d_1 + 99d_2 + d_2 + 9d_3 + d_3 + d_4\\
+%                             &= 999d_1 + 99d_2 + 9d_3 + (d_1 + d_2 +d_3 +d_4).
+%\end{align*} 
+%We assumed that
+%$d_1 + d_2 +d_3 +d_4 = 3k$ for some integer $k$, so we can substitute into the
+%last equation to get 
+%$$d_1d_2d_3d_4 = 999d_1 + 99d_2 + 9d_3 + 3k = 3(333d_1 +
+%33d_2 + 3d_3 + k).$$  
+%Since the quantity in parentheses is an integer, we have
+%proved that $d_1d_2d_3d_4$ is divisible by 3.
+%
+%In (1) and (2) above, the number $d_1d_2d_3d_4$ was an arbitrary 4-digit integer,
+%so we have proved that  for all 4-digit integers,
+%$d_1d_2d_3d_4$ is  divisible by 3 iff the sum of the four digits is divisible by 3.
+%\end{proof}
+%
+%
+%\medskip
+%
+%Now suppose we wanted to prove the statement ``For all integers $n$, $n^2$ is even if
+%and only if $n$ is even.''  We have already proved half of this
+%statement (``For all integers $n$, if $n$ is even then $n^2$ is even''), so
+%all we need to do is prove the statement
+%``For all integers $n$, if $n^2$ is even then $n$ is even'' and we'll be done.
+%Unfortunately, this is not as straightforward as it seems: suppose we started
+%in our standard manner and let $n$
+%be an arbitrary integer and assumed that $n^2=2k$ for some integer $k$.  Then we'd be
+%stuck!  Taking the square root of both sides would give us $n$ on the left but would
+%leave a $\sqrt{2k}$ on the right. This quantity is not of the form $2k'$ for any
+%integer $k'$; multiplying it by $\frac{\sqrt{2}}{\sqrt{2}}$ would give $2\frac{\sqrt{k}}
+%{\sqrt{2}}$ but there is no way for us to prove that $\frac{\sqrt{k}}
+%{\sqrt{2}}$ is an integer.  So we've hit a dead end.  What do we do now?
+%
+%The answer is that we need a different proof technique.  The proofs we have written
+%so far are what are called \nw{direct proofs}: to prove $p \IMP q$ you assume
+%$p$ is true and prove that the truth of $q$ follows.
+%Sometimes, when a direct proof of $p \IMP q$ fails, an \nw{indirect proof} will
+%work.  Recall that the {\em contrapositive} of the implication $p \IMP q$
+%is the implication $\NOT q \IMP \NOT p$, and that this proposition is
+%logically equivalent to $p \IMP q$. An indirect proof of 
+%$p \IMP q$, then, is a direct proof of the contrapositive 
+%$\NOT q \IMP \NOT p$.  In our current example, instead of proving
+%``if $n^2$ is even then $n$ is even" directly, we can prove its contrapositive
+%``if $n$ is not even (i.e. $n$ is odd) then $n^2$ is not even (i.e. $n^2$ is odd.)''
+%The proof of this contrapositive is a routine direct argument which we leave to the
+%exercises.
+%
+%\begin{exercises}
+%
+%\problem Find a natural number $n$ for which $n^2+n+41$ is not prime.
+%
+%\problem Show that the propositions $p\OR q$ and $(\NOT p)\IMP q$
+%are logically equivalent.
+%
+%\problem Show that the proposition $(p\OR q)\IMP r$ is equivalent
+%to $(p\IMP r)\AND(q\IMP r)$.
+%%  Explain how this
+%%fact is used in the proof of Theorem~\ref{T-image}.
+%
+%\problem Determine whether each of the following statements is
+%true.  If it true, prove it.  If it is false, give a counterexample.
+%\ppart Every prime number is odd.
+%\ppart Every prime number greater than 2 is odd.
+%\ppart If $x$ and $y$ are integers with $x<y$, then there is an integer
+%$z$ such that $x<z<y$.
+%\ppart If $x$ and $y$ are real numbers with $x<y$, then there is a real number
+%$z$ such that $x<z<y$.
+%
+%\problem Suppose that $r$, $s$, and $t$ are integers, such that $r$ evenly divides $s$ and
+%$s$ evenly divides $t$.  Prove that $r$ evenly divides $t$.
+%
+%\problem Prove that for all integers $n$, if $n$ is odd then $n^2$ is odd.
+%
+%\problem\label{divby3}Prove that an integer $n$ is divisible by 3 iff $n^2$ is divisible
+%by 3.  (Hint: give an indirect proof of ``if $n^2$ is divisible by 3 then
+%$n$ is divisible by 3.'')
+%
+%\problem Prove or disprove each of the following statements.
+%\ppart The product of two even integers is even.
+%\ppart The product of two integers is even only if both integers are even.
+%\ppart The product of two rational numbers is rational.
+%\ppart The product of two irrational numbers is irrational.
+%\ppart For all integers $n$, if $n$ is divisible by 4 then $n^2$ is
+%divisible by 4.
+%\ppart For all integers $n$, if $n^2$ is divisible by 4 then $n$ is
+%divisible by 4.
+%
+%\end{exercises}
+%
+%
+%
