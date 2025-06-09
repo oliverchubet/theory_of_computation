@@ -1,8 +1,7 @@
 \section{Languages}
-In formal language theory, an \nw{alphabet} is a finite, non-empty 
-set.  The elements of the set are called \nw{symbols}.  A finite 
-sequence of symbols $a_1a_2\ldots a_n$
-from an alphabet is called a \nw{string} over that alphabet.  
+In formal language theory, an \nw{alphabet} is a finite, non-empty set.
+The elements of the set are called \nw{symbols}.
+A finite sequence of symbols $a_1a_2\ldots a_n$ from an alphabet is called a \nw{string} over that alphabet.  
 
 \smallskip
 
@@ -13,46 +12,30 @@ $\Sigma = \{0,1\}$ is an alphabet, and {\em 011},
 
 \smallskip
 
-Note that strings really are \emph{sequences} of symbols, which 
-implies that 
-order matters.  Thus {\em 011}, {\em 101}, and {\em 110} are all 
-different strings, though they are made up of the same symbols.
-The strings $x=\aetc{a}{n}$ and $y=\aetc{b}{m}$ are \nw{equal} only
-if $m=n$ (i.e.\ the strings contain the same number of symbols) and 
-$a_i=b_i$ for all
-$1 \leq i \leq n$.
+Note that strings really are \emph{sequences} of symbols, which implies that order matters.
+Thus {\em 011}, {\em 101}, and {\em 110} are all different strings, though they are made up of the same symbols.
+The strings $x=\aetc{a}{n}$ and $y=\aetc{b}{m}$ are \nw{equal} only if $m=n$ (i.e.\ the strings contain the same number of symbols) and $a_i=b_i$ for all $1 \leq i \leq n$.
 
-Just as there are operations defined on numbers, truth values, sets,
-and other mathematical elements, there are operations defined on
-strings.  Some important operations are:
+Just as there are operations defined on numbers, truth values, sets, and other mathematical elements, there are operations defined on strings.
+Some important operations are:
 \begin{enumerate}
-\item {\em length}: the \nw{length} of a string $x$ is the number of symbols
-in it.  The notation for the length of $x$ is $|x|$.  Note that
-this is consistent with other uses of $|\ |$, all of which 
-involve some notion of size: $|number|$ measures how big a number
-is (in terms of its distance from 0);  $|set|$ measures the size
-of a set (in terms of the number of elements).
+\item {\em length}: the \nw{length} of a string $x$ is the number of symbols in it.
+The notation for the length of $x$ is $|x|$.
+Note that this is consistent with other uses of $|\ |$, all of which involve some notion of size: $|number|$ measures how big a number is (in terms of its distance from 0);  $|set|$ measures the size of a set (in terms of the number of elements).
 
-We will occasionally refer to a {\em length-n string}.  This is a
-slightly awkward, but concise, shorthand for ``a string whose length
-is $n$".
+A {\em length-$n$ string} is simply ``a string whose length is $n$".
 
-\item {\em concatenation}: the \nw{concatenation} of two strings $x=a_1
-a_2\ldots a_m$ and $y=b_1b_2\ldots b_n$ is the sequence of symbols
-$a_1\ldots a_mb_1\ldots b_n$.  Sometimes $\cdot$ is used to denote
-concatenation, but it is far more usual to see the concatenation of 
-$x$ and $y$ denoted by $xy$ than by $x\cdot y$.  You can easily
-convince yourself that concatenation is associative (i.e.\ $(xy)z =
-x(yz)$ for all strings $x,y$ and $z$.)  Concatenation is not
-commutative (i.e.\ it is not always true that $xy = yx$:
-for example, if $x=a$ and $y=b$ then $xy=ab$ while $yx=ba$ and, as
-discussed above, these strings are not equal.)
+\item {\em concatenation}: the \nw{concatenation} of two strings $x=a_1 a_2\ldots a_m$ and $y=b_1b_2\ldots b_n$ is the sequence of symbols $a_1\ldots a_mb_1\ldots b_n$.
+Sometimes $\cdot$ is used to denote concatenation, but it is far more usual to see the concatenation of $x$ and $y$ denoted by $xy$ than by $x\cdot y$.
+You can easily convince yourself that concatenation is associative (i.e.\ $(xy)z = x(yz)$ for all strings $x,y$ and $z$.)
+Concatenation is not commutative (i.e.\ it is not always true that $xy = yx$:
+for example, if $x=a$ and $y=b$ then $xy=ab$ while $yx=ba$ and, as discussed above, these strings are not equal.)
 
-\item {\em reversal}: the \nw{reverse} of a string $x=a_1a_2\ldots a_n$ is
-the string $x^R = a_na_{n-1}\ldots a_2a_1$.
+\item {\em reversal}: the \nw{reverse} of a string $x=a_1a_2\ldots a_n$ is the string $x^R = a_na_{n-1}\ldots a_2a_1$.
 \end{enumerate}
 
-\begin{example}Let $\Sigma = \ab$, $x=a$, $y=abaa$, and $z=bab$.
+\begin{example}
+Let $\Sigma = \ab$, $x=a$, $y=abaa$, and $z=bab$.
 Then $|x| = 1$, $|y| = 4$, and $|z|=3$.  Also, $xx = aa$, $xy =
 aabaa$, $xz = abab$, and $zx = baba$.  Finally, $x^R = a$,
 $y^R = aaba$, and $z^R=bab$.
